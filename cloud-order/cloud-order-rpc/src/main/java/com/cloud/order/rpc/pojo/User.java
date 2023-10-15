@@ -1,4 +1,4 @@
-package pojo;
+package com.cloud.order.rpc.pojo;
 
 import lombok.Data;
 
