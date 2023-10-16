@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.order.mapper.RanAirOrderMapper">
+  <resultMap id="BaseResultMap" type="com.cloud.order.domain.RanAirOrder">
+    <!--@mbg.generated-->
+    <!--@Table ran_air_order-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="airline_sub_order_no" jdbcType="VARCHAR" property="airlineSubOrderNo" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="airline" jdbcType="VARCHAR" property="airline" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="audit_time" jdbcType="TIMESTAMP" property="auditTime" />
+    <result column="expired_time" jdbcType="TIMESTAMP" property="expiredTime" />
+    <result column="done_time" jdbcType="TIMESTAMP" property="doneTime" />
+    <result column="retry_count" jdbcType="INTEGER" property="retryCount" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="err_code" jdbcType="INTEGER" property="errCode" />
+    <result column="err_msg" jdbcType="VARCHAR" property="errMsg" />
+    <result column="cancel_time" jdbcType="TIMESTAMP" property="cancelTime" />
+    <result column="cancel_reason" jdbcType="VARCHAR" property="cancelReason" />
+    <result column="total_price" jdbcType="DECIMAL" property="totalPrice" />
+    <result column="total_tax" jdbcType="DECIMAL" property="totalTax" />
+    <result column="apply_total_price" jdbcType="DECIMAL" property="applyTotalPrice" />
+    <result column="total_commission" jdbcType="DECIMAL" property="totalCommission" />
+    <result column="total_charge" jdbcType="DECIMAL" property="totalCharge" />
+    <result column="order_type" jdbcType="VARCHAR" property="orderType" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="irr_type" jdbcType="INTEGER" property="irrType" />
+    <result column="irr_reason" jdbcType="VARCHAR" property="irrReason" />
+    <result column="irr_file_keys" jdbcType="VARCHAR" property="irrFileKeys" />
+    <result column="ori_order_no" jdbcType="VARCHAR" property="oriOrderNo" />
+    <result column="super_order_no" jdbcType="VARCHAR" property="superOrderNo" />
+    <result column="pay_channel" jdbcType="INTEGER" property="payChannel" />
+    <result column="pnr" jdbcType="VARCHAR" property="pnr" />
+    <result column="second_refund" jdbcType="INTEGER" property="secondRefund" />
+    <result column="ori_status" jdbcType="VARCHAR" property="oriStatus" />
+    <result column="support_resubmit" jdbcType="INTEGER" property="supportResubmit" />
+    <result column="combo" jdbcType="INTEGER" property="combo" />
+    <result column="source_from" jdbcType="VARCHAR" property="sourceFrom" />
+    <result column="order_source" jdbcType="VARCHAR" property="orderSource" />
+    <result column="extra_field_1" jdbcType="VARCHAR" property="extraField1" />
+    <result column="extra_field_2" jdbcType="VARCHAR" property="extraField2" />
+    <result column="contact_phone_code" jdbcType="VARCHAR" property="contactPhoneCode" />
+    <result column="contact_name_code" jdbcType="VARCHAR" property="contactNameCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, order_no, airline_sub_order_no, user_id, airline, `status`, create_time, update_time, 
+    audit_time, expired_time, done_time, retry_count, contact_name, contact_phone, err_code, 
+    err_msg, cancel_time, cancel_reason, total_price, total_tax, apply_total_price, total_commission, 
+    total_charge, order_type, `source`, irr_type, irr_reason, irr_file_keys, ori_order_no, 
+    super_order_no, pay_channel, pnr, second_refund, ori_status, support_resubmit, combo, 
+    source_from, order_source, extra_field_1, extra_field_2, contact_phone_code, contact_name_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from ran_air_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from ran_air_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cloud.order.domain.RanAirOrder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into ran_air_order (order_no, airline_sub_order_no, user_id, 
+      airline, `status`, create_time, 
+      update_time, audit_time, expired_time, 
+      done_time, retry_count, contact_name, 
+      contact_phone, err_code, err_msg, 
+      cancel_time, cancel_reason, total_price, 
+      total_tax, apply_total_price, total_commission, 
+      total_charge, order_type, `source`, 
+      irr_type, irr_reason, irr_file_keys, 
+      ori_order_no, super_order_no, pay_channel, 
+      pnr, second_refund, ori_status, 
+      support_resubmit, combo, source_from, 
+      order_source, extra_field_1, extra_field_2, 
+      contact_phone_code, contact_name_code)
+    values (#{orderNo,jdbcType=VARCHAR}, #{airlineSubOrderNo,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{airline,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{auditTime,jdbcType=TIMESTAMP}, #{expiredTime,jdbcType=TIMESTAMP}, 
+      #{doneTime,jdbcType=TIMESTAMP}, #{retryCount,jdbcType=INTEGER}, #{contactName,jdbcType=VARCHAR}, 
+      #{contactPhone,jdbcType=VARCHAR}, #{errCode,jdbcType=INTEGER}, #{errMsg,jdbcType=VARCHAR}, 
+      #{cancelTime,jdbcType=TIMESTAMP}, #{cancelReason,jdbcType=VARCHAR}, #{totalPrice,jdbcType=DECIMAL}, 
+      #{totalTax,jdbcType=DECIMAL}, #{applyTotalPrice,jdbcType=DECIMAL}, #{totalCommission,jdbcType=DECIMAL}, 
+      #{totalCharge,jdbcType=DECIMAL}, #{orderType,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{irrType,jdbcType=INTEGER}, #{irrReason,jdbcType=VARCHAR}, #{irrFileKeys,jdbcType=VARCHAR}, 
+      #{oriOrderNo,jdbcType=VARCHAR}, #{superOrderNo,jdbcType=VARCHAR}, #{payChannel,jdbcType=INTEGER}, 
+      #{pnr,jdbcType=VARCHAR}, #{secondRefund,jdbcType=INTEGER}, #{oriStatus,jdbcType=VARCHAR}, 
+      #{supportResubmit,jdbcType=INTEGER}, #{combo,jdbcType=INTEGER}, #{sourceFrom,jdbcType=VARCHAR}, 
+      #{orderSource,jdbcType=VARCHAR}, #{extraField1,jdbcType=VARCHAR}, #{extraField2,jdbcType=VARCHAR}, 
+      #{contactPhoneCode,jdbcType=VARCHAR}, #{contactNameCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cloud.order.domain.RanAirOrder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into ran_air_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="airlineSubOrderNo != null">
+        airline_sub_order_no,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="airline != null">
+        airline,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="auditTime != null">
+        audit_time,
+      </if>
+      <if test="expiredTime != null">
+        expired_time,
+      </if>
+      <if test="doneTime != null">
+        done_time,
+      </if>
+      <if test="retryCount != null">
+        retry_count,
+      </if>
+      <if test="contactName != null">
+        contact_name,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="errCode != null">
+        err_code,
+      </if>
+      <if test="errMsg != null">
+        err_msg,
+      </if>
+      <if test="cancelTime != null">
+        cancel_time,
+      </if>
+      <if test="cancelReason != null">
+        cancel_reason,
+      </if>
+      <if test="totalPrice != null">
+        total_price,
+      </if>
+      <if test="totalTax != null">
+        total_tax,
+      </if>
+      <if test="applyTotalPrice != null">
+        apply_total_price,
+      </if>
+      <if test="totalCommission != null">
+        total_commission,
+      </if>
+      <if test="totalCharge != null">
+        total_charge,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="source != null">
+        `source`,
+      </if>
+      <if test="irrType != null">
+        irr_type,
+      </if>
+      <if test="irrReason != null">
+        irr_reason,
+      </if>
+      <if test="irrFileKeys != null">
+        irr_file_keys,
+      </if>
+      <if test="oriOrderNo != null">
+        ori_order_no,
+      </if>
+      <if test="superOrderNo != null">
+        super_order_no,
+      </if>
+      <if test="payChannel != null">
+        pay_channel,
+      </if>
+      <if test="pnr != null">
+        pnr,
+      </if>
+      <if test="secondRefund != null">
+        second_refund,
+      </if>
+      <if test="oriStatus != null">
+        ori_status,
+      </if>
+      <if test="supportResubmit != null">
+        support_resubmit,
+      </if>
+      <if test="combo != null">
+        combo,
+      </if>
+      <if test="sourceFrom != null">
+        source_from,
+      </if>
+      <if test="orderSource != null">
+        order_source,
+      </if>
+      <if test="extraField1 != null">
+        extra_field_1,
+      </if>
+      <if test="extraField2 != null">
+        extra_field_2,
+      </if>
+      <if test="contactPhoneCode != null">
+        contact_phone_code,
+      </if>
+      <if test="contactNameCode != null">
+        contact_name_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="airlineSubOrderNo != null">
+        #{airlineSubOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="airline != null">
+        #{airline,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditTime != null">
+        #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredTime != null">
+        #{expiredTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doneTime != null">
+        #{doneTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="retryCount != null">
+        #{retryCount,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="errCode != null">
+        #{errCode,jdbcType=INTEGER},
+      </if>
+      <if test="errMsg != null">
+        #{errMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelTime != null">
+        #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelReason != null">
+        #{cancelReason,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPrice != null">
+        #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="totalTax != null">
+        #{totalTax,jdbcType=DECIMAL},
+      </if>
+      <if test="applyTotalPrice != null">
+        #{applyTotalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCommission != null">
+        #{totalCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCharge != null">
+        #{totalCharge,jdbcType=DECIMAL},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="irrType != null">
+        #{irrType,jdbcType=INTEGER},
+      </if>
+      <if test="irrReason != null">
+        #{irrReason,jdbcType=VARCHAR},
+      </if>
+      <if test="irrFileKeys != null">
+        #{irrFileKeys,jdbcType=VARCHAR},
+      </if>
+      <if test="oriOrderNo != null">
+        #{oriOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="superOrderNo != null">
+        #{superOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payChannel != null">
+        #{payChannel,jdbcType=INTEGER},
+      </if>
+      <if test="pnr != null">
+        #{pnr,jdbcType=VARCHAR},
+      </if>
+      <if test="secondRefund != null">
+        #{secondRefund,jdbcType=INTEGER},
+      </if>
+      <if test="oriStatus != null">
+        #{oriStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="supportResubmit != null">
+        #{supportResubmit,jdbcType=INTEGER},
+      </if>
+      <if test="combo != null">
+        #{combo,jdbcType=INTEGER},
+      </if>
+      <if test="sourceFrom != null">
+        #{sourceFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSource != null">
+        #{orderSource,jdbcType=VARCHAR},
+      </if>
+      <if test="extraField1 != null">
+        #{extraField1,jdbcType=VARCHAR},
+      </if>
+      <if test="extraField2 != null">
+        #{extraField2,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhoneCode != null">
+        #{contactPhoneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactNameCode != null">
+        #{contactNameCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.order.domain.RanAirOrder">
+    <!--@mbg.generated-->
+    update ran_air_order
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="airlineSubOrderNo != null">
+        airline_sub_order_no = #{airlineSubOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="airline != null">
+        airline = #{airline,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditTime != null">
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredTime != null">
+        expired_time = #{expiredTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doneTime != null">
+        done_time = #{doneTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="retryCount != null">
+        retry_count = #{retryCount,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="errCode != null">
+        err_code = #{errCode,jdbcType=INTEGER},
+      </if>
+      <if test="errMsg != null">
+        err_msg = #{errMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelTime != null">
+        cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancelReason != null">
+        cancel_reason = #{cancelReason,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPrice != null">
+        total_price = #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="totalTax != null">
+        total_tax = #{totalTax,jdbcType=DECIMAL},
+      </if>
+      <if test="applyTotalPrice != null">
+        apply_total_price = #{applyTotalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCommission != null">
+        total_commission = #{totalCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCharge != null">
+        total_charge = #{totalCharge,jdbcType=DECIMAL},
+      </if>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        `source` = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="irrType != null">
+        irr_type = #{irrType,jdbcType=INTEGER},
+      </if>
+      <if test="irrReason != null">
+        irr_reason = #{irrReason,jdbcType=VARCHAR},
+      </if>
+      <if test="irrFileKeys != null">
+        irr_file_keys = #{irrFileKeys,jdbcType=VARCHAR},
+      </if>
+      <if test="oriOrderNo != null">
+        ori_order_no = #{oriOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="superOrderNo != null">
+        super_order_no = #{superOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payChannel != null">
+        pay_channel = #{payChannel,jdbcType=INTEGER},
+      </if>
+      <if test="pnr != null">
+        pnr = #{pnr,jdbcType=VARCHAR},
+      </if>
+      <if test="secondRefund != null">
+        second_refund = #{secondRefund,jdbcType=INTEGER},
+      </if>
+      <if test="oriStatus != null">
+        ori_status = #{oriStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="supportResubmit != null">
+        support_resubmit = #{supportResubmit,jdbcType=INTEGER},
+      </if>
+      <if test="combo != null">
+        combo = #{combo,jdbcType=INTEGER},
+      </if>
+      <if test="sourceFrom != null">
+        source_from = #{sourceFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSource != null">
+        order_source = #{orderSource,jdbcType=VARCHAR},
+      </if>
+      <if test="extraField1 != null">
+        extra_field_1 = #{extraField1,jdbcType=VARCHAR},
+      </if>
+      <if test="extraField2 != null">
+        extra_field_2 = #{extraField2,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhoneCode != null">
+        contact_phone_code = #{contactPhoneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactNameCode != null">
+        contact_name_code = #{contactNameCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cloud.order.domain.RanAirOrder">
+    <!--@mbg.generated-->
+    update ran_air_order
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      airline_sub_order_no = #{airlineSubOrderNo,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      airline = #{airline,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      expired_time = #{expiredTime,jdbcType=TIMESTAMP},
+      done_time = #{doneTime,jdbcType=TIMESTAMP},
+      retry_count = #{retryCount,jdbcType=INTEGER},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      err_code = #{errCode,jdbcType=INTEGER},
+      err_msg = #{errMsg,jdbcType=VARCHAR},
+      cancel_time = #{cancelTime,jdbcType=TIMESTAMP},
+      cancel_reason = #{cancelReason,jdbcType=VARCHAR},
+      total_price = #{totalPrice,jdbcType=DECIMAL},
+      total_tax = #{totalTax,jdbcType=DECIMAL},
+      apply_total_price = #{applyTotalPrice,jdbcType=DECIMAL},
+      total_commission = #{totalCommission,jdbcType=DECIMAL},
+      total_charge = #{totalCharge,jdbcType=DECIMAL},
+      order_type = #{orderType,jdbcType=VARCHAR},
+      `source` = #{source,jdbcType=VARCHAR},
+      irr_type = #{irrType,jdbcType=INTEGER},
+      irr_reason = #{irrReason,jdbcType=VARCHAR},
+      irr_file_keys = #{irrFileKeys,jdbcType=VARCHAR},
+      ori_order_no = #{oriOrderNo,jdbcType=VARCHAR},
+      super_order_no = #{superOrderNo,jdbcType=VARCHAR},
+      pay_channel = #{payChannel,jdbcType=INTEGER},
+      pnr = #{pnr,jdbcType=VARCHAR},
+      second_refund = #{secondRefund,jdbcType=INTEGER},
+      ori_status = #{oriStatus,jdbcType=VARCHAR},
+      support_resubmit = #{supportResubmit,jdbcType=INTEGER},
+      combo = #{combo,jdbcType=INTEGER},
+      source_from = #{sourceFrom,jdbcType=VARCHAR},
+      order_source = #{orderSource,jdbcType=VARCHAR},
+      extra_field_1 = #{extraField1,jdbcType=VARCHAR},
+      extra_field_2 = #{extraField2,jdbcType=VARCHAR},
+      contact_phone_code = #{contactPhoneCode,jdbcType=VARCHAR},
+      contact_name_code = #{contactNameCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
