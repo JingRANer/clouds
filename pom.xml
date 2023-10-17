@@ -8,7 +8,6 @@
         <module>cloud-app</module>
         <module>cloud-gateway</module>
         <module>cloud-register</module>
-        <module>cloud-register/cloud-register-service</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
