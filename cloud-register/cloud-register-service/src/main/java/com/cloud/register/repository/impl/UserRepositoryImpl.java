@@ -30,7 +30,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User selectByMobile(String mobile) {
         CloudAirUser cloudAirUser = userMapper.selectByMobile(mobile);
-        if(cloudAirUser == null) {
+        if (cloudAirUser == null) {
             return null;
         }
         User user = userBuilder.toUser(cloudAirUser);
@@ -53,29 +53,46 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public SingleResponse save(User user) {
         CloudAirUser savedCloudAirUser = userMapper.selectByUserId(user.getUserId());
-        if(savedCloudAirUser != null) {
+        int saveCode = 0;
+        if (savedCloudAirUser != null) {
             CloudAirUser cloudAirUser = userBuilder.toCloudAirUser(user);
-            int i = userMapper.insertSelective(cloudAirUser);
-            if(i>0) {
+            saveCode = userMapper.insertSelective(cloudAirUser);
+            if (saveCode > 0) {
                 user.getFrequentPassengers().forEach(frequentPassenger -> {
                     CloudAirUserFrequentPassenger passenger = userBuilder.toCloudAirUserFrequentPassenger(frequentPassenger);
                     frequentPassengerMapper.insertSelective(passenger);
                 });
+            } else {
+//                return SingleResponse.buildFailure();
             }
         } else {
             List<CloudAirUserFrequentPassenger> passengers = frequentPassengerMapper.selectByUserId(user.getUserId());
             List<String> newPsgIdList = user.getFrequentPassengers().stream().map(FrequentPassenger::getPassengerId).collect(Collectors.toList());
             for (CloudAirUserFrequentPassenger passenger : passengers) {
-                if(newPsgIdList.contains(passenger.getPassengerId())) {
-                    frequentPassengerMapper.updateByPrimaryKeySelective(passenger);
+                if (newPsgIdList.contains(passenger.getPassengerId())) {
+                    saveCode = frequentPassengerMapper.updateByPrimaryKeySelective(passenger);
                 } else {
-                    frequentPassengerMapper.deleteByPrimaryKey(passenger.getId());
+                    saveCode = frequentPassengerMapper.deleteByPrimaryKey(passenger.getId());
+                }
+                if (saveCode <= 0) {
+//                    return SingleResponse.buildFailure();
                 }
             }
 
             List<String> savedPsgIdList = passengers.stream().map(CloudAirUserFrequentPassenger::getPassengerId).collect(Collectors.toList());
 
+            for (FrequentPassenger frequentPassenger : user.getFrequentPassengers()) {
+                if (!savedPsgIdList.contains(frequentPassenger.getPassengerId())) {
+
+                    saveCode = frequentPassengerMapper.insertSelective(userBuilder.toCloudAirUserFrequentPassenger((frequentPassenger)));
+                    if (saveCode <= 0) {
+//                        return SingleResponse.buildFailure();
+                    }
+                }
+            }
+
         }
+        return SingleResponse.buildSuccess();
 
     }
 }
