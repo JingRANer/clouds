@@ -47,6 +47,13 @@
     from cloud_air_user_frequent_passenger
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id="selectByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from cloud_air_user_frequent_passenger
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->
     delete from cloud_air_user_frequent_passenger

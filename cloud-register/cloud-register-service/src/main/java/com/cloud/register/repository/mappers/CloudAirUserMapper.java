@@ -10,6 +10,8 @@ public interface CloudAirUserMapper {
     int insertSelective(CloudAirUser record);
 
     CloudAirUser selectByPrimaryKey(Long id);
+    CloudAirUser selectByUserId(String userId);
+    CloudAirUser selectByMobile(String mobile);
 
     int updateByPrimaryKeySelective(CloudAirUser record);
 
