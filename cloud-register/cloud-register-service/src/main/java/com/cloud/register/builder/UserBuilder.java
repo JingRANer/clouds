@@ -10,7 +10,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface UserBuilder {
 
-    public UserBuilder INSTANCE = Mappers.getMapper(UserBuilder.class);
+    UserBuilder INSTANCE = Mappers.getMapper(UserBuilder.class);
 
     User toUser(CloudAirUser cloudAirUser);
 

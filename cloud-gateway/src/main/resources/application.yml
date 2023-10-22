@@ -17,5 +17,9 @@ spring:
           uri: lb://cloud-order-service
           predicates:
             - Path=/app/**
+        - id: cloud-register-service
+          uri: lb://cloud-register-service
+          predicates:
+            - Path=/register/**
       default-filters:
         - AddRequestHeader=Truth,Itcast is freaking awesome!

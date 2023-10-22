@@ -1,7 +1,9 @@
-package com.cloud.register.repository.mappers;
+package com.cloud.register.mappers;
 
 import com.cloud.register.domain.CloudAirUser;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface CloudAirUserMapper {
     int deleteByPrimaryKey(Long id);
 
