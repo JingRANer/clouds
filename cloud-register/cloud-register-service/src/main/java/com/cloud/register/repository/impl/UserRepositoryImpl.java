@@ -58,8 +58,9 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public SingleResponse save(User user) {
+
         CloudAirUser savedCloudAirUser = userMapper.selectByUserId(user.getUserId());
-        int saveCode = 0;
+        int saveCode;
         if (savedCloudAirUser != null) {
             CloudAirUser cloudAirUser = USER_BUILDER.toCloudAirUser(user);
             saveCode = userMapper.insertSelective(cloudAirUser);

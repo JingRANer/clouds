@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public SingleResponse register(UserLogReq req) {
+        req.getUser().setRole(req.getRole());
         return userRepository.save(req.getUser());
     }
 
