@@ -1,17 +1,63 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="">-->
+<!--  <head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width,initial-scale=1.0">-->
+<!--    <link rel="icon" href="<%= BASE_URL %>favicon.ico">-->
+<!--    <title><%= htmlWebpackPlugin.options.title %></title>-->
+<!--  </head>-->
+<!--  <body>-->
+<!--    <noscript>-->
+<!--      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>-->
+<!--    </noscript>-->
+<!--    <div id="app"></div>-->
+<!--    &lt;!&ndash; built files will be auto injected &ndash;&gt;-->
+<!--  </body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>moyublog - Snake highlight - described</title>
+    <link rel="stylesheet" href="../src/assets/css/style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="app" class="page">
+    <div class="container">
+        <div class="left">
+            <div class="login"></div>
+            <div class="eula">Link to <a href="javascript:;">original demo</a></div>
+        </div>
+        <div class="right">
+            <svg viewbox="0 0 320 300">
+                <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143"></path>
+            </svg>
+            <svg class="snake" viewbox="0 0 320 300">
+                <defs>
+                    <lineargradient inkscape:collect="always" id="linearGradient" x1="13" y1="193.49992" x2="307" y2="193.49992" gradientunits="userSpaceOnUse">
+                        <stop style="stop-color:#ff00ff;" offset="0" id="stop876"></stop>
+                        <stop style="stop-color:#ff0000;" offset="1" id="stop878"></stop>
+                    </lineargradient>
+                </defs>
+                <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143"></path>
+            </svg>
+            <form class="form">
+                <label for="email">Email</label>
+                <input type="email" id="email">
+                <label for="password">Password</label>
+                <input type="password" id="password">
+                <input type="submit" id="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+<!-- partial -->
+<script src='../src/assets/js/anime.min.js'></script><script src="../src/assets/js/script.js"></script>
+
+</body>
 </html>
+

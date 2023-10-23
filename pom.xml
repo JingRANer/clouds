@@ -9,6 +9,7 @@
         <module>cloud-gateway</module>
         <module>cloud-register</module>
         <module>cloud-common</module>
+        <module>cloud-shopping</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
