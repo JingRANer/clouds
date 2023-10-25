@@ -10,6 +10,11 @@
     </parent>
 
     <artifactId>cloud-shopping</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>cloud-shopping-rpc</module>
+        <module>cloud-shopping-service</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
