@@ -1,5 +1,6 @@
 package com.cloud.common.util;
 
+
 import org.apache.commons.lang3.RandomUtils;
 
 import java.net.InetAddress;
@@ -20,6 +21,12 @@ public class IdGenerator {
     private static final int IP_ADDRESS_SPLIT_LENGTH = 3;
     private static final String IP_FORMAT_PATTERN = "000";
 
+    public static final String USER_TAG = "01";
+    public static final String ORDER_TAG = "02";
+    public static final String SVC_TAG = "03";
+    public static final String SEG_TAG = "04";
+    public static final String PSG_TAG = "05";
+    public static final String PAY_TAG = "06";
     public IdGenerator() {
     }
 
@@ -65,7 +72,4 @@ public class IdGenerator {
         }
     }
 
-    public static void main(String[] args) {
-        String s = IdGenerator.generateId("120");
-    }
 }

@@ -2,6 +2,7 @@ package com.cloud.register.domain;
 
 import lombok.Data;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -139,4 +140,8 @@ public class User {
      * è§’è‰² ä¹˜å®¢ å·¥ä½œäººå‘˜
      */
     private String role;
+
+    private Date createTime;
+
+    private Date updateTime;
 }

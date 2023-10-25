@@ -61,7 +61,7 @@ public class UserRepositoryImpl implements UserRepository {
 
         CloudAirUser savedCloudAirUser = userMapper.selectByUserId(user.getUserId());
         int saveCode;
-        if (savedCloudAirUser != null) {
+        if (savedCloudAirUser == null) {
             CloudAirUser cloudAirUser = USER_BUILDER.toCloudAirUser(user);
             saveCode = userMapper.insertSelective(cloudAirUser);
             if (saveCode > 0) {
@@ -73,6 +73,7 @@ public class UserRepositoryImpl implements UserRepository {
                 return SingleResponse.buildFailure(CloudErrorEnum.SING_UP_WRONG);
             }
         } else {
+            userMapper.updateByPrimaryKeySelective(USER_BUILDER.toCloudAirUser(user));
             List<CloudAirUserFrequentPassenger> passengers = frequentPassengerMapper.selectByUserId(user.getUserId());
             List<String> newPsgIdList = user.getFrequentPassengers().stream().map(FrequentPassenger::getPassengerId).collect(Collectors.toList());
             for (CloudAirUserFrequentPassenger passenger : passengers) {
