@@ -14,7 +14,7 @@ import java.util.Map;
  * @time: 10:09
  */
 @Data
-public class SearchTicketsByProxyResp extends SingleResponse implements Serializable {
+public class SearchTicketsByProxyResp implements Serializable {
     private static final long serialVersionUID = -3225205423364652957L;
     /**
      * 航线数据

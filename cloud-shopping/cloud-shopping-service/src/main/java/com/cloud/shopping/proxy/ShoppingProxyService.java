@@ -1,8 +1,6 @@
 package com.cloud.shopping.proxy;
 
 import com.cloud.shopping.proxy.domain.request.ShoppingProxyReq;
-import com.umetrip.air.proxy.service.dto.shopping.response.ShoppingResp;
-import com.umetrip.uframe.common.dto.response.SingleResponse;
 
 /**
  * @ClassName : ShoppingService
@@ -12,6 +10,6 @@ import com.umetrip.uframe.common.dto.response.SingleResponse;
  */
 public interface ShoppingProxyService {
 
-    SingleResponse<ShoppingResp> shoppingFromProxy(ShoppingProxyReq proxyReq);
+//    SingleResponse<ShoppingResp> shoppingFromProxy(ShoppingProxyReq proxyReq);
 
 }

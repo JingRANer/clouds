@@ -67,17 +67,17 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.umetrip.service</groupId>
-            <artifactId>umeair-proxy-rpc</artifactId>
-            <version>0.2.3</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-beans</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.umetrip.service</groupId>-->
+<!--            <artifactId>umeair-proxy-rpc</artifactId>-->
+<!--            <version>0.2.3</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>spring-beans</artifactId>-->
+<!--                    <groupId>org.springframework</groupId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
     </dependencies>
     <build>
         <plugins>

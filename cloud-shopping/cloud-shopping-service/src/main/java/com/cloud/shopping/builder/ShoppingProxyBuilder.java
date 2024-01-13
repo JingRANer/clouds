@@ -1,7 +1,6 @@
 package com.cloud.shopping.builder;
 
 import com.cloud.shopping.proxy.domain.request.ShoppingProxyReq;
-import com.umetrip.air.proxy.service.dto.shopping.request.ShoppingReq;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -36,8 +35,8 @@ public interface ShoppingProxyBuilder {
     String BAGGAGE = "BAGGAGE_ALLOWANCE";
     //手提行李
     String BAGGAGE_CARRY_ON = "CARRY_ON_BAGGAGE_ALLOWANCE";
-
-    @Mapping(target = "channel", source = "source")
-    ShoppingReq toShoppingReq(ShoppingProxyReq shoppingProxyReq);
+//
+//    @Mapping(target = "channel", source = "source")
+//    ShoppingReq toShoppingReq(ShoppingProxyReq shoppingProxyReq);
 
 }

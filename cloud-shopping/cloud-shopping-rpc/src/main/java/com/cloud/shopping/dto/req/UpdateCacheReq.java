@@ -1,6 +1,5 @@
 package com.cloud.shopping.dto.req;
 
-import com.cloud.shopping.dto.UpdateProxyCaller;
 import lombok.Data;
 
 /**
@@ -24,7 +23,7 @@ public class UpdateCacheReq {
 
     private Boolean hasInfant;
 
-    private UpdateProxyCaller updateProxyCaller;
+//    private UpdateProxyCaller updateProxyCaller;
 
     private String reserveCabin;
 

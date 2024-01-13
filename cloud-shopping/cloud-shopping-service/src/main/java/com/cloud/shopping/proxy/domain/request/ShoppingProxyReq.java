@@ -1,6 +1,5 @@
 package com.cloud.shopping.proxy.domain.request;
 
-import com.umetrip.air.common.domain.TransferPointDetail;
 import lombok.Data;
 
 import java.io.Serializable;
