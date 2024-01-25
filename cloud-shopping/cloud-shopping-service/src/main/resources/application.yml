@@ -35,6 +35,12 @@ spring:
         # 连接池中最大连接数，负数表示没有限制
         max-active: 20
 
+  elasticsearch:
+    rest:
+      uris: 82.157.203.124:9200
+      read-timeout: 30s
+      connection-timeout: 5s
+
 mybatis:
   mapper-locations: classpath:mappers/*Mapper.xml
 #  mapper-locations: mybatis.mapper-locations=classpath*:**/mappers/*Mapper.xml

@@ -10,6 +10,7 @@
         <module>cloud-register</module>
         <module>cloud-common</module>
         <module>cloud-shopping</module>
+        <module>cloud-model</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
