@@ -1,0 +1,9 @@
+syntax = "proto3";
+package com.cloud.register.proto;
+enum RowStatus {
+  ROW_STATUS_UNSPECIFIED = 0;
+
+  NORMAL = 1;
+
+  ARCHIVED = 2;
+}

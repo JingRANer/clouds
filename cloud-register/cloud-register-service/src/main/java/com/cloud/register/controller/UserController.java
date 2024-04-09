@@ -16,6 +16,7 @@ public class UserController {
 
     @PostMapping(path = "/login")
     public SingleResponse<User> login(@RequestBody UserLogReq req) {
+        System.out.println("test login");
         SingleResponse<User> resp = userService.login(req);
         return resp;
     }

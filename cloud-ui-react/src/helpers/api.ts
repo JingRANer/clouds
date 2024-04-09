@@ -2,6 +2,11 @@ import axios from "axios";
 import { userServiceClient } from "@/grpcweb";
 import { User_Role } from "@/types/proto/api/v2/user_service";
 
+export function getSystemUrl() {
+  //http://82.157.203.124:5230
+  return "http://localhost:8012";
+}
+
 export function getSystemStatus() {
   try {
     console.log(window.location);
@@ -15,7 +20,7 @@ export function getSystemStatus() {
   } catch (error: any) {
     console.error(error.details);
   }
-  return axios.get<SystemStatus>("http://82.157.203.124:5230/api/v1/status");
+  return axios.get<SystemStatus>(getSystemUrl() + "/api/v1/status");
 }
 
 export function getSystemSetting() {
@@ -31,11 +36,16 @@ export function vacuumDatabase() {
 }
 
 export function signin(username: string, password: string, remember: boolean) {
-  return axios.post<User>("http://82.157.203.124:5230/api/v1/auth/signin", {
-    username,
-    password,
-    remember,
-  });
+  return axios
+    .post<User>(getSystemUrl() + "/user/signin", {
+      username,
+      password,
+      remember,
+    })
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    });
 }
 
 export function signinWithSSO(identityProviderId: IdentityProviderId, code: string, redirectUri: string) {
@@ -47,7 +57,7 @@ export function signinWithSSO(identityProviderId: IdentityProviderId, code: stri
 }
 
 export function signup(username: string, password: string) {
-  return axios.post<User>("http://82.157.203.124:5230/auth/signup", {
+  return axios.post<User>(getSystemUrl() + "/auth/signup", {
     username,
     password,
   });
@@ -58,7 +68,7 @@ export function signout() {
 }
 
 export function createResourceWithBlob(formData: FormData) {
-  // return axios.post<Resource>("/api/v1/resource/blob", formData);
+  return axios.post<Resource>("/api/v1/resource/blob", formData);
 }
 
 export function getStorageList() {

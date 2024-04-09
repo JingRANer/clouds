@@ -8,6 +8,10 @@ import lombok.Data;
  */
 @Data
 public class UserLogReq {
+    String username;
+    String password;
+    String remember;
+
     private User user;
 
     private String role;
