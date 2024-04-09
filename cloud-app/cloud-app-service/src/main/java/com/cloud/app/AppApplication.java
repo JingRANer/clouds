@@ -2,10 +2,12 @@ package com.cloud.app;
 
 import com.cloud.order.rpc.client.OrderClient;
 import com.cloud.order.rpc.config.DefaultFeignConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 

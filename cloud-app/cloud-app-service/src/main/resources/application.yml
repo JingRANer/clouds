@@ -1,5 +1,12 @@
 server:
   port: 8012
+grpc:
+  server:
+    port: 9898
+    security:
+      enabled: true
+      private-key: file:server.key
+      certificate-chain: server.crt
 spring:
   application:
     name: cloud-app-service

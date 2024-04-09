@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package cloud.api;
+
+
+option java_package  = "cloud/store";
+
+enum RowStatus {
+  ROW_STATUS_UNSPECIFIED = 0;
+
+  NORMAL = 1;
+
+  ARCHIVED = 2;
+}
