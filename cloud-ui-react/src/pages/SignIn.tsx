@@ -77,8 +77,9 @@ const SignIn = () => {
     try {
       actionBtnLoadingState.setLoading();
       const { data: user } = await api.signin(username, password, remember);
+      console.log("user:" + user);
       if (user) {
-        await userStore.fetchCurrentUser();
+        await userStore.fetchCurrentUser(user.id);
         navigateTo("/");
       } else {
         toast.error(t("message.login-failed"));

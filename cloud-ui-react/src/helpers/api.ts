@@ -36,16 +36,11 @@ export function vacuumDatabase() {
 }
 
 export function signin(username: string, password: string, remember: boolean) {
-  return axios
-    .post<User>(getSystemUrl() + "/user/signin", {
-      username,
-      password,
-      remember,
-    })
-    .then((response) => {
-      console.log(response.data);
-      return response.data;
-    });
+  return axios.post<User>(getSystemUrl() + "/user/signin", {
+    username,
+    password,
+    remember,
+  });
 }
 
 export function signinWithSSO(identityProviderId: IdentityProviderId, code: string, redirectUri: string) {

@@ -2,11 +2,16 @@ server:
   port: 8012
 grpc:
   server:
-    port: 9898
-#    security:
-#      enabled: true
-#      private-key: file:server.key
-#      certificate-chain: server.crt
+    port: 443
+    security:
+      enabled: true
+#      cert-chain: classpath:cert/server-cert.pem
+#      private-key: file:../cloud-app-service/src/main/resources/cert/server-key.pem
+#      private-key: classpath:server.key
+#      certificate-chain: classpath:server.crt
+      private-key: classpath:cert/localhost-443-key.pem
+      certificate-chain: classpath:cert/localhost-443.pem
+
 spring:
   application:
     name: cloud-app-service

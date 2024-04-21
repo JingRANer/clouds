@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package com.cloud.app.proto;
+
+import "user_service.proto";
+import "google/api/annotations.proto";
+
+option java_outer_classname = "AuthServiceProto";
+option java_multiple_files = true;
+
+service AuthService {
+  rpc GetAuthStatus(GetAuthStatusRequest) returns (GetAuthStatusResponse) {
+    //    option (google.api.http) = {post: "/api/v2/auth/status"};
+  }
+}
+
+message GetAuthStatusRequest {
+  int32 id = 1;
+}
+
+message GetAuthStatusResponse {
+  User user = 1;
+}

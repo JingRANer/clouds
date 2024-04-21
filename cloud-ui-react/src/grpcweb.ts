@@ -1,6 +1,6 @@
 import { createChannel, createClientFactory, FetchTransport } from "nice-grpc-web";
 // import { ActivityServiceDefinition } from "./types/proto/api/v2/activity_service";
-// import { AuthServiceDefinition } from "./types/proto/api/v2/auth_service";
+import { AuthServiceDefinition } from "./types/proto/api/v2/auth_service";
 // import { InboxServiceDefinition } from "./types/proto/api/v2/inbox_service";
 // import { MarkdownServiceDefinition } from "./types/proto/api/v2/markdown_service";
 // import { MemoServiceDefinition } from "./types/proto/api/v2/memo_service";
@@ -12,7 +12,8 @@ import { UserServiceDefinition } from "./types/proto/api/v2/user_service";
 // import { WebhookServiceDefinition } from "./types/proto/api/v2/webhook_service";
 
 const channel = createChannel(
-  "https://localhost:9898",
+  // "https://memos.ran-cloud.xyz",
+  "https://localhost:443",
   FetchTransport({
     credentials: "include",
   })
@@ -20,7 +21,7 @@ const channel = createChannel(
 
 const clientFactory = createClientFactory();
 
-// export const authServiceClient = clientFactory.create(AuthServiceDefinition, channel);
+export const authServiceClient = clientFactory.create(AuthServiceDefinition, channel);
 
 export const userServiceClient = clientFactory.create(UserServiceDefinition, channel);
 

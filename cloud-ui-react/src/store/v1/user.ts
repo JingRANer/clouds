@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { create } from "zustand";
 import { combine } from "zustand/middleware";
-// import { authServiceClient, userServiceClient } from "@/grpcweb";
-import { userServiceClient } from "@/grpcweb";
+import { authServiceClient, userServiceClient } from "@/grpcweb";
 import { RowStatus } from "@/types/proto/api/v2/store/common";
 import { User, UserSetting, User_Role } from "@/types/proto/api/v2/user_service";
 import { UserNamePrefix, extractUsernameFromName } from "./resourceName";
@@ -152,9 +151,8 @@ export const useUserStore = create(
       delete userMap[username];
       set({ userMapByUsername: userMap });
     },
-    fetchCurrentUser: async () => {
-      // const { user } = await authServiceClient.getAuthStatus({});
-      const user = createUserMock();
+    fetchCurrentUser: async (id: number) => {
+      const { user } = await authServiceClient.getAuthStatus({ id });
       if (!user) {
         throw new Error("User not found");
       }

@@ -8,4 +8,5 @@ public class User {
     String password;
     Boolean remember;
     String data;
+    Integer id;
 }

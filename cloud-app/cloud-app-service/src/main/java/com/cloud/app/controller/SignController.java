@@ -3,6 +3,9 @@ package com.cloud.app.controller;
 
 import com.alibaba.fastjson.JSON;
 //import com.cloud.app.proto.User;
+import com.cloud.app.proto.GetAuthStatusRequest;
+import com.cloud.app.proto.GetAuthStatusRequestOrBuilder;
+import com.cloud.app.proto.GetUserRequest;
 import org.springframework.web.bind.annotation.*;
 
 //@Api(tags = "signin")
@@ -25,8 +28,8 @@ public class SignController {
 //                .build();
 //        User user = new User();
 //        user.setUserName(username);
-        user.setData("what");
-        System.out.println(JSON.toJSONString(user));
+        GetAuthStatusRequest request = GetAuthStatusRequest.newBuilder().setId(1).build();
+        user.setId(1);
         return user;
     }
 }
