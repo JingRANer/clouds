@@ -1,9 +1,9 @@
 syntax = "proto3";
 package com.cloud.app.proto;
 import "store/common.proto";
-//import "google/api/annotations.proto";
-//import "google/api/client.proto";
-//import "google/api/field_behavior.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
 import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 // 生成文件位置 找找java怎么替换
@@ -18,58 +18,58 @@ service UserService {
   }
   // GetUser gets a user by name.
   rpc GetUser(GetUserRequest) returns (GetUserResponse) {
-    // option (google.api.http) = {get: "/api/v2/{name=users/*}"};
-    // option (google.api.method_signature) = "name";
+     option (google.api.http) = {get: "/api/v2/{name=users/*}"};
+     option (google.api.method_signature) = "name";
   }
   // CreateUser creates a new user.
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
-    /* option (google.api.http) = {
+     option (google.api.http) = {
       post: "/v1/users"
       body: "user"
     };
-    option (google.api.method_signature) = "user";*/
+    option (google.api.method_signature) = "user";
   }
   // UpdateUser updates a user.
   rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {
-    // option (google.api.http) = {
-    //  patch: "/api/v2/{user.name=users/*}"
-    //  body: "user"
-    // };
-    // option (google.api.method_signature) = "user,update_mask";
+     option (google.api.http) = {
+      patch: "/api/v2/{user.name=users/*}"
+      body: "user"
+     };
+     option (google.api.method_signature) = "user,update_mask";
   }
   // DeleteUser deletes a user.
   rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {
-    // option (google.api.http) = {delete: "/api/v2/{name=users/*}"};
-    // option (google.api.method_signature) = "name";
+     option (google.api.http) = {delete: "/api/v2/{name=users/*}"};
+     option (google.api.method_signature) = "name";
   }
   rpc GetUserSetting(GetUserSettingRequest) returns (GetUserSettingResponse) {
-    // option (google.api.http) = {get: "/api/v2/{name=users/*}/setting"};
-    // option (google.api.method_signature) = "name";
+     option (google.api.http) = {get: "/api/v2/{name=users/*}/setting"};
+     option (google.api.method_signature) = "name";
   }
   rpc UpdateUserSetting(UpdateUserSettingRequest) returns (UpdateUserSettingResponse) {
-    // option (google.api.http) = {
-    //   patch: "/api/v2/{setting.name=users/*/setting}"
-    //  body: "setting"
-    // };
-    // option (google.api.method_signature) = "setting,update_mask";
+     option (google.api.http) = {
+       patch: "/api/v2/{setting.name=users/*/setting}"
+      body: "setting"
+     };
+     option (google.api.method_signature) = "setting,update_mask";
   }
   // ListUserAccessTokens returns a list of access tokens for a user.
   rpc ListUserAccessTokens(ListUserAccessTokensRequest) returns (ListUserAccessTokensResponse) {
-    // option (google.api.http) = {get: "/api/v2/{name=users/*}/access_tokens"};
-    // option (google.api.method_signature) = "name";
+     option (google.api.http) = {get: "/api/v2/{name=users/*}/access_tokens"};
+     option (google.api.method_signature) = "name";
   }
   // CreateUserAccessToken creates a new access token for a user.
   rpc CreateUserAccessToken(CreateUserAccessTokenRequest) returns (CreateUserAccessTokenResponse) {
-    // option (google.api.http) = {
-    //   post: "/api/v2/{name=users/*}/access_tokens"
-    //   body: "*"
-    // };
-    // option (google.api.method_signature) = "name";
+     option (google.api.http) = {
+       post: "/api/v2/{name=users/*}/access_tokens"
+       body: "*"
+     };
+     option (google.api.method_signature) = "name";
   }
   // DeleteUserAccessToken deletes an access token for a user.
   rpc DeleteUserAccessToken(DeleteUserAccessTokenRequest) returns (DeleteUserAccessTokenResponse) {
-    // option (google.api.http) = {delete: "/api/v2/{name=users/*}/access_tokens/{access_token}"};
-    // option (google.api.method_signature) = "name,access_token";
+     option (google.api.http) = {delete: "/api/v2/{name=users/*}/access_tokens/{access_token}"};
+     option (google.api.method_signature) = "name,access_token";
   }
 }
 

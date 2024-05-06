@@ -4,7 +4,7 @@ import { User_Role } from "@/types/proto/api/v2/user_service";
 
 export function getSystemUrl() {
   //http://82.157.203.124:5230
-  return "http://localhost:8012";
+  return "http://127.0.0.1:8012";
 }
 
 export function getSystemStatus() {

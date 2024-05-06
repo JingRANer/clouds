@@ -1,4 +1,4 @@
-import { createChannel, createClientFactory, FetchTransport } from "nice-grpc-web";
+import { createChannel, createClientFactory, FetchTransport, DefaultCallOptions, Metadata } from "nice-grpc-web";
 // import { ActivityServiceDefinition } from "./types/proto/api/v2/activity_service";
 import { AuthServiceDefinition } from "./types/proto/api/v2/auth_service";
 // import { InboxServiceDefinition } from "./types/proto/api/v2/inbox_service";
@@ -21,7 +21,20 @@ const channel = createChannel(
 
 const clientFactory = createClientFactory();
 
-export const authServiceClient = clientFactory.create(AuthServiceDefinition, channel);
+export const authServiceClient = clientFactory.create(AuthServiceDefinition, channel, {
+  "*": {
+    metadata: Metadata({
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE, HEAD, PUT",
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+      "Content-Type": "application/grpc-web+proto",
+    }),
+    onHeader(header: Metadata) {
+      this.metadata = header;
+      console.log("onHeader", header);
+    },
+  },
+});
 
 export const userServiceClient = clientFactory.create(UserServiceDefinition, channel);
 

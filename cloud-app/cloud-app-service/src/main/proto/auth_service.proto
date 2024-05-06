@@ -10,7 +10,7 @@ option java_multiple_files = true;
 
 service AuthService {
   rpc GetAuthStatus(GetAuthStatusRequest) returns (GetAuthStatusResponse) {
-    //    option (google.api.http) = {post: "/api/v2/auth/status"};
+        option (google.api.http) = {post: "/api/v2/auth/status"};
   }
 }
 

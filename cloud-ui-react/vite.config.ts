@@ -1,6 +1,7 @@
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 import { defineConfig } from "vite";
+import mkcert from "vite-plugin-mkcert";
 
 let devProxyServer = "http://localhost:8081/";
 if (process.env.DEV_PROXY_SERVER && process.env.DEV_PROXY_SERVER.length > 0) {
@@ -8,7 +9,7 @@ if (process.env.DEV_PROXY_SERVER && process.env.DEV_PROXY_SERVER.length > 0) {
   devProxyServer = process.env.DEV_PROXY_SERVER;
 }
 
-// https://vitejs.dev/config/
+// https://vitejs.dev/config/ mkcert()
 export default defineConfig({
   plugins: [react()],
   server: {
@@ -36,6 +37,10 @@ export default defineConfig({
         xfwd: true,
       },
     },
+    // https: {
+    //   cert: "/resources/localhost-443.pem",
+    //   key: "/resources/localhost-443-key.peml",
+    // },
   },
   resolve: {
     alias: {

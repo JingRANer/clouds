@@ -69,7 +69,8 @@
     "prettier": "2.6.2",
     "ts-protoc-gen": "^0.15.0",
     "typescript": "^5.3.3",
-    "vite": "^5.0.11"
+    "vite": "^5.0.11",
+    "vite-plugin-mkcert": "^1.17.5"
   },
   "resolutions": {
     "csstype": "3.1.2"
