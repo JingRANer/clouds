@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.shopping.repository.mappers.CloudBasicdataAirportMapper">
+  <resultMap id="BaseResultMap" type="com.cloud.shopping.domain.CloudBasicdataAirport">
+    <!--@mbg.generated-->
+    <!--@Table cloud_basicdata_airport-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="citycode" jdbcType="VARCHAR" property="citycode" />
+    <result column="icaocode" jdbcType="VARCHAR" property="icaocode" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="fullname" jdbcType="VARCHAR" property="fullname" />
+    <result column="alias" jdbcType="VARCHAR" property="alias" />
+    <result column="enname" jdbcType="VARCHAR" property="enname" />
+    <result column="pinyin" jdbcType="VARCHAR" property="pinyin" />
+    <result column="pinyinforshort" jdbcType="VARCHAR" property="pinyinforshort" />
+    <result column="utcoffsethours" jdbcType="SMALLINT" property="utcoffsethours" />
+    <result column="timezone" jdbcType="VARCHAR" property="timezone" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="altitude" jdbcType="VARCHAR" property="altitude" />
+    <result column="type" jdbcType="SMALLINT" property="type" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="isuse" jdbcType="SMALLINT" property="isuse" />
+    <result column="iscivil" jdbcType="SMALLINT" property="iscivil" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="iconurl" jdbcType="VARCHAR" property="iconurl" />
+    <result column="iconurl2" jdbcType="VARCHAR" property="iconurl2" />
+    <result column="caac" jdbcType="VARCHAR" property="caac" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, code, citycode, icaocode, `name`, fullname, `alias`, enname, pinyin, pinyinforshort, 
+    utcoffsethours, timezone, longitude, latitude, altitude, `type`, `level`, isuse, 
+    iscivil, createtime, updatetime, iconurl, iconurl2, caac
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cloud_basicdata_airport
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from cloud_basicdata_airport
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cloud.shopping.domain.CloudBasicdataAirport" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_basicdata_airport (code, citycode, icaocode, 
+      `name`, fullname, `alias`, 
+      enname, pinyin, pinyinforshort, 
+      utcoffsethours, timezone, longitude, 
+      latitude, altitude, `type`, 
+      `level`, isuse, iscivil, 
+      createtime, updatetime, iconurl, 
+      iconurl2, caac)
+    values (#{code,jdbcType=VARCHAR}, #{citycode,jdbcType=VARCHAR}, #{icaocode,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{fullname,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
+      #{enname,jdbcType=VARCHAR}, #{pinyin,jdbcType=VARCHAR}, #{pinyinforshort,jdbcType=VARCHAR}, 
+      #{utcoffsethours,jdbcType=SMALLINT}, #{timezone,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
+      #{latitude,jdbcType=VARCHAR}, #{altitude,jdbcType=VARCHAR}, #{type,jdbcType=SMALLINT}, 
+      #{level,jdbcType=VARCHAR}, #{isuse,jdbcType=SMALLINT}, #{iscivil,jdbcType=SMALLINT}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{iconurl,jdbcType=VARCHAR}, 
+      #{iconurl2,jdbcType=VARCHAR}, #{caac,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cloud.shopping.domain.CloudBasicdataAirport" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_basicdata_airport
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        code,
+      </if>
+      <if test="citycode != null">
+        citycode,
+      </if>
+      <if test="icaocode != null">
+        icaocode,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="fullname != null">
+        fullname,
+      </if>
+      <if test="alias != null">
+        `alias`,
+      </if>
+      <if test="enname != null">
+        enname,
+      </if>
+      <if test="pinyin != null">
+        pinyin,
+      </if>
+      <if test="pinyinforshort != null">
+        pinyinforshort,
+      </if>
+      <if test="utcoffsethours != null">
+        utcoffsethours,
+      </if>
+      <if test="timezone != null">
+        timezone,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="altitude != null">
+        altitude,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="isuse != null">
+        isuse,
+      </if>
+      <if test="iscivil != null">
+        iscivil,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="iconurl != null">
+        iconurl,
+      </if>
+      <if test="iconurl2 != null">
+        iconurl2,
+      </if>
+      <if test="caac != null">
+        caac,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="citycode != null">
+        #{citycode,jdbcType=VARCHAR},
+      </if>
+      <if test="icaocode != null">
+        #{icaocode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null">
+        #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="enname != null">
+        #{enname,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null">
+        #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyinforshort != null">
+        #{pinyinforshort,jdbcType=VARCHAR},
+      </if>
+      <if test="utcoffsethours != null">
+        #{utcoffsethours,jdbcType=SMALLINT},
+      </if>
+      <if test="timezone != null">
+        #{timezone,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="altitude != null">
+        #{altitude,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="isuse != null">
+        #{isuse,jdbcType=SMALLINT},
+      </if>
+      <if test="iscivil != null">
+        #{iscivil,jdbcType=SMALLINT},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iconurl != null">
+        #{iconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="iconurl2 != null">
+        #{iconurl2,jdbcType=VARCHAR},
+      </if>
+      <if test="caac != null">
+        #{caac,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.shopping.domain.CloudBasicdataAirport">
+    <!--@mbg.generated-->
+    update cloud_basicdata_airport
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="citycode != null">
+        citycode = #{citycode,jdbcType=VARCHAR},
+      </if>
+      <if test="icaocode != null">
+        icaocode = #{icaocode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null">
+        fullname = #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        `alias` = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="enname != null">
+        enname = #{enname,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null">
+        pinyin = #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyinforshort != null">
+        pinyinforshort = #{pinyinforshort,jdbcType=VARCHAR},
+      </if>
+      <if test="utcoffsethours != null">
+        utcoffsethours = #{utcoffsethours,jdbcType=SMALLINT},
+      </if>
+      <if test="timezone != null">
+        timezone = #{timezone,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="altitude != null">
+        altitude = #{altitude,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="isuse != null">
+        isuse = #{isuse,jdbcType=SMALLINT},
+      </if>
+      <if test="iscivil != null">
+        iscivil = #{iscivil,jdbcType=SMALLINT},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iconurl != null">
+        iconurl = #{iconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="iconurl2 != null">
+        iconurl2 = #{iconurl2,jdbcType=VARCHAR},
+      </if>
+      <if test="caac != null">
+        caac = #{caac,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cloud.shopping.domain.CloudBasicdataAirport">
+    <!--@mbg.generated-->
+    update cloud_basicdata_airport
+    set code = #{code,jdbcType=VARCHAR},
+      citycode = #{citycode,jdbcType=VARCHAR},
+      icaocode = #{icaocode,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      fullname = #{fullname,jdbcType=VARCHAR},
+      `alias` = #{alias,jdbcType=VARCHAR},
+      enname = #{enname,jdbcType=VARCHAR},
+      pinyin = #{pinyin,jdbcType=VARCHAR},
+      pinyinforshort = #{pinyinforshort,jdbcType=VARCHAR},
+      utcoffsethours = #{utcoffsethours,jdbcType=SMALLINT},
+      timezone = #{timezone,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      altitude = #{altitude,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=SMALLINT},
+      `level` = #{level,jdbcType=VARCHAR},
+      isuse = #{isuse,jdbcType=SMALLINT},
+      iscivil = #{iscivil,jdbcType=SMALLINT},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      iconurl = #{iconurl,jdbcType=VARCHAR},
+      iconurl2 = #{iconurl2,jdbcType=VARCHAR},
+      caac = #{caac,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

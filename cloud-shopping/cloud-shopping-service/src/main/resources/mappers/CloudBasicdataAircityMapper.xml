@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.shopping.repository.mappers.CloudBasicdataAircityMapper">
+  <resultMap id="BaseResultMap" type="com.cloud.shopping.domain.CloudBasicdataAircity">
+    <!--@mbg.generated-->
+    <!--@Table cloud_basicdata_aircity-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="alias" jdbcType="VARCHAR" property="alias" />
+    <result column="enname" jdbcType="VARCHAR" property="enname" />
+    <result column="pinyin" jdbcType="VARCHAR" property="pinyin" />
+    <result column="pinyinforshort" jdbcType="VARCHAR" property="pinyinforshort" />
+    <result column="countrycode" jdbcType="VARCHAR" property="countrycode" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="isuse" jdbcType="SMALLINT" property="isuse" />
+    <result column="iscivil" jdbcType="SMALLINT" property="iscivil" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, code, `name`, `alias`, enname, pinyin, pinyinforshort, countrycode, province, 
+    area, isuse, iscivil, createtime, updatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cloud_basicdata_aircity
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from cloud_basicdata_aircity
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cloud.shopping.domain.CloudBasicdataAircity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_basicdata_aircity (code, `name`, `alias`, 
+      enname, pinyin, pinyinforshort, 
+      countrycode, province, area, 
+      isuse, iscivil, createtime, 
+      updatetime)
+    values (#{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
+      #{enname,jdbcType=VARCHAR}, #{pinyin,jdbcType=VARCHAR}, #{pinyinforshort,jdbcType=VARCHAR}, 
+      #{countrycode,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{isuse,jdbcType=SMALLINT}, #{iscivil,jdbcType=SMALLINT}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cloud.shopping.domain.CloudBasicdataAircity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_basicdata_aircity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="alias != null">
+        `alias`,
+      </if>
+      <if test="enname != null">
+        enname,
+      </if>
+      <if test="pinyin != null">
+        pinyin,
+      </if>
+      <if test="pinyinforshort != null">
+        pinyinforshort,
+      </if>
+      <if test="countrycode != null">
+        countrycode,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="isuse != null">
+        isuse,
+      </if>
+      <if test="iscivil != null">
+        iscivil,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="enname != null">
+        #{enname,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null">
+        #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyinforshort != null">
+        #{pinyinforshort,jdbcType=VARCHAR},
+      </if>
+      <if test="countrycode != null">
+        #{countrycode,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="isuse != null">
+        #{isuse,jdbcType=SMALLINT},
+      </if>
+      <if test="iscivil != null">
+        #{iscivil,jdbcType=SMALLINT},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.shopping.domain.CloudBasicdataAircity">
+    <!--@mbg.generated-->
+    update cloud_basicdata_aircity
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        `alias` = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="enname != null">
+        enname = #{enname,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null">
+        pinyin = #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyinforshort != null">
+        pinyinforshort = #{pinyinforshort,jdbcType=VARCHAR},
+      </if>
+      <if test="countrycode != null">
+        countrycode = #{countrycode,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="isuse != null">
+        isuse = #{isuse,jdbcType=SMALLINT},
+      </if>
+      <if test="iscivil != null">
+        iscivil = #{iscivil,jdbcType=SMALLINT},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cloud.shopping.domain.CloudBasicdataAircity">
+    <!--@mbg.generated-->
+    update cloud_basicdata_aircity
+    set code = #{code,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      `alias` = #{alias,jdbcType=VARCHAR},
+      enname = #{enname,jdbcType=VARCHAR},
+      pinyin = #{pinyin,jdbcType=VARCHAR},
+      pinyinforshort = #{pinyinforshort,jdbcType=VARCHAR},
+      countrycode = #{countrycode,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      isuse = #{isuse,jdbcType=SMALLINT},
+      iscivil = #{iscivil,jdbcType=SMALLINT},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

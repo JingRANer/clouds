@@ -40,6 +40,8 @@ spring:
       uris: 82.157.203.124:9200
       read-timeout: 30s
       connection-timeout: 5s
+      username: elastic
+      password: Jingran08!
 
 mybatis:
   mapper-locations: classpath:mappers/*Mapper.xml

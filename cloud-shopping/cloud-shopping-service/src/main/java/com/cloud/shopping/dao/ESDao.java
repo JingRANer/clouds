@@ -12,7 +12,7 @@ public interface ESDao extends ElasticsearchRepository<Article,Integer>  {
      * @param title
      * @return
      */
-    List<Article> findByTitle(String title);
+    List<AirportCacheBean> findByTitle(String title);
 
     /**
      * 根据标题或内容查询
@@ -20,7 +20,7 @@ public interface ESDao extends ElasticsearchRepository<Article,Integer>  {
      * @param context
      * @return
      */
-    List<Article> findByTitleOrContext(String title,String context);
+    List<AirportCacheBean> findByTitleOrContext(String title,String context);
 
     /**
      * 根据标题或内容查询（含分页）
@@ -29,5 +29,5 @@ public interface ESDao extends ElasticsearchRepository<Article,Integer>  {
      * @param pageable
      * @return
      */
-    List<Article> findByTitleOrContext(String title, String context, Pageable pageable);
+    List<AirportCacheBean> findByTitleOrContext(String title, String context, Pageable pageable);
 }

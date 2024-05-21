@@ -1,0 +1,1207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.shopping.repository.mappers.CloudCrawlerAirportMapper">
+  <resultMap id="BaseResultMap" type="com.cloud.shopping.domain.CloudCrawlerAirport">
+    <!--@mbg.generated-->
+    <!--@Table cloud_crawler_airport-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="iatacode" jdbcType="VARCHAR" property="iatacode" />
+    <result column="icaocode" jdbcType="VARCHAR" property="icaocode" />
+    <result column="airportname" jdbcType="VARCHAR" property="airportname" />
+    <result column="airportalias" jdbcType="VARCHAR" property="airportalias" />
+    <result column="airportenname" jdbcType="VARCHAR" property="airportenname" />
+    <result column="airportpinyin" jdbcType="VARCHAR" property="airportpinyin" />
+    <result column="airportpinyinshort" jdbcType="VARCHAR" property="airportpinyinshort" />
+    <result column="citycode" jdbcType="VARCHAR" property="citycode" />
+    <result column="cityname" jdbcType="VARCHAR" property="cityname" />
+    <result column="cityenname" jdbcType="VARCHAR" property="cityenname" />
+    <result column="citypinyin" jdbcType="VARCHAR" property="citypinyin" />
+    <result column="citypinyinshort" jdbcType="VARCHAR" property="citypinyinshort" />
+    <result column="provincename" jdbcType="VARCHAR" property="provincename" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="countryname" jdbcType="VARCHAR" property="countryname" />
+    <result column="countrycode" jdbcType="VARCHAR" property="countrycode" />
+    <result column="regionname" jdbcType="VARCHAR" property="regionname" />
+    <result column="dstarea" jdbcType="VARCHAR" property="dstarea" />
+    <result column="utcoffsethours" jdbcType="VARCHAR" property="utcoffsethours" />
+    <result column="timezoneregionname" jdbcType="VARCHAR" property="timezoneregionname" />
+    <result column="timezoneisuse" jdbcType="VARCHAR" property="timezoneisuse" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="iscivil" jdbcType="VARCHAR" property="iscivil" />
+    <result column="auditstatus" jdbcType="INTEGER" property="auditstatus" />
+    <result column="iconurl" jdbcType="VARCHAR" property="iconurl" />
+    <result column="sort" jdbcType="VARCHAR" property="sort" />
+    <result column="passreason" jdbcType="VARCHAR" property="passreason" />
+    <result column="airporttype" jdbcType="VARCHAR" property="airporttype" />
+    <result column="airportmanagename" jdbcType="VARCHAR" property="airportmanagename" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="cityrelation" jdbcType="VARCHAR" property="cityrelation" />
+    <result column="boolspacilairp" jdbcType="VARCHAR" property="boolspacilairp" />
+    <result column="airportnature" jdbcType="VARCHAR" property="airportnature" />
+    <result column="aitportland" jdbcType="VARCHAR" property="aitportland" />
+    <result column="aitportelevation" jdbcType="VARCHAR" property="aitportelevation" />
+    <result column="referencetemperature" jdbcType="VARCHAR" property="referencetemperature" />
+    <result column="firelv" jdbcType="VARCHAR" property="firelv" />
+    <result column="rescuelv" jdbcType="VARCHAR" property="rescuelv" />
+    <result column="lightsys" jdbcType="VARCHAR" property="lightsys" />
+    <result column="floolarea" jdbcType="VARCHAR" property="floolarea" />
+    <result column="cargoarea" jdbcType="VARCHAR" property="cargoarea" />
+    <result column="parkingarea" jdbcType="VARCHAR" property="parkingarea" />
+    <result column="smoothnum" jdbcType="VARCHAR" property="smoothnum" />
+    <result column="reservationnum" jdbcType="VARCHAR" property="reservationnum" />
+    <result column="airfieldindicator" jdbcType="VARCHAR" property="airfieldindicator" />
+    <result column="airfieldarea" jdbcType="VARCHAR" property="airfieldarea" />
+    <result column="runwaysize" jdbcType="VARCHAR" property="runwaysize" />
+    <result column="runwaynum" jdbcType="VARCHAR" property="runwaynum" />
+    <result column="runweycategory" jdbcType="VARCHAR" property="runweycategory" />
+    <result column="runpcn" jdbcType="VARCHAR" property="runpcn" />
+    <result column="runwaytype" jdbcType="VARCHAR" property="runwaytype" />
+    <result column="mostmodel" jdbcType="VARCHAR" property="mostmodel" />
+    <result column="travellernum" jdbcType="VARCHAR" property="travellernum" />
+    <result column="goodsnum" jdbcType="VARCHAR" property="goodsnum" />
+    <result column="takeoffnum" jdbcType="VARCHAR" property="takeoffnum" />
+    <result column="airsrcurl" jdbcType="VARCHAR" property="airsrcurl" />
+    <result column="airportlv" jdbcType="VARCHAR" property="airportlv" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="benchmarkxy" jdbcType="VARCHAR" property="benchmarkxy" />
+    <result column="airoperatorname" jdbcType="VARCHAR" property="airoperatorname" />
+    <result column="airownername" jdbcType="VARCHAR" property="airownername" />
+    <result column="runwaynumber" jdbcType="VARCHAR" property="runwaynumber" />
+    <result column="runwaylength" jdbcType="VARCHAR" property="runwaylength" />
+    <result column="runwaywidth" jdbcType="VARCHAR" property="runwaywidth" />
+    <result column="runwayslope" jdbcType="VARCHAR" property="runwayslope" />
+    <result column="surfacetype" jdbcType="VARCHAR" property="surfacetype" />
+    <result column="flightrule" jdbcType="VARCHAR" property="flightrule" />
+    <result column="flightrule1" jdbcType="VARCHAR" property="flightrule1" />
+    <result column="tlofhigh" jdbcType="VARCHAR" property="tlofhigh" />
+    <result column="tlofsize" jdbcType="VARCHAR" property="tlofsize" />
+    <result column="tlofslope" jdbcType="VARCHAR" property="tlofslope" />
+    <result column="tloffacetype" jdbcType="VARCHAR" property="tloffacetype" />
+    <result column="fato" jdbcType="VARCHAR" property="fato" />
+    <result column="nofatosize" jdbcType="VARCHAR" property="nofatosize" />
+    <result column="nofatoslope" jdbcType="VARCHAR" property="nofatoslope" />
+    <result column="nofatotype" jdbcType="VARCHAR" property="nofatotype" />
+    <result column="idennum" jdbcType="VARCHAR" property="idennum" />
+    <result column="fatoidennum" jdbcType="VARCHAR" property="fatoidennum" />
+    <result column="fatotype" jdbcType="VARCHAR" property="fatotype" />
+    <result column="fatolength" jdbcType="VARCHAR" property="fatolength" />
+    <result column="fatowidth" jdbcType="VARCHAR" property="fatowidth" />
+    <result column="fatoslope" jdbcType="VARCHAR" property="fatoslope" />
+    <result column="flightrule2" jdbcType="VARCHAR" property="flightrule2" />
+    <result column="runwaynumber2" jdbcType="VARCHAR" property="runwaynumber2" />
+    <result column="hydrologic" jdbcType="VARCHAR" property="hydrologic" />
+    <result column="benchc" jdbcType="VARCHAR" property="benchc" />
+    <result column="biggestair" jdbcType="VARCHAR" property="biggestair" />
+    <result column="context" jdbcType="VARCHAR" property="context" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="caac" jdbcType="VARCHAR" property="caac" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="altitude" jdbcType="VARCHAR" property="altitude" />
+    <result column="type" jdbcType="SMALLINT" property="type" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `source`, iatacode, icaocode, airportname, airportalias, airportenname, airportpinyin, 
+    airportpinyinshort, citycode, cityname, cityenname, citypinyin, citypinyinshort, 
+    provincename, area, countryname, countrycode, regionname, dstarea, utcoffsethours, 
+    timezoneregionname, timezoneisuse, longitude, latitude, iscivil, auditstatus, iconurl, 
+    sort, passreason, airporttype, airportmanagename, city, cityrelation, boolspacilairp, 
+    airportnature, aitportland, aitportelevation, referencetemperature, firelv, rescuelv, 
+    lightsys, floolarea, cargoarea, parkingarea, smoothnum, reservationnum, airfieldindicator, 
+    airfieldarea, runwaysize, runwaynum, runweycategory, runpcn, runwaytype, mostmodel, 
+    travellernum, goodsnum, takeoffnum, airsrcurl, airportlv, address, benchmarkxy, airoperatorname, 
+    airownername, runwaynumber, runwaylength, runwaywidth, runwayslope, surfacetype, 
+    flightrule, flightrule1, tlofhigh, tlofsize, tlofslope, tloffacetype, fato, nofatosize, 
+    nofatoslope, nofatotype, idennum, fatoidennum, fatotype, fatolength, fatowidth, fatoslope, 
+    flightrule2, runwaynumber2, hydrologic, benchc, biggestair, context, picture, createtime, 
+    updatetime, caac, `name`, altitude, `type`, `level`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cloud_crawler_airport
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from cloud_crawler_airport
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cloud.shopping.domain.CloudCrawlerAirport" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_crawler_airport (`source`, iatacode, icaocode, 
+      airportname, airportalias, airportenname, 
+      airportpinyin, airportpinyinshort, citycode, 
+      cityname, cityenname, citypinyin, 
+      citypinyinshort, provincename, area, 
+      countryname, countrycode, regionname, 
+      dstarea, utcoffsethours, timezoneregionname, 
+      timezoneisuse, longitude, latitude, 
+      iscivil, auditstatus, iconurl, 
+      sort, passreason, airporttype, 
+      airportmanagename, city, cityrelation, 
+      boolspacilairp, airportnature, aitportland, 
+      aitportelevation, referencetemperature, 
+      firelv, rescuelv, lightsys, 
+      floolarea, cargoarea, parkingarea, 
+      smoothnum, reservationnum, airfieldindicator, 
+      airfieldarea, runwaysize, runwaynum, 
+      runweycategory, runpcn, runwaytype, 
+      mostmodel, travellernum, goodsnum, 
+      takeoffnum, airsrcurl, airportlv, 
+      address, benchmarkxy, airoperatorname, 
+      airownername, runwaynumber, runwaylength, 
+      runwaywidth, runwayslope, surfacetype, 
+      flightrule, flightrule1, tlofhigh, 
+      tlofsize, tlofslope, tloffacetype, 
+      fato, nofatosize, nofatoslope, 
+      nofatotype, idennum, fatoidennum, 
+      fatotype, fatolength, fatowidth, 
+      fatoslope, flightrule2, runwaynumber2, 
+      hydrologic, benchc, biggestair, 
+      context, picture, createtime, 
+      updatetime, caac, `name`, 
+      altitude, `type`, `level`
+      )
+    values (#{source,jdbcType=VARCHAR}, #{iatacode,jdbcType=VARCHAR}, #{icaocode,jdbcType=VARCHAR}, 
+      #{airportname,jdbcType=VARCHAR}, #{airportalias,jdbcType=VARCHAR}, #{airportenname,jdbcType=VARCHAR}, 
+      #{airportpinyin,jdbcType=VARCHAR}, #{airportpinyinshort,jdbcType=VARCHAR}, #{citycode,jdbcType=VARCHAR}, 
+      #{cityname,jdbcType=VARCHAR}, #{cityenname,jdbcType=VARCHAR}, #{citypinyin,jdbcType=VARCHAR}, 
+      #{citypinyinshort,jdbcType=VARCHAR}, #{provincename,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{countryname,jdbcType=VARCHAR}, #{countrycode,jdbcType=VARCHAR}, #{regionname,jdbcType=VARCHAR}, 
+      #{dstarea,jdbcType=VARCHAR}, #{utcoffsethours,jdbcType=VARCHAR}, #{timezoneregionname,jdbcType=VARCHAR}, 
+      #{timezoneisuse,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
+      #{iscivil,jdbcType=VARCHAR}, #{auditstatus,jdbcType=INTEGER}, #{iconurl,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=VARCHAR}, #{passreason,jdbcType=VARCHAR}, #{airporttype,jdbcType=VARCHAR}, 
+      #{airportmanagename,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{cityrelation,jdbcType=VARCHAR}, 
+      #{boolspacilairp,jdbcType=VARCHAR}, #{airportnature,jdbcType=VARCHAR}, #{aitportland,jdbcType=VARCHAR}, 
+      #{aitportelevation,jdbcType=VARCHAR}, #{referencetemperature,jdbcType=VARCHAR}, 
+      #{firelv,jdbcType=VARCHAR}, #{rescuelv,jdbcType=VARCHAR}, #{lightsys,jdbcType=VARCHAR}, 
+      #{floolarea,jdbcType=VARCHAR}, #{cargoarea,jdbcType=VARCHAR}, #{parkingarea,jdbcType=VARCHAR}, 
+      #{smoothnum,jdbcType=VARCHAR}, #{reservationnum,jdbcType=VARCHAR}, #{airfieldindicator,jdbcType=VARCHAR}, 
+      #{airfieldarea,jdbcType=VARCHAR}, #{runwaysize,jdbcType=VARCHAR}, #{runwaynum,jdbcType=VARCHAR}, 
+      #{runweycategory,jdbcType=VARCHAR}, #{runpcn,jdbcType=VARCHAR}, #{runwaytype,jdbcType=VARCHAR}, 
+      #{mostmodel,jdbcType=VARCHAR}, #{travellernum,jdbcType=VARCHAR}, #{goodsnum,jdbcType=VARCHAR}, 
+      #{takeoffnum,jdbcType=VARCHAR}, #{airsrcurl,jdbcType=VARCHAR}, #{airportlv,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{benchmarkxy,jdbcType=VARCHAR}, #{airoperatorname,jdbcType=VARCHAR}, 
+      #{airownername,jdbcType=VARCHAR}, #{runwaynumber,jdbcType=VARCHAR}, #{runwaylength,jdbcType=VARCHAR}, 
+      #{runwaywidth,jdbcType=VARCHAR}, #{runwayslope,jdbcType=VARCHAR}, #{surfacetype,jdbcType=VARCHAR}, 
+      #{flightrule,jdbcType=VARCHAR}, #{flightrule1,jdbcType=VARCHAR}, #{tlofhigh,jdbcType=VARCHAR}, 
+      #{tlofsize,jdbcType=VARCHAR}, #{tlofslope,jdbcType=VARCHAR}, #{tloffacetype,jdbcType=VARCHAR}, 
+      #{fato,jdbcType=VARCHAR}, #{nofatosize,jdbcType=VARCHAR}, #{nofatoslope,jdbcType=VARCHAR}, 
+      #{nofatotype,jdbcType=VARCHAR}, #{idennum,jdbcType=VARCHAR}, #{fatoidennum,jdbcType=VARCHAR}, 
+      #{fatotype,jdbcType=VARCHAR}, #{fatolength,jdbcType=VARCHAR}, #{fatowidth,jdbcType=VARCHAR}, 
+      #{fatoslope,jdbcType=VARCHAR}, #{flightrule2,jdbcType=VARCHAR}, #{runwaynumber2,jdbcType=VARCHAR}, 
+      #{hydrologic,jdbcType=VARCHAR}, #{benchc,jdbcType=VARCHAR}, #{biggestair,jdbcType=VARCHAR}, 
+      #{context,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{caac,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{altitude,jdbcType=VARCHAR}, #{type,jdbcType=SMALLINT}, #{level,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cloud.shopping.domain.CloudCrawlerAirport" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_crawler_airport
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="source != null">
+        `source`,
+      </if>
+      <if test="iatacode != null">
+        iatacode,
+      </if>
+      <if test="icaocode != null">
+        icaocode,
+      </if>
+      <if test="airportname != null">
+        airportname,
+      </if>
+      <if test="airportalias != null">
+        airportalias,
+      </if>
+      <if test="airportenname != null">
+        airportenname,
+      </if>
+      <if test="airportpinyin != null">
+        airportpinyin,
+      </if>
+      <if test="airportpinyinshort != null">
+        airportpinyinshort,
+      </if>
+      <if test="citycode != null">
+        citycode,
+      </if>
+      <if test="cityname != null">
+        cityname,
+      </if>
+      <if test="cityenname != null">
+        cityenname,
+      </if>
+      <if test="citypinyin != null">
+        citypinyin,
+      </if>
+      <if test="citypinyinshort != null">
+        citypinyinshort,
+      </if>
+      <if test="provincename != null">
+        provincename,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="countryname != null">
+        countryname,
+      </if>
+      <if test="countrycode != null">
+        countrycode,
+      </if>
+      <if test="regionname != null">
+        regionname,
+      </if>
+      <if test="dstarea != null">
+        dstarea,
+      </if>
+      <if test="utcoffsethours != null">
+        utcoffsethours,
+      </if>
+      <if test="timezoneregionname != null">
+        timezoneregionname,
+      </if>
+      <if test="timezoneisuse != null">
+        timezoneisuse,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="iscivil != null">
+        iscivil,
+      </if>
+      <if test="auditstatus != null">
+        auditstatus,
+      </if>
+      <if test="iconurl != null">
+        iconurl,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="passreason != null">
+        passreason,
+      </if>
+      <if test="airporttype != null">
+        airporttype,
+      </if>
+      <if test="airportmanagename != null">
+        airportmanagename,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="cityrelation != null">
+        cityrelation,
+      </if>
+      <if test="boolspacilairp != null">
+        boolspacilairp,
+      </if>
+      <if test="airportnature != null">
+        airportnature,
+      </if>
+      <if test="aitportland != null">
+        aitportland,
+      </if>
+      <if test="aitportelevation != null">
+        aitportelevation,
+      </if>
+      <if test="referencetemperature != null">
+        referencetemperature,
+      </if>
+      <if test="firelv != null">
+        firelv,
+      </if>
+      <if test="rescuelv != null">
+        rescuelv,
+      </if>
+      <if test="lightsys != null">
+        lightsys,
+      </if>
+      <if test="floolarea != null">
+        floolarea,
+      </if>
+      <if test="cargoarea != null">
+        cargoarea,
+      </if>
+      <if test="parkingarea != null">
+        parkingarea,
+      </if>
+      <if test="smoothnum != null">
+        smoothnum,
+      </if>
+      <if test="reservationnum != null">
+        reservationnum,
+      </if>
+      <if test="airfieldindicator != null">
+        airfieldindicator,
+      </if>
+      <if test="airfieldarea != null">
+        airfieldarea,
+      </if>
+      <if test="runwaysize != null">
+        runwaysize,
+      </if>
+      <if test="runwaynum != null">
+        runwaynum,
+      </if>
+      <if test="runweycategory != null">
+        runweycategory,
+      </if>
+      <if test="runpcn != null">
+        runpcn,
+      </if>
+      <if test="runwaytype != null">
+        runwaytype,
+      </if>
+      <if test="mostmodel != null">
+        mostmodel,
+      </if>
+      <if test="travellernum != null">
+        travellernum,
+      </if>
+      <if test="goodsnum != null">
+        goodsnum,
+      </if>
+      <if test="takeoffnum != null">
+        takeoffnum,
+      </if>
+      <if test="airsrcurl != null">
+        airsrcurl,
+      </if>
+      <if test="airportlv != null">
+        airportlv,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="benchmarkxy != null">
+        benchmarkxy,
+      </if>
+      <if test="airoperatorname != null">
+        airoperatorname,
+      </if>
+      <if test="airownername != null">
+        airownername,
+      </if>
+      <if test="runwaynumber != null">
+        runwaynumber,
+      </if>
+      <if test="runwaylength != null">
+        runwaylength,
+      </if>
+      <if test="runwaywidth != null">
+        runwaywidth,
+      </if>
+      <if test="runwayslope != null">
+        runwayslope,
+      </if>
+      <if test="surfacetype != null">
+        surfacetype,
+      </if>
+      <if test="flightrule != null">
+        flightrule,
+      </if>
+      <if test="flightrule1 != null">
+        flightrule1,
+      </if>
+      <if test="tlofhigh != null">
+        tlofhigh,
+      </if>
+      <if test="tlofsize != null">
+        tlofsize,
+      </if>
+      <if test="tlofslope != null">
+        tlofslope,
+      </if>
+      <if test="tloffacetype != null">
+        tloffacetype,
+      </if>
+      <if test="fato != null">
+        fato,
+      </if>
+      <if test="nofatosize != null">
+        nofatosize,
+      </if>
+      <if test="nofatoslope != null">
+        nofatoslope,
+      </if>
+      <if test="nofatotype != null">
+        nofatotype,
+      </if>
+      <if test="idennum != null">
+        idennum,
+      </if>
+      <if test="fatoidennum != null">
+        fatoidennum,
+      </if>
+      <if test="fatotype != null">
+        fatotype,
+      </if>
+      <if test="fatolength != null">
+        fatolength,
+      </if>
+      <if test="fatowidth != null">
+        fatowidth,
+      </if>
+      <if test="fatoslope != null">
+        fatoslope,
+      </if>
+      <if test="flightrule2 != null">
+        flightrule2,
+      </if>
+      <if test="runwaynumber2 != null">
+        runwaynumber2,
+      </if>
+      <if test="hydrologic != null">
+        hydrologic,
+      </if>
+      <if test="benchc != null">
+        benchc,
+      </if>
+      <if test="biggestair != null">
+        biggestair,
+      </if>
+      <if test="context != null">
+        context,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="caac != null">
+        caac,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="altitude != null">
+        altitude,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="iatacode != null">
+        #{iatacode,jdbcType=VARCHAR},
+      </if>
+      <if test="icaocode != null">
+        #{icaocode,jdbcType=VARCHAR},
+      </if>
+      <if test="airportname != null">
+        #{airportname,jdbcType=VARCHAR},
+      </if>
+      <if test="airportalias != null">
+        #{airportalias,jdbcType=VARCHAR},
+      </if>
+      <if test="airportenname != null">
+        #{airportenname,jdbcType=VARCHAR},
+      </if>
+      <if test="airportpinyin != null">
+        #{airportpinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="airportpinyinshort != null">
+        #{airportpinyinshort,jdbcType=VARCHAR},
+      </if>
+      <if test="citycode != null">
+        #{citycode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityname != null">
+        #{cityname,jdbcType=VARCHAR},
+      </if>
+      <if test="cityenname != null">
+        #{cityenname,jdbcType=VARCHAR},
+      </if>
+      <if test="citypinyin != null">
+        #{citypinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="citypinyinshort != null">
+        #{citypinyinshort,jdbcType=VARCHAR},
+      </if>
+      <if test="provincename != null">
+        #{provincename,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="countryname != null">
+        #{countryname,jdbcType=VARCHAR},
+      </if>
+      <if test="countrycode != null">
+        #{countrycode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionname != null">
+        #{regionname,jdbcType=VARCHAR},
+      </if>
+      <if test="dstarea != null">
+        #{dstarea,jdbcType=VARCHAR},
+      </if>
+      <if test="utcoffsethours != null">
+        #{utcoffsethours,jdbcType=VARCHAR},
+      </if>
+      <if test="timezoneregionname != null">
+        #{timezoneregionname,jdbcType=VARCHAR},
+      </if>
+      <if test="timezoneisuse != null">
+        #{timezoneisuse,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="iscivil != null">
+        #{iscivil,jdbcType=VARCHAR},
+      </if>
+      <if test="auditstatus != null">
+        #{auditstatus,jdbcType=INTEGER},
+      </if>
+      <if test="iconurl != null">
+        #{iconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="passreason != null">
+        #{passreason,jdbcType=VARCHAR},
+      </if>
+      <if test="airporttype != null">
+        #{airporttype,jdbcType=VARCHAR},
+      </if>
+      <if test="airportmanagename != null">
+        #{airportmanagename,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cityrelation != null">
+        #{cityrelation,jdbcType=VARCHAR},
+      </if>
+      <if test="boolspacilairp != null">
+        #{boolspacilairp,jdbcType=VARCHAR},
+      </if>
+      <if test="airportnature != null">
+        #{airportnature,jdbcType=VARCHAR},
+      </if>
+      <if test="aitportland != null">
+        #{aitportland,jdbcType=VARCHAR},
+      </if>
+      <if test="aitportelevation != null">
+        #{aitportelevation,jdbcType=VARCHAR},
+      </if>
+      <if test="referencetemperature != null">
+        #{referencetemperature,jdbcType=VARCHAR},
+      </if>
+      <if test="firelv != null">
+        #{firelv,jdbcType=VARCHAR},
+      </if>
+      <if test="rescuelv != null">
+        #{rescuelv,jdbcType=VARCHAR},
+      </if>
+      <if test="lightsys != null">
+        #{lightsys,jdbcType=VARCHAR},
+      </if>
+      <if test="floolarea != null">
+        #{floolarea,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoarea != null">
+        #{cargoarea,jdbcType=VARCHAR},
+      </if>
+      <if test="parkingarea != null">
+        #{parkingarea,jdbcType=VARCHAR},
+      </if>
+      <if test="smoothnum != null">
+        #{smoothnum,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationnum != null">
+        #{reservationnum,jdbcType=VARCHAR},
+      </if>
+      <if test="airfieldindicator != null">
+        #{airfieldindicator,jdbcType=VARCHAR},
+      </if>
+      <if test="airfieldarea != null">
+        #{airfieldarea,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaysize != null">
+        #{runwaysize,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaynum != null">
+        #{runwaynum,jdbcType=VARCHAR},
+      </if>
+      <if test="runweycategory != null">
+        #{runweycategory,jdbcType=VARCHAR},
+      </if>
+      <if test="runpcn != null">
+        #{runpcn,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaytype != null">
+        #{runwaytype,jdbcType=VARCHAR},
+      </if>
+      <if test="mostmodel != null">
+        #{mostmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="travellernum != null">
+        #{travellernum,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsnum != null">
+        #{goodsnum,jdbcType=VARCHAR},
+      </if>
+      <if test="takeoffnum != null">
+        #{takeoffnum,jdbcType=VARCHAR},
+      </if>
+      <if test="airsrcurl != null">
+        #{airsrcurl,jdbcType=VARCHAR},
+      </if>
+      <if test="airportlv != null">
+        #{airportlv,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="benchmarkxy != null">
+        #{benchmarkxy,jdbcType=VARCHAR},
+      </if>
+      <if test="airoperatorname != null">
+        #{airoperatorname,jdbcType=VARCHAR},
+      </if>
+      <if test="airownername != null">
+        #{airownername,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaynumber != null">
+        #{runwaynumber,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaylength != null">
+        #{runwaylength,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaywidth != null">
+        #{runwaywidth,jdbcType=VARCHAR},
+      </if>
+      <if test="runwayslope != null">
+        #{runwayslope,jdbcType=VARCHAR},
+      </if>
+      <if test="surfacetype != null">
+        #{surfacetype,jdbcType=VARCHAR},
+      </if>
+      <if test="flightrule != null">
+        #{flightrule,jdbcType=VARCHAR},
+      </if>
+      <if test="flightrule1 != null">
+        #{flightrule1,jdbcType=VARCHAR},
+      </if>
+      <if test="tlofhigh != null">
+        #{tlofhigh,jdbcType=VARCHAR},
+      </if>
+      <if test="tlofsize != null">
+        #{tlofsize,jdbcType=VARCHAR},
+      </if>
+      <if test="tlofslope != null">
+        #{tlofslope,jdbcType=VARCHAR},
+      </if>
+      <if test="tloffacetype != null">
+        #{tloffacetype,jdbcType=VARCHAR},
+      </if>
+      <if test="fato != null">
+        #{fato,jdbcType=VARCHAR},
+      </if>
+      <if test="nofatosize != null">
+        #{nofatosize,jdbcType=VARCHAR},
+      </if>
+      <if test="nofatoslope != null">
+        #{nofatoslope,jdbcType=VARCHAR},
+      </if>
+      <if test="nofatotype != null">
+        #{nofatotype,jdbcType=VARCHAR},
+      </if>
+      <if test="idennum != null">
+        #{idennum,jdbcType=VARCHAR},
+      </if>
+      <if test="fatoidennum != null">
+        #{fatoidennum,jdbcType=VARCHAR},
+      </if>
+      <if test="fatotype != null">
+        #{fatotype,jdbcType=VARCHAR},
+      </if>
+      <if test="fatolength != null">
+        #{fatolength,jdbcType=VARCHAR},
+      </if>
+      <if test="fatowidth != null">
+        #{fatowidth,jdbcType=VARCHAR},
+      </if>
+      <if test="fatoslope != null">
+        #{fatoslope,jdbcType=VARCHAR},
+      </if>
+      <if test="flightrule2 != null">
+        #{flightrule2,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaynumber2 != null">
+        #{runwaynumber2,jdbcType=VARCHAR},
+      </if>
+      <if test="hydrologic != null">
+        #{hydrologic,jdbcType=VARCHAR},
+      </if>
+      <if test="benchc != null">
+        #{benchc,jdbcType=VARCHAR},
+      </if>
+      <if test="biggestair != null">
+        #{biggestair,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caac != null">
+        #{caac,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="altitude != null">
+        #{altitude,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.shopping.domain.CloudCrawlerAirport">
+    <!--@mbg.generated-->
+    update cloud_crawler_airport
+    <set>
+      <if test="source != null">
+        `source` = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="iatacode != null">
+        iatacode = #{iatacode,jdbcType=VARCHAR},
+      </if>
+      <if test="icaocode != null">
+        icaocode = #{icaocode,jdbcType=VARCHAR},
+      </if>
+      <if test="airportname != null">
+        airportname = #{airportname,jdbcType=VARCHAR},
+      </if>
+      <if test="airportalias != null">
+        airportalias = #{airportalias,jdbcType=VARCHAR},
+      </if>
+      <if test="airportenname != null">
+        airportenname = #{airportenname,jdbcType=VARCHAR},
+      </if>
+      <if test="airportpinyin != null">
+        airportpinyin = #{airportpinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="airportpinyinshort != null">
+        airportpinyinshort = #{airportpinyinshort,jdbcType=VARCHAR},
+      </if>
+      <if test="citycode != null">
+        citycode = #{citycode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityname != null">
+        cityname = #{cityname,jdbcType=VARCHAR},
+      </if>
+      <if test="cityenname != null">
+        cityenname = #{cityenname,jdbcType=VARCHAR},
+      </if>
+      <if test="citypinyin != null">
+        citypinyin = #{citypinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="citypinyinshort != null">
+        citypinyinshort = #{citypinyinshort,jdbcType=VARCHAR},
+      </if>
+      <if test="provincename != null">
+        provincename = #{provincename,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="countryname != null">
+        countryname = #{countryname,jdbcType=VARCHAR},
+      </if>
+      <if test="countrycode != null">
+        countrycode = #{countrycode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionname != null">
+        regionname = #{regionname,jdbcType=VARCHAR},
+      </if>
+      <if test="dstarea != null">
+        dstarea = #{dstarea,jdbcType=VARCHAR},
+      </if>
+      <if test="utcoffsethours != null">
+        utcoffsethours = #{utcoffsethours,jdbcType=VARCHAR},
+      </if>
+      <if test="timezoneregionname != null">
+        timezoneregionname = #{timezoneregionname,jdbcType=VARCHAR},
+      </if>
+      <if test="timezoneisuse != null">
+        timezoneisuse = #{timezoneisuse,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="iscivil != null">
+        iscivil = #{iscivil,jdbcType=VARCHAR},
+      </if>
+      <if test="auditstatus != null">
+        auditstatus = #{auditstatus,jdbcType=INTEGER},
+      </if>
+      <if test="iconurl != null">
+        iconurl = #{iconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="passreason != null">
+        passreason = #{passreason,jdbcType=VARCHAR},
+      </if>
+      <if test="airporttype != null">
+        airporttype = #{airporttype,jdbcType=VARCHAR},
+      </if>
+      <if test="airportmanagename != null">
+        airportmanagename = #{airportmanagename,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cityrelation != null">
+        cityrelation = #{cityrelation,jdbcType=VARCHAR},
+      </if>
+      <if test="boolspacilairp != null">
+        boolspacilairp = #{boolspacilairp,jdbcType=VARCHAR},
+      </if>
+      <if test="airportnature != null">
+        airportnature = #{airportnature,jdbcType=VARCHAR},
+      </if>
+      <if test="aitportland != null">
+        aitportland = #{aitportland,jdbcType=VARCHAR},
+      </if>
+      <if test="aitportelevation != null">
+        aitportelevation = #{aitportelevation,jdbcType=VARCHAR},
+      </if>
+      <if test="referencetemperature != null">
+        referencetemperature = #{referencetemperature,jdbcType=VARCHAR},
+      </if>
+      <if test="firelv != null">
+        firelv = #{firelv,jdbcType=VARCHAR},
+      </if>
+      <if test="rescuelv != null">
+        rescuelv = #{rescuelv,jdbcType=VARCHAR},
+      </if>
+      <if test="lightsys != null">
+        lightsys = #{lightsys,jdbcType=VARCHAR},
+      </if>
+      <if test="floolarea != null">
+        floolarea = #{floolarea,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoarea != null">
+        cargoarea = #{cargoarea,jdbcType=VARCHAR},
+      </if>
+      <if test="parkingarea != null">
+        parkingarea = #{parkingarea,jdbcType=VARCHAR},
+      </if>
+      <if test="smoothnum != null">
+        smoothnum = #{smoothnum,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationnum != null">
+        reservationnum = #{reservationnum,jdbcType=VARCHAR},
+      </if>
+      <if test="airfieldindicator != null">
+        airfieldindicator = #{airfieldindicator,jdbcType=VARCHAR},
+      </if>
+      <if test="airfieldarea != null">
+        airfieldarea = #{airfieldarea,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaysize != null">
+        runwaysize = #{runwaysize,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaynum != null">
+        runwaynum = #{runwaynum,jdbcType=VARCHAR},
+      </if>
+      <if test="runweycategory != null">
+        runweycategory = #{runweycategory,jdbcType=VARCHAR},
+      </if>
+      <if test="runpcn != null">
+        runpcn = #{runpcn,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaytype != null">
+        runwaytype = #{runwaytype,jdbcType=VARCHAR},
+      </if>
+      <if test="mostmodel != null">
+        mostmodel = #{mostmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="travellernum != null">
+        travellernum = #{travellernum,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsnum != null">
+        goodsnum = #{goodsnum,jdbcType=VARCHAR},
+      </if>
+      <if test="takeoffnum != null">
+        takeoffnum = #{takeoffnum,jdbcType=VARCHAR},
+      </if>
+      <if test="airsrcurl != null">
+        airsrcurl = #{airsrcurl,jdbcType=VARCHAR},
+      </if>
+      <if test="airportlv != null">
+        airportlv = #{airportlv,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="benchmarkxy != null">
+        benchmarkxy = #{benchmarkxy,jdbcType=VARCHAR},
+      </if>
+      <if test="airoperatorname != null">
+        airoperatorname = #{airoperatorname,jdbcType=VARCHAR},
+      </if>
+      <if test="airownername != null">
+        airownername = #{airownername,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaynumber != null">
+        runwaynumber = #{runwaynumber,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaylength != null">
+        runwaylength = #{runwaylength,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaywidth != null">
+        runwaywidth = #{runwaywidth,jdbcType=VARCHAR},
+      </if>
+      <if test="runwayslope != null">
+        runwayslope = #{runwayslope,jdbcType=VARCHAR},
+      </if>
+      <if test="surfacetype != null">
+        surfacetype = #{surfacetype,jdbcType=VARCHAR},
+      </if>
+      <if test="flightrule != null">
+        flightrule = #{flightrule,jdbcType=VARCHAR},
+      </if>
+      <if test="flightrule1 != null">
+        flightrule1 = #{flightrule1,jdbcType=VARCHAR},
+      </if>
+      <if test="tlofhigh != null">
+        tlofhigh = #{tlofhigh,jdbcType=VARCHAR},
+      </if>
+      <if test="tlofsize != null">
+        tlofsize = #{tlofsize,jdbcType=VARCHAR},
+      </if>
+      <if test="tlofslope != null">
+        tlofslope = #{tlofslope,jdbcType=VARCHAR},
+      </if>
+      <if test="tloffacetype != null">
+        tloffacetype = #{tloffacetype,jdbcType=VARCHAR},
+      </if>
+      <if test="fato != null">
+        fato = #{fato,jdbcType=VARCHAR},
+      </if>
+      <if test="nofatosize != null">
+        nofatosize = #{nofatosize,jdbcType=VARCHAR},
+      </if>
+      <if test="nofatoslope != null">
+        nofatoslope = #{nofatoslope,jdbcType=VARCHAR},
+      </if>
+      <if test="nofatotype != null">
+        nofatotype = #{nofatotype,jdbcType=VARCHAR},
+      </if>
+      <if test="idennum != null">
+        idennum = #{idennum,jdbcType=VARCHAR},
+      </if>
+      <if test="fatoidennum != null">
+        fatoidennum = #{fatoidennum,jdbcType=VARCHAR},
+      </if>
+      <if test="fatotype != null">
+        fatotype = #{fatotype,jdbcType=VARCHAR},
+      </if>
+      <if test="fatolength != null">
+        fatolength = #{fatolength,jdbcType=VARCHAR},
+      </if>
+      <if test="fatowidth != null">
+        fatowidth = #{fatowidth,jdbcType=VARCHAR},
+      </if>
+      <if test="fatoslope != null">
+        fatoslope = #{fatoslope,jdbcType=VARCHAR},
+      </if>
+      <if test="flightrule2 != null">
+        flightrule2 = #{flightrule2,jdbcType=VARCHAR},
+      </if>
+      <if test="runwaynumber2 != null">
+        runwaynumber2 = #{runwaynumber2,jdbcType=VARCHAR},
+      </if>
+      <if test="hydrologic != null">
+        hydrologic = #{hydrologic,jdbcType=VARCHAR},
+      </if>
+      <if test="benchc != null">
+        benchc = #{benchc,jdbcType=VARCHAR},
+      </if>
+      <if test="biggestair != null">
+        biggestair = #{biggestair,jdbcType=VARCHAR},
+      </if>
+      <if test="context != null">
+        context = #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caac != null">
+        caac = #{caac,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="altitude != null">
+        altitude = #{altitude,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cloud.shopping.domain.CloudCrawlerAirport">
+    <!--@mbg.generated-->
+    update cloud_crawler_airport
+    set `source` = #{source,jdbcType=VARCHAR},
+      iatacode = #{iatacode,jdbcType=VARCHAR},
+      icaocode = #{icaocode,jdbcType=VARCHAR},
+      airportname = #{airportname,jdbcType=VARCHAR},
+      airportalias = #{airportalias,jdbcType=VARCHAR},
+      airportenname = #{airportenname,jdbcType=VARCHAR},
+      airportpinyin = #{airportpinyin,jdbcType=VARCHAR},
+      airportpinyinshort = #{airportpinyinshort,jdbcType=VARCHAR},
+      citycode = #{citycode,jdbcType=VARCHAR},
+      cityname = #{cityname,jdbcType=VARCHAR},
+      cityenname = #{cityenname,jdbcType=VARCHAR},
+      citypinyin = #{citypinyin,jdbcType=VARCHAR},
+      citypinyinshort = #{citypinyinshort,jdbcType=VARCHAR},
+      provincename = #{provincename,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      countryname = #{countryname,jdbcType=VARCHAR},
+      countrycode = #{countrycode,jdbcType=VARCHAR},
+      regionname = #{regionname,jdbcType=VARCHAR},
+      dstarea = #{dstarea,jdbcType=VARCHAR},
+      utcoffsethours = #{utcoffsethours,jdbcType=VARCHAR},
+      timezoneregionname = #{timezoneregionname,jdbcType=VARCHAR},
+      timezoneisuse = #{timezoneisuse,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      iscivil = #{iscivil,jdbcType=VARCHAR},
+      auditstatus = #{auditstatus,jdbcType=INTEGER},
+      iconurl = #{iconurl,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=VARCHAR},
+      passreason = #{passreason,jdbcType=VARCHAR},
+      airporttype = #{airporttype,jdbcType=VARCHAR},
+      airportmanagename = #{airportmanagename,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      cityrelation = #{cityrelation,jdbcType=VARCHAR},
+      boolspacilairp = #{boolspacilairp,jdbcType=VARCHAR},
+      airportnature = #{airportnature,jdbcType=VARCHAR},
+      aitportland = #{aitportland,jdbcType=VARCHAR},
+      aitportelevation = #{aitportelevation,jdbcType=VARCHAR},
+      referencetemperature = #{referencetemperature,jdbcType=VARCHAR},
+      firelv = #{firelv,jdbcType=VARCHAR},
+      rescuelv = #{rescuelv,jdbcType=VARCHAR},
+      lightsys = #{lightsys,jdbcType=VARCHAR},
+      floolarea = #{floolarea,jdbcType=VARCHAR},
+      cargoarea = #{cargoarea,jdbcType=VARCHAR},
+      parkingarea = #{parkingarea,jdbcType=VARCHAR},
+      smoothnum = #{smoothnum,jdbcType=VARCHAR},
+      reservationnum = #{reservationnum,jdbcType=VARCHAR},
+      airfieldindicator = #{airfieldindicator,jdbcType=VARCHAR},
+      airfieldarea = #{airfieldarea,jdbcType=VARCHAR},
+      runwaysize = #{runwaysize,jdbcType=VARCHAR},
+      runwaynum = #{runwaynum,jdbcType=VARCHAR},
+      runweycategory = #{runweycategory,jdbcType=VARCHAR},
+      runpcn = #{runpcn,jdbcType=VARCHAR},
+      runwaytype = #{runwaytype,jdbcType=VARCHAR},
+      mostmodel = #{mostmodel,jdbcType=VARCHAR},
+      travellernum = #{travellernum,jdbcType=VARCHAR},
+      goodsnum = #{goodsnum,jdbcType=VARCHAR},
+      takeoffnum = #{takeoffnum,jdbcType=VARCHAR},
+      airsrcurl = #{airsrcurl,jdbcType=VARCHAR},
+      airportlv = #{airportlv,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      benchmarkxy = #{benchmarkxy,jdbcType=VARCHAR},
+      airoperatorname = #{airoperatorname,jdbcType=VARCHAR},
+      airownername = #{airownername,jdbcType=VARCHAR},
+      runwaynumber = #{runwaynumber,jdbcType=VARCHAR},
+      runwaylength = #{runwaylength,jdbcType=VARCHAR},
+      runwaywidth = #{runwaywidth,jdbcType=VARCHAR},
+      runwayslope = #{runwayslope,jdbcType=VARCHAR},
+      surfacetype = #{surfacetype,jdbcType=VARCHAR},
+      flightrule = #{flightrule,jdbcType=VARCHAR},
+      flightrule1 = #{flightrule1,jdbcType=VARCHAR},
+      tlofhigh = #{tlofhigh,jdbcType=VARCHAR},
+      tlofsize = #{tlofsize,jdbcType=VARCHAR},
+      tlofslope = #{tlofslope,jdbcType=VARCHAR},
+      tloffacetype = #{tloffacetype,jdbcType=VARCHAR},
+      fato = #{fato,jdbcType=VARCHAR},
+      nofatosize = #{nofatosize,jdbcType=VARCHAR},
+      nofatoslope = #{nofatoslope,jdbcType=VARCHAR},
+      nofatotype = #{nofatotype,jdbcType=VARCHAR},
+      idennum = #{idennum,jdbcType=VARCHAR},
+      fatoidennum = #{fatoidennum,jdbcType=VARCHAR},
+      fatotype = #{fatotype,jdbcType=VARCHAR},
+      fatolength = #{fatolength,jdbcType=VARCHAR},
+      fatowidth = #{fatowidth,jdbcType=VARCHAR},
+      fatoslope = #{fatoslope,jdbcType=VARCHAR},
+      flightrule2 = #{flightrule2,jdbcType=VARCHAR},
+      runwaynumber2 = #{runwaynumber2,jdbcType=VARCHAR},
+      hydrologic = #{hydrologic,jdbcType=VARCHAR},
+      benchc = #{benchc,jdbcType=VARCHAR},
+      biggestair = #{biggestair,jdbcType=VARCHAR},
+      context = #{context,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      caac = #{caac,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      altitude = #{altitude,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=SMALLINT},
+      `level` = #{level,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
