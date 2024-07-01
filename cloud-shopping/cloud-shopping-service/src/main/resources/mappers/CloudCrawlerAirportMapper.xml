@@ -29,7 +29,7 @@
     <result column="timezoneisuse" jdbcType="VARCHAR" property="timezoneisuse" />
     <result column="longitude" jdbcType="VARCHAR" property="longitude" />
     <result column="latitude" jdbcType="VARCHAR" property="latitude" />
-    <result column="iscivil" jdbcType="VARCHAR" property="iscivil" />
+    <result column="iscivil" jdbcType="BOOLEAN" property="iscivil" />
     <result column="auditstatus" jdbcType="INTEGER" property="auditstatus" />
     <result column="iconurl" jdbcType="VARCHAR" property="iconurl" />
     <result column="sort" jdbcType="VARCHAR" property="sort" />
@@ -121,12 +121,12 @@
     flightrule2, runwaynumber2, hydrologic, benchc, biggestair, context, picture, createtime, 
     updatetime, caac, `name`, altitude, `type`, `level`
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByIsCivil" parameterType="java.lang.String" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select 
     <include refid="Base_Column_List" />
     from cloud_crawler_airport
-    where id = #{id,jdbcType=BIGINT}
+    where iscivil = #{iscivil,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->

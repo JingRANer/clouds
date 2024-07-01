@@ -1,5 +1,6 @@
 package com.cloud.shopping.iface;
 
+import com.cloud.common.SingleResponse;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 
 import java.util.List;
@@ -13,5 +14,8 @@ import java.util.Map;
  **/
 
 public interface ElasticSearchService {
-    List<Map<String, Object>> list(String indexName, SearchSourceBuilder sourceBuilder) ;
+    List<Map<String, Object>> list(String indexName, SearchSourceBuilder sourceBuilder);
+
+
+    SingleResponse update(String indexName, Object obj);
 }

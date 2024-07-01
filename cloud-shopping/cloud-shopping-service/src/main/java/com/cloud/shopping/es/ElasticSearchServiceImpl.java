@@ -2,14 +2,20 @@ package com.cloud.shopping.es;
 
 //import com.cloud.shopping.util.ElasticSearchConfig;
 
+import com.alibaba.fastjson.JSON;
+import com.cloud.common.SingleResponse;
 import com.cloud.shopping.iface.ElasticSearchService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
 import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
+import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.stereotype.Service;
@@ -99,6 +105,25 @@ public class ElasticSearchServiceImpl implements ElasticSearchService {
             return data;
         } catch (Exception e) {
 
+        }
+        return null;
+    }
+
+    @Override
+    public SingleResponse update(String indexName, Object obj) {
+        try {
+            IndexRequest request = new IndexRequest();
+            request.index(indexName);
+
+
+            //向ES中插入数据，必须将数据格式转换为JSON
+            ObjectMapper objectMapper = new ObjectMapper();
+            request.source(objectMapper.writeValueAsString(obj), XContentType.JSON);
+            IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
+            System.out.println(JSON.toJSONString(indexResponse));
+
+        } catch (IOException e) {
+            log.error("update", e);
         }
         return null;
     }

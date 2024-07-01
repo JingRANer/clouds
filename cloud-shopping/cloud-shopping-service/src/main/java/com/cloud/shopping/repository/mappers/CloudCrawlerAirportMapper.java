@@ -3,6 +3,8 @@ package com.cloud.shopping.repository.mappers;
 import com.cloud.shopping.domain.CloudCrawlerAirport;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface CloudCrawlerAirportMapper {
     /**
@@ -31,7 +33,7 @@ public interface CloudCrawlerAirportMapper {
      * @param id primary key
      * @return object by primary key
      */
-    CloudCrawlerAirport selectByPrimaryKey(Long id);
+    List<CloudCrawlerAirport> selectByIsCivil(String iscivil);
 
     /**
      * update record selective

@@ -16,23 +16,22 @@ import java.util.Date;
  **/
 
 @Data
-@Document(indexName = "cloud_city_airport_index")
 public class AirportCacheBean implements Comparable<AirportCacheBean>, Serializable {
 
     private static final long serialVersionUID = 1664346695887534912L;
     private Integer id;
 
-    @JSONField(name = "IATACODE")
+    @JSONField(name = "IATA_CODE")
     private String iatacode;
     @JSONField(name = "ICAOCODE")
     private String icaocode;
-    @JSONField(name = "AIRPORTNAME")
+    @JSONField(name = "AIRPORT_NAME")
     private String airportname;
-    @JSONField(name = "AIRPORTALIAS")
+    @JSONField(name = "AIRPORT_ALIAS")
     private String airportalias;
     @JSONField(name = "AIRPORTENNAME")
     private String airportenname;
-    @JSONField(name = "AIRPORTPINYIN")
+    @JSONField(name = "AIRPORT_PINYIN")
     private String airportpinyin;
     @JSONField(name = "AIRPORTPINYINSHORT")
     private String airportpinyinshort;
@@ -69,7 +68,7 @@ public class AirportCacheBean implements Comparable<AirportCacheBean>, Serializa
     @JSONField(name = "LATITUDE")
     private String latitude;
     @JSONField(name = "ISCIVIL")
-    private String iscivil;
+    private Boolean iscivil;
     @JSONField(name = "ISUSE")
     private Short isuse;
     @JSONField(name = "ICONURL")
