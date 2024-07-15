@@ -1,8 +1,9 @@
-package com.cloud.shopping.es;
+package com.cloud.shopping.service;
 
 //import com.cloud.shopping.util.ElasticSearchConfig;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.cloud.common.SingleResponse;
 import com.cloud.shopping.iface.ElasticSearchService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,7 +37,7 @@ import java.util.Map;
 
 @Slf4j
 @Service("elasticSearchService")
-public class ElasticSearchServiceImpl implements ElasticSearchService {
+public class ElasticSearchServiceImpl<T> implements ElasticSearchService {
     @Resource(name = "restHighLevelClient")
     private RestHighLevelClient client;
 
@@ -90,17 +91,19 @@ public class ElasticSearchServiceImpl implements ElasticSearchService {
     /**
      * 查询数据集
      */
-    public List<Map<String, Object>> list(String indexName, SearchSourceBuilder sourceBuilder) {
+    public List<T> query(String indexName, SearchSourceBuilder sourceBuilder) {
         SearchRequest searchRequest = new SearchRequest();
         searchRequest.source(sourceBuilder);
         try {
             SearchResponse searchResp = client.search(searchRequest, options);
-            List<Map<String, Object>> data = new ArrayList<>();
+            List<T> data = new ArrayList<>();
             SearchHit[] searchHitArr = searchResp.getHits().getHits();
             for (SearchHit searchHit : searchHitArr) {
                 Map<String, Object> temp = searchHit.getSourceAsMap();
+                T obj = JSON.parseObject(JSON.toJSONString(temp), new TypeReference<T>() {
+                }.getType());
                 temp.put("id", searchHit.getId());
-                data.add(temp);
+                data.add(obj);
             }
             return data;
         } catch (Exception e) {
@@ -123,6 +126,7 @@ public class ElasticSearchServiceImpl implements ElasticSearchService {
             System.out.println(JSON.toJSONString(indexResponse));
 
         } catch (IOException e) {
+            System.out.println(JSON.toJSONString(obj));
             log.error("update", e);
         }
         return null;

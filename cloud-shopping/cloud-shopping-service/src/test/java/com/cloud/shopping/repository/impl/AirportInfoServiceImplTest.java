@@ -3,13 +3,11 @@ package com.cloud.shopping.repository.impl;
 import com.cloud.common.SingleResponse;
 import com.cloud.shopping.dao.AirportCacheBean;
 import com.cloud.shopping.dao.ESDaoTest;
-import com.cloud.shopping.repository.iface.AirportInfoService;
+import com.cloud.shopping.iface.AirportInfoService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class AirportInfoServiceImplTest extends ESDaoTest {
     @Autowired

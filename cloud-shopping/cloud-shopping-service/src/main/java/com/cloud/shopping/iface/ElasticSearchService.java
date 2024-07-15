@@ -13,8 +13,8 @@ import java.util.Map;
  * @create: 2024-05-19 18:47
  **/
 
-public interface ElasticSearchService {
-    List<Map<String, Object>> list(String indexName, SearchSourceBuilder sourceBuilder);
+public interface ElasticSearchService<T> {
+    List<T> query(String indexName, SearchSourceBuilder sourceBuilder);
 
 
     SingleResponse update(String indexName, Object obj);

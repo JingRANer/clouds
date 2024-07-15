@@ -1,4 +1,4 @@
-package com.cloud.shopping.repository.iface;
+package com.cloud.shopping.iface;
 
 import com.cloud.common.SingleResponse;
 import com.cloud.shopping.dao.AirportCacheBean;

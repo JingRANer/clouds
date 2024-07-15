@@ -1,25 +1,19 @@
-package com.cloud.shopping.dao;
+package com.cloud.shopping.dto;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
-import org.apache.commons.lang.StringUtils;
-import org.elasticsearch.common.geo.GeoPoint;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author: jingran
  * @Desc:
- * @ClassName: AirportCacheBean
- * @create: 2024-05-19 18:02
+ * @ClassName: Airport
+ * @create: 2024-07-07 16:55
  **/
 
 @Data
-public class AirportCacheBean implements Comparable<AirportCacheBean>, Serializable {
-
-    private static final long serialVersionUID = 1664346695887534912L;
-    private Integer id;
+public class Airport {
 
     @JSONField(name = "IATA_CODE")
     private String iatacode;
@@ -80,55 +74,6 @@ public class AirportCacheBean implements Comparable<AirportCacheBean>, Serializa
     @JSONField(name = "CREATETIME")
     private Date createtime;
 
-    private String countrypinyin;
-    private String provincenamepinyin;
-
-    private GeoPoint location;
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        AirportCacheBean that = (AirportCacheBean) o;
-
-        if (iatacode != null ? !iatacode.equals(that.iatacode) : that.iatacode != null) {
-            return false;
-        }
-        return sort != null ? sort.equals(that.sort) : that.sort == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = iatacode != null ? iatacode.hashCode() : 0;
-        result = 31 * result + (sort != null ? sort.hashCode() : 0);
-        return result;
-    }
-
-    @Override
-    public int compareTo(AirportCacheBean o) {
-        if (StringUtils.isNotBlank(this.sort)) {
-            if (StringUtils.isNotBlank(o.sort)) {
-                if (Integer.parseInt(this.sort) > Integer.parseInt(o.sort)) {
-                    return 1;
-                } else if (Integer.parseInt(this.sort) < Integer.parseInt(o.sort)) {
-                    return -1;
-                } else {
-                    return 0;
-                }
-            } else {//将null放在后面
-                return -1;
-            }
-        } else {
-            if (StringUtils.isBlank(o.sort)) {
-                return 0;
-            } else {
-                return 1;
-            }
-        }
-    }
+    @JSONField(name = "ICONURL2")
+    private String iconurl2;
 }

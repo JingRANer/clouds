@@ -51,7 +51,6 @@ public class SearchTicketCacheBean {
     private String fuelTax;
     private String childFuelTax;
     private String infantFuelTax;
-    private String context;
     private String regNo;
     private boolean hasSell;
     private Map<String, String> seatMap;
@@ -75,5 +74,4 @@ public class SearchTicketCacheBean {
     private String destCityCode;
     private String updateTime;
     private String expireTime;
-    private String segmentsContext;
 }

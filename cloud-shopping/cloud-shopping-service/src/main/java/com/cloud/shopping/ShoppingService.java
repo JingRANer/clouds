@@ -1,7 +1,12 @@
 package com.cloud.shopping;
 
+import com.cloud.common.SingleResponse;
+import com.cloud.shopping.dao.SearchRoute;
+import com.cloud.shopping.dto.SearchTicketCacheBean;
 import com.cloud.shopping.dto.req.UpdateCacheReq;
 import com.cloud.shopping.dto.resp.SearchTicketsByProxyResp;
+
+import java.util.List;
 
 /**
  * @ClassName : ShoppingService
@@ -23,5 +28,7 @@ public interface ShoppingService {
 
 //    TicketCacheUpdateBatchResp getShoppingListCache(TicketCacheUpdateBatchReq req);
 
+
+    SingleResponse<List<SearchTicketCacheBean>> searchFlight(SearchRoute searchRoute);
 
 }

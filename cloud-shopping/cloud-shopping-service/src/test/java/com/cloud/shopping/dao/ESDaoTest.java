@@ -2,10 +2,8 @@ package com.cloud.shopping.dao;
 
 import com.alibaba.fastjson.JSON;
 import com.cloud.shopping.iface.ElasticSearchService;
-import com.cloud.shopping.repository.iface.AirportInfoService;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.index.query.TermQueryBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -56,13 +54,13 @@ public class ESDaoTest {
         searchSourceBuilder.query(QueryBuilders.matchQuery("iata_code", "PEK")); // 添加一个 match_all 查询到 searchSourceBuilder 。
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
         BoolQueryBuilder queryBuilder = QueryBuilders.boolQuery();
-        queryBuilder.must(QueryBuilders.termQuery("iata_code", "PEK"));
+        queryBuilder.must(QueryBuilders.termQuery("iatacode", "PEK"));
         sourceBuilder.query(queryBuilder);
         // 分页查询
         sourceBuilder.from(0);
         sourceBuilder.size(1);
 
-        List<Map<String, Object>> cloudCityAirportIndex = elasticSearchService.list("cloud_aircity_index", searchSourceBuilder);
+        List<Map<String, Object>> cloudCityAirportIndex = elasticSearchService.query("cloud_aircity_index", searchSourceBuilder);
         System.out.println(JSON.toJSONString(cloudCityAirportIndex));
     }
 
