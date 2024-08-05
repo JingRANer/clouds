@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.order.mapper.CloudAirUserMapper">
+  <resultMap id="BaseResultMap" type="com.cloud.domain.CloudAirUser">
+    <!--@mbg.generated-->
+    <!--@Table cloud_air_user-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="passenger_id" jdbcType="VARCHAR" property="passengerId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="cert_type" jdbcType="INTEGER" property="certType" />
+    <result column="cert_no" jdbcType="VARCHAR" property="certNo" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="nationality" jdbcType="VARCHAR" property="nationality" />
+    <result column="cert_expiry_date" jdbcType="VARCHAR" property="certExpiryDate" />
+    <result column="ume_user_id" jdbcType="VARCHAR" property="umeUserId" />
+    <result column="cn_sur_name" jdbcType="VARCHAR" property="cnSurName" />
+    <result column="cn_given_name" jdbcType="VARCHAR" property="cnGivenName" />
+    <result column="sur_name" jdbcType="VARCHAR" property="surName" />
+    <result column="given_name" jdbcType="VARCHAR" property="givenName" />
+    <result column="authorize_nationality_code" jdbcType="VARCHAR" property="authorizeNationalityCode" />
+    <result column="name_code" jdbcType="VARCHAR" property="nameCode" />
+    <result column="cert_no_code" jdbcType="VARCHAR" property="certNoCode" />
+    <result column="mobile_code" jdbcType="VARCHAR" property="mobileCode" />
+    <result column="cn_sur_name_code" jdbcType="VARCHAR" property="cnSurNameCode" />
+    <result column="cn_given_name_code" jdbcType="VARCHAR" property="cnGivenNameCode" />
+    <result column="sur_name_code" jdbcType="VARCHAR" property="surNameCode" />
+    <result column="given_name_code" jdbcType="VARCHAR" property="givenNameCode" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, passenger_id, `name`, user_id, gender, `type`, cert_type, cert_no, age, birthday, 
+    mobile, create_time, update_time, `password`, nationality, cert_expiry_date, ume_user_id, 
+    cn_sur_name, cn_given_name, sur_name, given_name, authorize_nationality_code, name_code, 
+    cert_no_code, mobile_code, cn_sur_name_code, cn_given_name_code, sur_name_code, given_name_code, 
+    `role`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cloud_air_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from cloud_air_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cloud.domain.CloudAirUser" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_air_user (passenger_id, `name`, user_id, 
+      gender, `type`, cert_type, 
+      cert_no, age, birthday, 
+      mobile, create_time, update_time, 
+      `password`, nationality, cert_expiry_date, 
+      ume_user_id, cn_sur_name, cn_given_name, 
+      sur_name, given_name, authorize_nationality_code, 
+      name_code, cert_no_code, mobile_code, 
+      cn_sur_name_code, cn_given_name_code, sur_name_code, 
+      given_name_code, `role`)
+    values (#{passengerId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{certType,jdbcType=INTEGER}, 
+      #{certNo,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{birthday,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{password,jdbcType=VARCHAR}, #{nationality,jdbcType=VARCHAR}, #{certExpiryDate,jdbcType=VARCHAR}, 
+      #{umeUserId,jdbcType=VARCHAR}, #{cnSurName,jdbcType=VARCHAR}, #{cnGivenName,jdbcType=VARCHAR}, 
+      #{surName,jdbcType=VARCHAR}, #{givenName,jdbcType=VARCHAR}, #{authorizeNationalityCode,jdbcType=VARCHAR}, 
+      #{nameCode,jdbcType=VARCHAR}, #{certNoCode,jdbcType=VARCHAR}, #{mobileCode,jdbcType=VARCHAR}, 
+      #{cnSurNameCode,jdbcType=VARCHAR}, #{cnGivenNameCode,jdbcType=VARCHAR}, #{surNameCode,jdbcType=VARCHAR}, 
+      #{givenNameCode,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cloud.domain.CloudAirUser" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_air_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="passengerId != null">
+        passenger_id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="certType != null">
+        cert_type,
+      </if>
+      <if test="certNo != null">
+        cert_no,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="nationality != null">
+        nationality,
+      </if>
+      <if test="certExpiryDate != null">
+        cert_expiry_date,
+      </if>
+      <if test="umeUserId != null">
+        ume_user_id,
+      </if>
+      <if test="cnSurName != null">
+        cn_sur_name,
+      </if>
+      <if test="cnGivenName != null">
+        cn_given_name,
+      </if>
+      <if test="surName != null">
+        sur_name,
+      </if>
+      <if test="givenName != null">
+        given_name,
+      </if>
+      <if test="authorizeNationalityCode != null">
+        authorize_nationality_code,
+      </if>
+      <if test="nameCode != null">
+        name_code,
+      </if>
+      <if test="certNoCode != null">
+        cert_no_code,
+      </if>
+      <if test="mobileCode != null">
+        mobile_code,
+      </if>
+      <if test="cnSurNameCode != null">
+        cn_sur_name_code,
+      </if>
+      <if test="cnGivenNameCode != null">
+        cn_given_name_code,
+      </if>
+      <if test="surNameCode != null">
+        sur_name_code,
+      </if>
+      <if test="givenNameCode != null">
+        given_name_code,
+      </if>
+      <if test="role != null">
+        `role`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="passengerId != null">
+        #{passengerId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null">
+        #{certType,jdbcType=INTEGER},
+      </if>
+      <if test="certNo != null">
+        #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null">
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="certExpiryDate != null">
+        #{certExpiryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="umeUserId != null">
+        #{umeUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="cnSurName != null">
+        #{cnSurName,jdbcType=VARCHAR},
+      </if>
+      <if test="cnGivenName != null">
+        #{cnGivenName,jdbcType=VARCHAR},
+      </if>
+      <if test="surName != null">
+        #{surName,jdbcType=VARCHAR},
+      </if>
+      <if test="givenName != null">
+        #{givenName,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizeNationalityCode != null">
+        #{authorizeNationalityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="nameCode != null">
+        #{nameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="certNoCode != null">
+        #{certNoCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileCode != null">
+        #{mobileCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cnSurNameCode != null">
+        #{cnSurNameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cnGivenNameCode != null">
+        #{cnGivenNameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="surNameCode != null">
+        #{surNameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="givenNameCode != null">
+        #{givenNameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.domain.CloudAirUser">
+    <!--@mbg.generated-->
+    update cloud_air_user
+    <set>
+      <if test="passengerId != null">
+        passenger_id = #{passengerId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null">
+        cert_type = #{certType,jdbcType=INTEGER},
+      </if>
+      <if test="certNo != null">
+        cert_no = #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null">
+        nationality = #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="certExpiryDate != null">
+        cert_expiry_date = #{certExpiryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="umeUserId != null">
+        ume_user_id = #{umeUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="cnSurName != null">
+        cn_sur_name = #{cnSurName,jdbcType=VARCHAR},
+      </if>
+      <if test="cnGivenName != null">
+        cn_given_name = #{cnGivenName,jdbcType=VARCHAR},
+      </if>
+      <if test="surName != null">
+        sur_name = #{surName,jdbcType=VARCHAR},
+      </if>
+      <if test="givenName != null">
+        given_name = #{givenName,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizeNationalityCode != null">
+        authorize_nationality_code = #{authorizeNationalityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="nameCode != null">
+        name_code = #{nameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="certNoCode != null">
+        cert_no_code = #{certNoCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileCode != null">
+        mobile_code = #{mobileCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cnSurNameCode != null">
+        cn_sur_name_code = #{cnSurNameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cnGivenNameCode != null">
+        cn_given_name_code = #{cnGivenNameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="surNameCode != null">
+        sur_name_code = #{surNameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="givenNameCode != null">
+        given_name_code = #{givenNameCode,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        `role` = #{role,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cloud.domain.CloudAirUser">
+    <!--@mbg.generated-->
+    update cloud_air_user
+    set passenger_id = #{passengerId,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=VARCHAR},
+      cert_type = #{certType,jdbcType=INTEGER},
+      cert_no = #{certNo,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      `password` = #{password,jdbcType=VARCHAR},
+      nationality = #{nationality,jdbcType=VARCHAR},
+      cert_expiry_date = #{certExpiryDate,jdbcType=VARCHAR},
+      ume_user_id = #{umeUserId,jdbcType=VARCHAR},
+      cn_sur_name = #{cnSurName,jdbcType=VARCHAR},
+      cn_given_name = #{cnGivenName,jdbcType=VARCHAR},
+      sur_name = #{surName,jdbcType=VARCHAR},
+      given_name = #{givenName,jdbcType=VARCHAR},
+      authorize_nationality_code = #{authorizeNationalityCode,jdbcType=VARCHAR},
+      name_code = #{nameCode,jdbcType=VARCHAR},
+      cert_no_code = #{certNoCode,jdbcType=VARCHAR},
+      mobile_code = #{mobileCode,jdbcType=VARCHAR},
+      cn_sur_name_code = #{cnSurNameCode,jdbcType=VARCHAR},
+      cn_given_name_code = #{cnGivenNameCode,jdbcType=VARCHAR},
+      sur_name_code = #{surNameCode,jdbcType=VARCHAR},
+      given_name_code = #{givenNameCode,jdbcType=VARCHAR},
+      `role` = #{role,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

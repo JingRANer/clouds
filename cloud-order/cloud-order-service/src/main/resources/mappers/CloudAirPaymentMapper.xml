@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.order.mapper.CloudAirPaymentMapper">
+  <resultMap id="BaseResultMap" type="com.cloud.domain.CloudAirPayment">
+    <!--@mbg.generated-->
+    <!--@Table cloud_air_payment-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="payment_id" jdbcType="VARCHAR" property="paymentId" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="plugin_id" jdbcType="INTEGER" property="pluginId" />
+    <result column="serial_number" jdbcType="VARCHAR" property="serialNumber" />
+    <result column="tenant_order_id" jdbcType="VARCHAR" property="tenantOrderId" />
+    <result column="account_id" jdbcType="VARCHAR" property="accountId" />
+    <result column="airline_pay_id" jdbcType="VARCHAR" property="airlinePayId" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="confirm_time" jdbcType="TIMESTAMP" property="confirmTime" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="sign" jdbcType="VARCHAR" property="sign" />
+    <result column="orderno" jdbcType="VARCHAR" property="orderno" />
+    <result column="ori_payment_id" jdbcType="VARCHAR" property="oriPaymentId" />
+    <result column="err_code" jdbcType="INTEGER" property="errCode" />
+    <result column="err_msg" jdbcType="VARCHAR" property="errMsg" />
+    <result column="actual_amount" jdbcType="DECIMAL" property="actualAmount" />
+    <result column="pay_type" jdbcType="VARCHAR" property="payType" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, payment_id, `type`, plugin_id, serial_number, tenant_order_id, account_id, airline_pay_id, 
+    amount, create_time, confirm_time, `status`, sign, orderno, ori_payment_id, err_code, 
+    err_msg, actual_amount, pay_type, user_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cloud_air_payment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from cloud_air_payment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cloud.domain.CloudAirPayment" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_air_payment (payment_id, `type`, plugin_id, 
+      serial_number, tenant_order_id, account_id, 
+      airline_pay_id, amount, create_time, 
+      confirm_time, `status`, sign, 
+      orderno, ori_payment_id, err_code, 
+      err_msg, actual_amount, pay_type, 
+      user_id)
+    values (#{paymentId,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{pluginId,jdbcType=INTEGER}, 
+      #{serialNumber,jdbcType=VARCHAR}, #{tenantOrderId,jdbcType=VARCHAR}, #{accountId,jdbcType=VARCHAR}, 
+      #{airlinePayId,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{confirmTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, #{sign,jdbcType=VARCHAR}, 
+      #{orderno,jdbcType=VARCHAR}, #{oriPaymentId,jdbcType=VARCHAR}, #{errCode,jdbcType=INTEGER}, 
+      #{errMsg,jdbcType=VARCHAR}, #{actualAmount,jdbcType=DECIMAL}, #{payType,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cloud.domain.CloudAirPayment" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_air_payment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paymentId != null">
+        payment_id,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="pluginId != null">
+        plugin_id,
+      </if>
+      <if test="serialNumber != null">
+        serial_number,
+      </if>
+      <if test="tenantOrderId != null">
+        tenant_order_id,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="airlinePayId != null">
+        airline_pay_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="confirmTime != null">
+        confirm_time,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="sign != null">
+        sign,
+      </if>
+      <if test="orderno != null">
+        orderno,
+      </if>
+      <if test="oriPaymentId != null">
+        ori_payment_id,
+      </if>
+      <if test="errCode != null">
+        err_code,
+      </if>
+      <if test="errMsg != null">
+        err_msg,
+      </if>
+      <if test="actualAmount != null">
+        actual_amount,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paymentId != null">
+        #{paymentId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="pluginId != null">
+        #{pluginId,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null">
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantOrderId != null">
+        #{tenantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="airlinePayId != null">
+        #{airlinePayId,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmTime != null">
+        #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null">
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="orderno != null">
+        #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="oriPaymentId != null">
+        #{oriPaymentId,jdbcType=VARCHAR},
+      </if>
+      <if test="errCode != null">
+        #{errCode,jdbcType=INTEGER},
+      </if>
+      <if test="errMsg != null">
+        #{errMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="actualAmount != null">
+        #{actualAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.domain.CloudAirPayment">
+    <!--@mbg.generated-->
+    update cloud_air_payment
+    <set>
+      <if test="paymentId != null">
+        payment_id = #{paymentId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="pluginId != null">
+        plugin_id = #{pluginId,jdbcType=INTEGER},
+      </if>
+      <if test="serialNumber != null">
+        serial_number = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantOrderId != null">
+        tenant_order_id = #{tenantOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="airlinePayId != null">
+        airline_pay_id = #{airlinePayId,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmTime != null">
+        confirm_time = #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null">
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="orderno != null">
+        orderno = #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="oriPaymentId != null">
+        ori_payment_id = #{oriPaymentId,jdbcType=VARCHAR},
+      </if>
+      <if test="errCode != null">
+        err_code = #{errCode,jdbcType=INTEGER},
+      </if>
+      <if test="errMsg != null">
+        err_msg = #{errMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="actualAmount != null">
+        actual_amount = #{actualAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cloud.domain.CloudAirPayment">
+    <!--@mbg.generated-->
+    update cloud_air_payment
+    set payment_id = #{paymentId,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=VARCHAR},
+      plugin_id = #{pluginId,jdbcType=INTEGER},
+      serial_number = #{serialNumber,jdbcType=VARCHAR},
+      tenant_order_id = #{tenantOrderId,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=VARCHAR},
+      airline_pay_id = #{airlinePayId,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      confirm_time = #{confirmTime,jdbcType=TIMESTAMP},
+      `status` = #{status,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR},
+      orderno = #{orderno,jdbcType=VARCHAR},
+      ori_payment_id = #{oriPaymentId,jdbcType=VARCHAR},
+      err_code = #{errCode,jdbcType=INTEGER},
+      err_msg = #{errMsg,jdbcType=VARCHAR},
+      actual_amount = #{actualAmount,jdbcType=DECIMAL},
+      pay_type = #{payType,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.order.mapper.CloudAirServiceMapper">
+  <resultMap id="BaseResultMap" type="com.cloud.domain.CloudAirService">
+    <!--@mbg.generated-->
+    <!--@Table cloud_air_service-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="service_type" jdbcType="INTEGER" property="serviceType" />
+    <result column="service_passenger_type" jdbcType="VARCHAR" property="servicePassengerType" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="commission" jdbcType="DECIMAL" property="commission" />
+    <result column="charge" jdbcType="DECIMAL" property="charge" />
+    <result column="fuel_tax" jdbcType="DECIMAL" property="fuelTax" />
+    <result column="airport_tax" jdbcType="DECIMAL" property="airportTax" />
+    <result column="tkt_no" jdbcType="VARCHAR" property="tktNo" />
+    <result column="ori_tkt_no" jdbcType="VARCHAR" property="oriTktNo" />
+    <result column="service_status" jdbcType="VARCHAR" property="serviceStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="issue_time" jdbcType="TIMESTAMP" property="issueTime" />
+    <result column="service_remark" jdbcType="VARCHAR" property="serviceRemark" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="passenger_id" jdbcType="VARCHAR" property="passengerId" />
+    <result column="price_type" jdbcType="VARCHAR" property="priceType" />
+    <result column="ori_service_status" jdbcType="VARCHAR" property="oriServiceStatus" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="original_price" jdbcType="DECIMAL" property="originalPrice" />
+    <result column="floating_product" jdbcType="INTEGER" property="floatingProduct" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, service_id, service_type, service_passenger_type, price, commission, charge, 
+    fuel_tax, airport_tax, tkt_no, ori_tkt_no, service_status, create_time, update_time, 
+    issue_time, service_remark, order_no, passenger_id, price_type, ori_service_status, 
+    user_id, original_price, floating_product
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cloud_air_service
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from cloud_air_service
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cloud.domain.CloudAirService" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_air_service (service_id, service_type, service_passenger_type, 
+      price, commission, charge, 
+      fuel_tax, airport_tax, tkt_no, 
+      ori_tkt_no, service_status, create_time, 
+      update_time, issue_time, service_remark, 
+      order_no, passenger_id, price_type, 
+      ori_service_status, user_id, original_price, 
+      floating_product)
+    values (#{serviceId,jdbcType=VARCHAR}, #{serviceType,jdbcType=INTEGER}, #{servicePassengerType,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{commission,jdbcType=DECIMAL}, #{charge,jdbcType=DECIMAL}, 
+      #{fuelTax,jdbcType=DECIMAL}, #{airportTax,jdbcType=DECIMAL}, #{tktNo,jdbcType=VARCHAR}, 
+      #{oriTktNo,jdbcType=VARCHAR}, #{serviceStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{issueTime,jdbcType=TIMESTAMP}, #{serviceRemark,jdbcType=VARCHAR}, 
+      #{orderNo,jdbcType=VARCHAR}, #{passengerId,jdbcType=VARCHAR}, #{priceType,jdbcType=VARCHAR}, 
+      #{oriServiceStatus,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{originalPrice,jdbcType=DECIMAL}, 
+      #{floatingProduct,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cloud.domain.CloudAirService" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_air_service
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="serviceType != null">
+        service_type,
+      </if>
+      <if test="servicePassengerType != null">
+        service_passenger_type,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="commission != null">
+        commission,
+      </if>
+      <if test="charge != null">
+        charge,
+      </if>
+      <if test="fuelTax != null">
+        fuel_tax,
+      </if>
+      <if test="airportTax != null">
+        airport_tax,
+      </if>
+      <if test="tktNo != null">
+        tkt_no,
+      </if>
+      <if test="oriTktNo != null">
+        ori_tkt_no,
+      </if>
+      <if test="serviceStatus != null">
+        service_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="issueTime != null">
+        issue_time,
+      </if>
+      <if test="serviceRemark != null">
+        service_remark,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="passengerId != null">
+        passenger_id,
+      </if>
+      <if test="priceType != null">
+        price_type,
+      </if>
+      <if test="oriServiceStatus != null">
+        ori_service_status,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="originalPrice != null">
+        original_price,
+      </if>
+      <if test="floatingProduct != null">
+        floating_product,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null">
+        #{serviceType,jdbcType=INTEGER},
+      </if>
+      <if test="servicePassengerType != null">
+        #{servicePassengerType,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="commission != null">
+        #{commission,jdbcType=DECIMAL},
+      </if>
+      <if test="charge != null">
+        #{charge,jdbcType=DECIMAL},
+      </if>
+      <if test="fuelTax != null">
+        #{fuelTax,jdbcType=DECIMAL},
+      </if>
+      <if test="airportTax != null">
+        #{airportTax,jdbcType=DECIMAL},
+      </if>
+      <if test="tktNo != null">
+        #{tktNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oriTktNo != null">
+        #{oriTktNo,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceStatus != null">
+        #{serviceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="issueTime != null">
+        #{issueTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serviceRemark != null">
+        #{serviceRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerId != null">
+        #{passengerId,jdbcType=VARCHAR},
+      </if>
+      <if test="priceType != null">
+        #{priceType,jdbcType=VARCHAR},
+      </if>
+      <if test="oriServiceStatus != null">
+        #{oriServiceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="originalPrice != null">
+        #{originalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="floatingProduct != null">
+        #{floatingProduct,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.domain.CloudAirService">
+    <!--@mbg.generated-->
+    update cloud_air_service
+    <set>
+      <if test="serviceId != null">
+        service_id = #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null">
+        service_type = #{serviceType,jdbcType=INTEGER},
+      </if>
+      <if test="servicePassengerType != null">
+        service_passenger_type = #{servicePassengerType,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="commission != null">
+        commission = #{commission,jdbcType=DECIMAL},
+      </if>
+      <if test="charge != null">
+        charge = #{charge,jdbcType=DECIMAL},
+      </if>
+      <if test="fuelTax != null">
+        fuel_tax = #{fuelTax,jdbcType=DECIMAL},
+      </if>
+      <if test="airportTax != null">
+        airport_tax = #{airportTax,jdbcType=DECIMAL},
+      </if>
+      <if test="tktNo != null">
+        tkt_no = #{tktNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oriTktNo != null">
+        ori_tkt_no = #{oriTktNo,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceStatus != null">
+        service_status = #{serviceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="issueTime != null">
+        issue_time = #{issueTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serviceRemark != null">
+        service_remark = #{serviceRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerId != null">
+        passenger_id = #{passengerId,jdbcType=VARCHAR},
+      </if>
+      <if test="priceType != null">
+        price_type = #{priceType,jdbcType=VARCHAR},
+      </if>
+      <if test="oriServiceStatus != null">
+        ori_service_status = #{oriServiceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="originalPrice != null">
+        original_price = #{originalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="floatingProduct != null">
+        floating_product = #{floatingProduct,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cloud.domain.CloudAirService">
+    <!--@mbg.generated-->
+    update cloud_air_service
+    set service_id = #{serviceId,jdbcType=VARCHAR},
+      service_type = #{serviceType,jdbcType=INTEGER},
+      service_passenger_type = #{servicePassengerType,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      commission = #{commission,jdbcType=DECIMAL},
+      charge = #{charge,jdbcType=DECIMAL},
+      fuel_tax = #{fuelTax,jdbcType=DECIMAL},
+      airport_tax = #{airportTax,jdbcType=DECIMAL},
+      tkt_no = #{tktNo,jdbcType=VARCHAR},
+      ori_tkt_no = #{oriTktNo,jdbcType=VARCHAR},
+      service_status = #{serviceStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      issue_time = #{issueTime,jdbcType=TIMESTAMP},
+      service_remark = #{serviceRemark,jdbcType=VARCHAR},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      passenger_id = #{passengerId,jdbcType=VARCHAR},
+      price_type = #{priceType,jdbcType=VARCHAR},
+      ori_service_status = #{oriServiceStatus,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      original_price = #{originalPrice,jdbcType=DECIMAL},
+      floating_product = #{floatingProduct,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

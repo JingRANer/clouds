@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.order.mapper.CloudAirSegmentMapper">
+  <resultMap id="BaseResultMap" type="com.cloud.domain.CloudAirSegment">
+    <!--@mbg.generated-->
+    <!--@Table cloud_air_segment-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="segment_id" jdbcType="VARCHAR" property="segmentId" />
+    <result column="market_airline" jdbcType="VARCHAR" property="marketAirline" />
+    <result column="host_airline" jdbcType="VARCHAR" property="hostAirline" />
+    <result column="flight_no" jdbcType="VARCHAR" property="flightNo" />
+    <result column="host_flight_no" jdbcType="VARCHAR" property="hostFlightNo" />
+    <result column="dept_code" jdbcType="VARCHAR" property="deptCode" />
+    <result column="dept_airport_name" jdbcType="VARCHAR" property="deptAirportName" />
+    <result column="dest_code" jdbcType="VARCHAR" property="destCode" />
+    <result column="dest_airport_name" jdbcType="VARCHAR" property="destAirportName" />
+    <result column="dept_date" jdbcType="VARCHAR" property="deptDate" />
+    <result column="dept_time" jdbcType="VARCHAR" property="deptTime" />
+    <result column="cabin" jdbcType="VARCHAR" property="cabin" />
+    <result column="cabin_discount" jdbcType="VARCHAR" property="cabinDiscount" />
+    <result column="round_trip" jdbcType="VARCHAR" property="roundTrip" />
+    <result column="dept_terminal" jdbcType="VARCHAR" property="deptTerminal" />
+    <result column="dest_terminal" jdbcType="VARCHAR" property="destTerminal" />
+    <result column="meal_desc" jdbcType="VARCHAR" property="mealDesc" />
+    <result column="tkt_no" jdbcType="VARCHAR" property="tktNo" />
+    <result column="coupon" jdbcType="VARCHAR" property="coupon" />
+    <result column="tkt_status" jdbcType="VARCHAR" property="tktStatus" />
+    <result column="stop_over_city_name" jdbcType="VARCHAR" property="stopOverCityName" />
+    <result column="stop_over_code" jdbcType="VARCHAR" property="stopOverCode" />
+    <result column="stop_over_time" jdbcType="VARCHAR" property="stopOverTime" />
+    <result column="stop_over_context" jdbcType="VARCHAR" property="stopOverContext" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="serial_number" jdbcType="VARCHAR" property="serialNumber" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="free_baggage" jdbcType="VARCHAR" property="freeBaggage" />
+    <result column="dest_date" jdbcType="VARCHAR" property="destDate" />
+    <result column="dest_time" jdbcType="VARCHAR" property="destTime" />
+    <result column="class_code" jdbcType="VARCHAR" property="classCode" />
+    <result column="ori_segment_id" jdbcType="VARCHAR" property="oriSegmentId" />
+    <result column="ori_tkt_no" jdbcType="VARCHAR" property="oriTktNo" />
+    <result column="ori_coupon" jdbcType="VARCHAR" property="oriCoupon" />
+    <result column="cabin_product" jdbcType="VARCHAR" property="cabinProduct" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="dept_city_name" jdbcType="VARCHAR" property="deptCityName" />
+    <result column="dest_city_name" jdbcType="VARCHAR" property="destCityName" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="fuel_tax" jdbcType="DECIMAL" property="fuelTax" />
+    <result column="airport_tax" jdbcType="DECIMAL" property="airportTax" />
+    <result column="pnr" jdbcType="VARCHAR" property="pnr" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, segment_id, market_airline, host_airline, flight_no, host_flight_no, dept_code, 
+    dept_airport_name, dest_code, dest_airport_name, dept_date, dept_time, cabin, cabin_discount, 
+    round_trip, dept_terminal, dest_terminal, meal_desc, tkt_no, coupon, tkt_status, 
+    stop_over_city_name, stop_over_code, stop_over_time, stop_over_context, create_time, 
+    update_time, serial_number, service_id, free_baggage, dest_date, dest_time, class_code, 
+    ori_segment_id, ori_tkt_no, ori_coupon, cabin_product, code, dept_city_name, dest_city_name, 
+    price, fuel_tax, airport_tax, pnr, user_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cloud_air_segment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from cloud_air_segment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cloud.domain.CloudAirSegment" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_air_segment (segment_id, market_airline, host_airline, 
+      flight_no, host_flight_no, dept_code, 
+      dept_airport_name, dest_code, dest_airport_name, 
+      dept_date, dept_time, cabin, 
+      cabin_discount, round_trip, dept_terminal, 
+      dest_terminal, meal_desc, tkt_no, 
+      coupon, tkt_status, stop_over_city_name, 
+      stop_over_code, stop_over_time, stop_over_context, 
+      create_time, update_time, serial_number, 
+      service_id, free_baggage, dest_date, 
+      dest_time, class_code, ori_segment_id, 
+      ori_tkt_no, ori_coupon, cabin_product, 
+      code, dept_city_name, dest_city_name, 
+      price, fuel_tax, airport_tax, 
+      pnr, user_id)
+    values (#{segmentId,jdbcType=VARCHAR}, #{marketAirline,jdbcType=VARCHAR}, #{hostAirline,jdbcType=VARCHAR}, 
+      #{flightNo,jdbcType=VARCHAR}, #{hostFlightNo,jdbcType=VARCHAR}, #{deptCode,jdbcType=VARCHAR}, 
+      #{deptAirportName,jdbcType=VARCHAR}, #{destCode,jdbcType=VARCHAR}, #{destAirportName,jdbcType=VARCHAR}, 
+      #{deptDate,jdbcType=VARCHAR}, #{deptTime,jdbcType=VARCHAR}, #{cabin,jdbcType=VARCHAR}, 
+      #{cabinDiscount,jdbcType=VARCHAR}, #{roundTrip,jdbcType=VARCHAR}, #{deptTerminal,jdbcType=VARCHAR}, 
+      #{destTerminal,jdbcType=VARCHAR}, #{mealDesc,jdbcType=VARCHAR}, #{tktNo,jdbcType=VARCHAR}, 
+      #{coupon,jdbcType=VARCHAR}, #{tktStatus,jdbcType=VARCHAR}, #{stopOverCityName,jdbcType=VARCHAR}, 
+      #{stopOverCode,jdbcType=VARCHAR}, #{stopOverTime,jdbcType=VARCHAR}, #{stopOverContext,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{serialNumber,jdbcType=VARCHAR}, 
+      #{serviceId,jdbcType=VARCHAR}, #{freeBaggage,jdbcType=VARCHAR}, #{destDate,jdbcType=VARCHAR}, 
+      #{destTime,jdbcType=VARCHAR}, #{classCode,jdbcType=VARCHAR}, #{oriSegmentId,jdbcType=VARCHAR}, 
+      #{oriTktNo,jdbcType=VARCHAR}, #{oriCoupon,jdbcType=VARCHAR}, #{cabinProduct,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{deptCityName,jdbcType=VARCHAR}, #{destCityName,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{fuelTax,jdbcType=DECIMAL}, #{airportTax,jdbcType=DECIMAL}, 
+      #{pnr,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cloud.domain.CloudAirSegment" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cloud_air_segment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="segmentId != null">
+        segment_id,
+      </if>
+      <if test="marketAirline != null">
+        market_airline,
+      </if>
+      <if test="hostAirline != null">
+        host_airline,
+      </if>
+      <if test="flightNo != null">
+        flight_no,
+      </if>
+      <if test="hostFlightNo != null">
+        host_flight_no,
+      </if>
+      <if test="deptCode != null">
+        dept_code,
+      </if>
+      <if test="deptAirportName != null">
+        dept_airport_name,
+      </if>
+      <if test="destCode != null">
+        dest_code,
+      </if>
+      <if test="destAirportName != null">
+        dest_airport_name,
+      </if>
+      <if test="deptDate != null">
+        dept_date,
+      </if>
+      <if test="deptTime != null">
+        dept_time,
+      </if>
+      <if test="cabin != null">
+        cabin,
+      </if>
+      <if test="cabinDiscount != null">
+        cabin_discount,
+      </if>
+      <if test="roundTrip != null">
+        round_trip,
+      </if>
+      <if test="deptTerminal != null">
+        dept_terminal,
+      </if>
+      <if test="destTerminal != null">
+        dest_terminal,
+      </if>
+      <if test="mealDesc != null">
+        meal_desc,
+      </if>
+      <if test="tktNo != null">
+        tkt_no,
+      </if>
+      <if test="coupon != null">
+        coupon,
+      </if>
+      <if test="tktStatus != null">
+        tkt_status,
+      </if>
+      <if test="stopOverCityName != null">
+        stop_over_city_name,
+      </if>
+      <if test="stopOverCode != null">
+        stop_over_code,
+      </if>
+      <if test="stopOverTime != null">
+        stop_over_time,
+      </if>
+      <if test="stopOverContext != null">
+        stop_over_context,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="serialNumber != null">
+        serial_number,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="freeBaggage != null">
+        free_baggage,
+      </if>
+      <if test="destDate != null">
+        dest_date,
+      </if>
+      <if test="destTime != null">
+        dest_time,
+      </if>
+      <if test="classCode != null">
+        class_code,
+      </if>
+      <if test="oriSegmentId != null">
+        ori_segment_id,
+      </if>
+      <if test="oriTktNo != null">
+        ori_tkt_no,
+      </if>
+      <if test="oriCoupon != null">
+        ori_coupon,
+      </if>
+      <if test="cabinProduct != null">
+        cabin_product,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="deptCityName != null">
+        dept_city_name,
+      </if>
+      <if test="destCityName != null">
+        dest_city_name,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="fuelTax != null">
+        fuel_tax,
+      </if>
+      <if test="airportTax != null">
+        airport_tax,
+      </if>
+      <if test="pnr != null">
+        pnr,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="segmentId != null">
+        #{segmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="marketAirline != null">
+        #{marketAirline,jdbcType=VARCHAR},
+      </if>
+      <if test="hostAirline != null">
+        #{hostAirline,jdbcType=VARCHAR},
+      </if>
+      <if test="flightNo != null">
+        #{flightNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hostFlightNo != null">
+        #{hostFlightNo,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null">
+        #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptAirportName != null">
+        #{deptAirportName,jdbcType=VARCHAR},
+      </if>
+      <if test="destCode != null">
+        #{destCode,jdbcType=VARCHAR},
+      </if>
+      <if test="destAirportName != null">
+        #{destAirportName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptDate != null">
+        #{deptDate,jdbcType=VARCHAR},
+      </if>
+      <if test="deptTime != null">
+        #{deptTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cabin != null">
+        #{cabin,jdbcType=VARCHAR},
+      </if>
+      <if test="cabinDiscount != null">
+        #{cabinDiscount,jdbcType=VARCHAR},
+      </if>
+      <if test="roundTrip != null">
+        #{roundTrip,jdbcType=VARCHAR},
+      </if>
+      <if test="deptTerminal != null">
+        #{deptTerminal,jdbcType=VARCHAR},
+      </if>
+      <if test="destTerminal != null">
+        #{destTerminal,jdbcType=VARCHAR},
+      </if>
+      <if test="mealDesc != null">
+        #{mealDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tktNo != null">
+        #{tktNo,jdbcType=VARCHAR},
+      </if>
+      <if test="coupon != null">
+        #{coupon,jdbcType=VARCHAR},
+      </if>
+      <if test="tktStatus != null">
+        #{tktStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="stopOverCityName != null">
+        #{stopOverCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="stopOverCode != null">
+        #{stopOverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="stopOverTime != null">
+        #{stopOverTime,jdbcType=VARCHAR},
+      </if>
+      <if test="stopOverContext != null">
+        #{stopOverContext,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serialNumber != null">
+        #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="freeBaggage != null">
+        #{freeBaggage,jdbcType=VARCHAR},
+      </if>
+      <if test="destDate != null">
+        #{destDate,jdbcType=VARCHAR},
+      </if>
+      <if test="destTime != null">
+        #{destTime,jdbcType=VARCHAR},
+      </if>
+      <if test="classCode != null">
+        #{classCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oriSegmentId != null">
+        #{oriSegmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="oriTktNo != null">
+        #{oriTktNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oriCoupon != null">
+        #{oriCoupon,jdbcType=VARCHAR},
+      </if>
+      <if test="cabinProduct != null">
+        #{cabinProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCityName != null">
+        #{deptCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="destCityName != null">
+        #{destCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="fuelTax != null">
+        #{fuelTax,jdbcType=DECIMAL},
+      </if>
+      <if test="airportTax != null">
+        #{airportTax,jdbcType=DECIMAL},
+      </if>
+      <if test="pnr != null">
+        #{pnr,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.domain.CloudAirSegment">
+    <!--@mbg.generated-->
+    update cloud_air_segment
+    <set>
+      <if test="segmentId != null">
+        segment_id = #{segmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="marketAirline != null">
+        market_airline = #{marketAirline,jdbcType=VARCHAR},
+      </if>
+      <if test="hostAirline != null">
+        host_airline = #{hostAirline,jdbcType=VARCHAR},
+      </if>
+      <if test="flightNo != null">
+        flight_no = #{flightNo,jdbcType=VARCHAR},
+      </if>
+      <if test="hostFlightNo != null">
+        host_flight_no = #{hostFlightNo,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null">
+        dept_code = #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptAirportName != null">
+        dept_airport_name = #{deptAirportName,jdbcType=VARCHAR},
+      </if>
+      <if test="destCode != null">
+        dest_code = #{destCode,jdbcType=VARCHAR},
+      </if>
+      <if test="destAirportName != null">
+        dest_airport_name = #{destAirportName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptDate != null">
+        dept_date = #{deptDate,jdbcType=VARCHAR},
+      </if>
+      <if test="deptTime != null">
+        dept_time = #{deptTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cabin != null">
+        cabin = #{cabin,jdbcType=VARCHAR},
+      </if>
+      <if test="cabinDiscount != null">
+        cabin_discount = #{cabinDiscount,jdbcType=VARCHAR},
+      </if>
+      <if test="roundTrip != null">
+        round_trip = #{roundTrip,jdbcType=VARCHAR},
+      </if>
+      <if test="deptTerminal != null">
+        dept_terminal = #{deptTerminal,jdbcType=VARCHAR},
+      </if>
+      <if test="destTerminal != null">
+        dest_terminal = #{destTerminal,jdbcType=VARCHAR},
+      </if>
+      <if test="mealDesc != null">
+        meal_desc = #{mealDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tktNo != null">
+        tkt_no = #{tktNo,jdbcType=VARCHAR},
+      </if>
+      <if test="coupon != null">
+        coupon = #{coupon,jdbcType=VARCHAR},
+      </if>
+      <if test="tktStatus != null">
+        tkt_status = #{tktStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="stopOverCityName != null">
+        stop_over_city_name = #{stopOverCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="stopOverCode != null">
+        stop_over_code = #{stopOverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="stopOverTime != null">
+        stop_over_time = #{stopOverTime,jdbcType=VARCHAR},
+      </if>
+      <if test="stopOverContext != null">
+        stop_over_context = #{stopOverContext,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serialNumber != null">
+        serial_number = #{serialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        service_id = #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="freeBaggage != null">
+        free_baggage = #{freeBaggage,jdbcType=VARCHAR},
+      </if>
+      <if test="destDate != null">
+        dest_date = #{destDate,jdbcType=VARCHAR},
+      </if>
+      <if test="destTime != null">
+        dest_time = #{destTime,jdbcType=VARCHAR},
+      </if>
+      <if test="classCode != null">
+        class_code = #{classCode,jdbcType=VARCHAR},
+      </if>
+      <if test="oriSegmentId != null">
+        ori_segment_id = #{oriSegmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="oriTktNo != null">
+        ori_tkt_no = #{oriTktNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oriCoupon != null">
+        ori_coupon = #{oriCoupon,jdbcType=VARCHAR},
+      </if>
+      <if test="cabinProduct != null">
+        cabin_product = #{cabinProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCityName != null">
+        dept_city_name = #{deptCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="destCityName != null">
+        dest_city_name = #{destCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="fuelTax != null">
+        fuel_tax = #{fuelTax,jdbcType=DECIMAL},
+      </if>
+      <if test="airportTax != null">
+        airport_tax = #{airportTax,jdbcType=DECIMAL},
+      </if>
+      <if test="pnr != null">
+        pnr = #{pnr,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cloud.domain.CloudAirSegment">
+    <!--@mbg.generated-->
+    update cloud_air_segment
+    set segment_id = #{segmentId,jdbcType=VARCHAR},
+      market_airline = #{marketAirline,jdbcType=VARCHAR},
+      host_airline = #{hostAirline,jdbcType=VARCHAR},
+      flight_no = #{flightNo,jdbcType=VARCHAR},
+      host_flight_no = #{hostFlightNo,jdbcType=VARCHAR},
+      dept_code = #{deptCode,jdbcType=VARCHAR},
+      dept_airport_name = #{deptAirportName,jdbcType=VARCHAR},
+      dest_code = #{destCode,jdbcType=VARCHAR},
+      dest_airport_name = #{destAirportName,jdbcType=VARCHAR},
+      dept_date = #{deptDate,jdbcType=VARCHAR},
+      dept_time = #{deptTime,jdbcType=VARCHAR},
+      cabin = #{cabin,jdbcType=VARCHAR},
+      cabin_discount = #{cabinDiscount,jdbcType=VARCHAR},
+      round_trip = #{roundTrip,jdbcType=VARCHAR},
+      dept_terminal = #{deptTerminal,jdbcType=VARCHAR},
+      dest_terminal = #{destTerminal,jdbcType=VARCHAR},
+      meal_desc = #{mealDesc,jdbcType=VARCHAR},
+      tkt_no = #{tktNo,jdbcType=VARCHAR},
+      coupon = #{coupon,jdbcType=VARCHAR},
+      tkt_status = #{tktStatus,jdbcType=VARCHAR},
+      stop_over_city_name = #{stopOverCityName,jdbcType=VARCHAR},
+      stop_over_code = #{stopOverCode,jdbcType=VARCHAR},
+      stop_over_time = #{stopOverTime,jdbcType=VARCHAR},
+      stop_over_context = #{stopOverContext,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      serial_number = #{serialNumber,jdbcType=VARCHAR},
+      service_id = #{serviceId,jdbcType=VARCHAR},
+      free_baggage = #{freeBaggage,jdbcType=VARCHAR},
+      dest_date = #{destDate,jdbcType=VARCHAR},
+      dest_time = #{destTime,jdbcType=VARCHAR},
+      class_code = #{classCode,jdbcType=VARCHAR},
+      ori_segment_id = #{oriSegmentId,jdbcType=VARCHAR},
+      ori_tkt_no = #{oriTktNo,jdbcType=VARCHAR},
+      ori_coupon = #{oriCoupon,jdbcType=VARCHAR},
+      cabin_product = #{cabinProduct,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      dept_city_name = #{deptCityName,jdbcType=VARCHAR},
+      dest_city_name = #{destCityName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      fuel_tax = #{fuelTax,jdbcType=DECIMAL},
+      airport_tax = #{airportTax,jdbcType=DECIMAL},
+      pnr = #{pnr,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
