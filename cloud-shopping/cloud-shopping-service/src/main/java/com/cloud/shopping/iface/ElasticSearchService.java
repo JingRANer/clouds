@@ -18,4 +18,8 @@ public interface ElasticSearchService<T> {
 
 
     SingleResponse update(String indexName, Object obj);
+
+    SingleResponse insertIndex(String indexName, String jsonTemplate);
+
+    SingleResponse insert(String indexName, Object object);
 }

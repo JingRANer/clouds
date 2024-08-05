@@ -69,7 +69,7 @@ public class ElasticSearchServiceImpl<T> implements ElasticSearchService {
 
         Map<String, Object> properties = new HashMap<String, Object>();
         properties.put("title", title);
-        properties.put("user", user );
+        properties.put("user", user);
         properties.put("desc", desc);
 
         Map<String, Object> mapping = new HashMap<String, Object>();
@@ -129,6 +129,38 @@ public class ElasticSearchServiceImpl<T> implements ElasticSearchService {
             System.out.println(JSON.toJSONString(obj));
             log.error("update", e);
         }
+        return null;
+    }
+
+    @Override
+    public SingleResponse insertIndex(String indexName, String jsonTemplate) {
+
+        // 创建 CreateIndexRequest 并设置 index 模板
+        CreateIndexRequest request = new CreateIndexRequest(indexName);
+        request.source(jsonTemplate, XContentType.JSON);
+        try {
+            CreateIndexResponse createIndexResponse = client.indices().create(request, RequestOptions.DEFAULT);
+
+            // 输出结果
+            if (createIndexResponse.isAcknowledged()) {
+                System.out.println("Index created successfully");
+
+            } else {
+                System.err.println("Failed to create index");
+            }
+
+
+            client.close();
+            return createIndexResponse.isAcknowledged() ? SingleResponse.buildSuccess() : null;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return null;
+    }
+
+    @Override
+    public SingleResponse insert(String indexName, Object object) {
         return null;
     }
 }

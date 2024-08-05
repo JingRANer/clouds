@@ -15,5 +15,6 @@ public interface ShoppingRepository {
 
     SingleResponse insertShoppingRedis();
 
+    boolean insertIndex(String flightDate);
 
 }

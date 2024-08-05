@@ -17,4 +17,9 @@ class ShoppingRepositoryImplTest extends BaseTest {
         SingleResponse singleResponse = shoppingRepository.insertShoppingRedis();
         assert  singleResponse.isSuccess();
     }
+
+    @Test
+    public void testCreateIndex() {
+        shoppingRepository.insertIndex("20240906");
+    }
 }

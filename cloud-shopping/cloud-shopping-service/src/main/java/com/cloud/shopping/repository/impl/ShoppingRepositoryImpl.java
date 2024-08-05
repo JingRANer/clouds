@@ -3,6 +3,7 @@ package com.cloud.shopping.repository.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
+import com.alibaba.nacos.common.utils.CollectionUtils;
 import com.cloud.common.SingleResponse;
 import com.cloud.common.util.FileUtil;
 import com.cloud.shopping.dto.SearchTicketCacheBean;
@@ -26,29 +27,48 @@ import java.util.Map;
 public class ShoppingRepositoryImpl implements ShoppingRepository {
 
     @Autowired
-    ElasticSearchService elasticSearchService;
+    private ElasticSearchService<SearchTicketCacheBean> elasticSearchService;
+
+    private static final String INDEX_FILE_NAME = "/Users/jingran/Desktop/shoppingData/";
+    private static final String INDEX_NAME_SUFFIX = "cloud_shopping_index_";
 
 
     @Override
     public SingleResponse insertShoppingRedis() {
-        int n = 1;
-        for (int i = 0; i < n; i++) {
+        // map结构 没有日期 指定index 按照周指定？
+//        boolean insertIndex = insertIndex("20240724");
+//        if (!insertIndex) {
+//            return null;
+//        }
+        String readFile = FileUtil.readFile(INDEX_FILE_NAME + "2024-07-24.json");
+        JSONObject jsonObject = JSON.parseObject(readFile);
+//        String routeKey = jsonObject.getString("routeKey");
+//        String[] splitInfo = routeKey.split(":");
+//        String flightDate = splitInfo[5];
+//        String routeValue = jsonObject.getString("routeValue");
+        Map<String, Map<String, SearchTicketCacheBean>> searchTicketCacheBeanMap = JSON.parseObject(readFile, new TypeReference<Map<String, Map<String, SearchTicketCacheBean>>>() {
+        }.getType());
+        searchTicketCacheBeanMap.values().forEach(map -> {
+            if (CollectionUtils.isEmpty(map.values())) {
+                return;
+            }
+            map.values().forEach(searchTicketCacheBean -> {
+                if (searchTicketCacheBean != null && CollectionUtils.isNotEmpty(searchTicketCacheBean.getCabinInfoBeanList())) {
+                    elasticSearchService.update(Constants.SHOP_DATA_INDEX + "20240724", searchTicketCacheBean);
+                }
 
-            // map结构 没有日期 指定index 按照周指定？
-            String readFile = FileUtil.readFile("/Users/jingran/Desktop/shoppingData/1.json");
-            JSONObject jsonObject = JSON.parseObject(readFile);
-            String routeKey = jsonObject.getString("routeKey");
-            String[] splitInfo = routeKey.split(":");
-            String flightDate = splitInfo[5];
-            String routeValue = jsonObject.getString("routeValue");
-            Map<String, SearchTicketCacheBean> searchTicketCacheBeanMap = JSON.parseObject(routeValue, new TypeReference<Map<String, SearchTicketCacheBean>>() {
-            }.getType());
-            searchTicketCacheBeanMap.values().forEach(searchTicketCacheBean -> {
-                elasticSearchService.update(Constants.SHOP_DATA_INDEX + flightDate, searchTicketCacheBean);
 
             });
-        }
+        });
+
         return SingleResponse.buildSuccess();
     }
 
+    public boolean insertIndex(String flightDate) {
+        String readFile = FileUtil.readFile(INDEX_FILE_NAME + "index1.json");
+
+        // 创建 index
+        SingleResponse singleResponse = elasticSearchService.insertIndex(INDEX_NAME_SUFFIX + flightDate, readFile);
+        return singleResponse.isSuccess();
+    }
 }

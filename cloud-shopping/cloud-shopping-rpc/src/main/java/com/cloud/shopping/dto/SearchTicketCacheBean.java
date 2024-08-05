@@ -2,6 +2,7 @@ package com.cloud.shopping.dto;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -45,16 +46,14 @@ public class SearchTicketCacheBean {
     private Map<String, String> priceMap;
     private Map<String, String> childPriceMap;
     private Map<String, String> infantPriceMap;
-    private String airportTax;
-    private String childAirportTax;
-    private String infantAirportTax;
-    private String fuelTax;
-    private String childFuelTax;
-    private String infantFuelTax;
-    private String regNo;
+    private BigDecimal airportTax;
+    private BigDecimal childAirportTax;
+    private BigDecimal infantAirportTax;
+    private BigDecimal fuelTax;
+    private BigDecimal childFuelTax;
+    private BigDecimal infantFuelTax;
     private boolean hasSell;
     private Map<String, String> seatMap;
-    private Set<String> next;
     private List<CabinInfoBean> cabinInfoBeanList;
     private String flyDistance;
     private String depBusRate;

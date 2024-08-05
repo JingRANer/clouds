@@ -2,6 +2,8 @@ package com.cloud.shopping.dto;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 /**
  * @ClassName : CabinInfoBean
  * @Description :
@@ -15,26 +17,24 @@ public class CabinInfoBean {
     private String cabin;
     private String cabinDesc;
     private String discount;
-    private String price;
-    private String childPrice;
-    private String infantPrice;
+    private BigDecimal price;
+    private BigDecimal childPrice;
+    private BigDecimal infantPrice;
     private String seats;
     private boolean supportChild;
     private boolean supportInfant;
     private String remark;
     private String freeBaggage;
-    private String context;
     private boolean hasSell;
-    private String memberPrice;
     private String cabinProperty;
     private String midCabin;
 //    private Priority cabinPriority;
 //    private RefundChangeInfo refundChangeInfo;
     private String cabinProduct;
     private String flightNo;
-    private String airportTax;
-    private String childAirportTax;
-    private String infantAirportTax;
+    private BigDecimal airportTax;
+    private BigDecimal childAirportTax;
+    private BigDecimal infantAirportTax;
     private String fuelTax;
     private String childFuelTax;
     private String infantFuelTax;
