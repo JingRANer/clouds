@@ -6,7 +6,7 @@ import com.alibaba.fastjson.TypeReference;
 import com.alibaba.nacos.common.utils.CollectionUtils;
 import com.cloud.common.SingleResponse;
 import com.cloud.common.util.FileUtil;
-import com.cloud.shopping.dto.SearchTicketCacheBean;
+import com.cloud.shopping.dao.SearchTicketCacheBeanPO;
 import com.cloud.shopping.util.Constants;
 import com.cloud.shopping.iface.ElasticSearchService;
 import com.cloud.shopping.repository.iface.ShoppingRepository;
@@ -27,7 +27,7 @@ import java.util.Map;
 public class ShoppingRepositoryImpl implements ShoppingRepository {
 
     @Autowired
-    private ElasticSearchService<SearchTicketCacheBean> elasticSearchService;
+    private ElasticSearchService<SearchTicketCacheBeanPO> elasticSearchService;
 
     private static final String INDEX_FILE_NAME = "/Users/jingran/Desktop/shoppingData/";
     private static final String INDEX_NAME_SUFFIX = "cloud_shopping_index_";
@@ -46,7 +46,7 @@ public class ShoppingRepositoryImpl implements ShoppingRepository {
 //        String[] splitInfo = routeKey.split(":");
 //        String flightDate = splitInfo[5];
 //        String routeValue = jsonObject.getString("routeValue");
-        Map<String, Map<String, SearchTicketCacheBean>> searchTicketCacheBeanMap = JSON.parseObject(readFile, new TypeReference<Map<String, Map<String, SearchTicketCacheBean>>>() {
+        Map<String, Map<String, SearchTicketCacheBeanPO>> searchTicketCacheBeanMap = JSON.parseObject(readFile, new TypeReference<Map<String, Map<String, SearchTicketCacheBeanPO>>>() {
         }.getType());
         searchTicketCacheBeanMap.values().forEach(map -> {
             if (CollectionUtils.isEmpty(map.values())) {

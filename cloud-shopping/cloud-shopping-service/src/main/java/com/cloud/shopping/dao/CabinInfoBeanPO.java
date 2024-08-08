@@ -1,5 +1,6 @@
-package com.cloud.shopping.dto;
+package com.cloud.shopping.dao;
 
+import com.cloud.shopping.dto.RefundChangeInfo;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -11,7 +12,7 @@ import java.math.BigDecimal;
  * @Date: 2023-10-25 14:31
  */
 @Data
-public class CabinInfoBean {
+public class CabinInfoBeanPO {
     private static final long serialVersionUID = -5745436810407923821L;
     private String bigCabin;
     private String cabin;
@@ -29,7 +30,7 @@ public class CabinInfoBean {
     private String cabinProperty;
     private String midCabin;
 //    private Priority cabinPriority;
-    private RefundChangeInfo refundChangeInfo;
+    private RefundChangeInfoPO refundChangeInfo;
     private String cabinProduct;
     private String flightNo;
     private BigDecimal airportTax;
