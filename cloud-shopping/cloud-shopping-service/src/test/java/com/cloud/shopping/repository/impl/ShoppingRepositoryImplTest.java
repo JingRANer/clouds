@@ -14,12 +14,18 @@ class ShoppingRepositoryImplTest extends BaseTest {
 
     @Test
     void insertShoppingRedis() {
-        SingleResponse singleResponse = shoppingRepository.insertShoppingRedis();
+        SingleResponse singleResponse = shoppingRepository.insertShoppingRedis("20240724");
         assert  singleResponse.isSuccess();
     }
 
     @Test
-    public void testCreateIndex() {
-        shoppingRepository.insertIndex("20240906");
+    public void testCreateData() {
+        String flightDate = "20240724";
+        boolean indexInsertResp = shoppingRepository.insertIndex(flightDate);
+        if(indexInsertResp) {
+            SingleResponse singleResponse = shoppingRepository.insertShoppingRedis(flightDate);
+            assert  singleResponse.isSuccess();
+        }
+        assert  indexInsertResp;
     }
 }

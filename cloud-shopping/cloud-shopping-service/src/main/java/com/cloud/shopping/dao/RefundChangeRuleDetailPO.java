@@ -2,6 +2,8 @@ package com.cloud.shopping.dao;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 /**
  * @author: jingran
  * @Desc:
@@ -11,7 +13,7 @@ import lombok.Data;
 
 @Data
 public class RefundChangeRuleDetailPO {
-    private String refundchangeRuleRate;
-    private String refundchangeRulePrice;
+    private BigDecimal refundchangeRuleRate;
+    private BigDecimal refundchangeRulePrice;
     private String rcTimeDesc;
 }

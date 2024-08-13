@@ -3,6 +3,7 @@ package com.cloud.shopping.dao;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * @author chunhb
@@ -17,13 +18,13 @@ public class BaggagePriorityPO implements Serializable {
      *
      * @mock 1
      */
-    private String pieces;
+    private BigDecimal pieces = BigDecimal.ZERO;
     /**
      * 免费额度-免费重量单位KG，后台做文字拼接
      *
      * @mock 20
      */
-    private String weight;
+    private BigDecimal weight;
     /**
      * 文字描述
      *
@@ -33,13 +34,13 @@ public class BaggagePriorityPO implements Serializable {
     /**
      * 长
      */
-    private String length;
+    private BigDecimal length = BigDecimal.ZERO;
     /**
      * 宽
      */
-    private String width;
+    private BigDecimal width = BigDecimal.ZERO;
     /**
      * 高
      */
-    private String height;
+    private BigDecimal height = BigDecimal.ZERO;
 }

@@ -34,14 +34,14 @@ public class ShoppingRepositoryImpl implements ShoppingRepository {
 
 
     @Override
-    public SingleResponse insertShoppingRedis() {
+    public SingleResponse insertShoppingRedis(String flightDate) {
         // map结构 没有日期 指定index 按照周指定？
 //        boolean insertIndex = insertIndex("20240724");
 //        if (!insertIndex) {
 //            return null;
 //        }
-        String readFile = FileUtil.readFile(INDEX_FILE_NAME + "2024-07-24.json");
-        JSONObject jsonObject = JSON.parseObject(readFile);
+        String readFile = FileUtil.readFile(INDEX_FILE_NAME + "20240724.json");
+//        JSONObject jsonObject = JSON.parseObject(readFile);
 //        String routeKey = jsonObject.getString("routeKey");
 //        String[] splitInfo = routeKey.split(":");
 //        String flightDate = splitInfo[5];
@@ -53,6 +53,7 @@ public class ShoppingRepositoryImpl implements ShoppingRepository {
                 return;
             }
             map.values().forEach(searchTicketCacheBean -> {
+
                 if (searchTicketCacheBean != null && CollectionUtils.isNotEmpty(searchTicketCacheBean.getCabinInfoBeanList())) {
                     elasticSearchService.update(Constants.SHOP_DATA_INDEX + "20240724", searchTicketCacheBean);
                 }

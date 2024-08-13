@@ -29,7 +29,7 @@ public class CabinInfoBeanPO {
     private boolean hasSell;
     private String cabinProperty;
     private String midCabin;
-//    private Priority cabinPriority;
+    private PriorityPO cabinPriority;
     private RefundChangeInfoPO refundChangeInfo;
     private String cabinProduct;
     private String flightNo;

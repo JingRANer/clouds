@@ -13,8 +13,9 @@ import com.cloud.shopping.dto.SearchTicketCacheBean;
 
 public interface ShoppingRepository {
 
-    SingleResponse insertShoppingRedis();
+    SingleResponse insertShoppingRedis(String flightDate);
 
     boolean insertIndex(String flightDate);
+
 
 }
