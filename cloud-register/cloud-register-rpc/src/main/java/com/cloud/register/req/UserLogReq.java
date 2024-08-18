@@ -15,4 +15,6 @@ public class UserLogReq {
     private User user;
 
     private String role;
+
+    private String sourceFrom;
 }

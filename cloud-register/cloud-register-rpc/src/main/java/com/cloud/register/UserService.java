@@ -28,4 +28,13 @@ public interface UserService {
      */
     SingleResponse<User> findUser(String userId);
 
+
+    /**
+     * 获取全部用户信息 todo
+     * @param userId
+     * @return
+     */
+    SingleResponse<User> getUserInfo(String userId);
+    SingleResponse isLogin(String userId, String token);
+
 }

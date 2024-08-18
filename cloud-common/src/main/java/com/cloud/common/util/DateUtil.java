@@ -1,5 +1,9 @@
 package com.cloud.common.util;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -30,4 +34,16 @@ public class DateUtil {
             return 0;
         }
     }
+
+    public static Date fromStr2Date(String timeDesc, String format) {
+
+
+        try {
+            DateTimeFormatter dateFormat = DateTimeFormat.forPattern(format);
+            return DateTime.parse(timeDesc, dateFormat).toDate();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

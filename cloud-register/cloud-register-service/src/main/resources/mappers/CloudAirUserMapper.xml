@@ -57,6 +57,19 @@
     from cloud_air_user
     where mobile = #{mobile,jdbcType=VARCHAR}
   </select>
+  <select id="selectByMobileAndName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from cloud_air_user
+    where 1=1
+    <if test="mobile != null">
+      and mobile = #{mobile,jdbcType=VARCHAR}
+    </if>
+    <if test="name != null">
+      and name = #{name,jdbcType=VARCHAR}
+    </if>
+  </select>
   <select id="selectByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select

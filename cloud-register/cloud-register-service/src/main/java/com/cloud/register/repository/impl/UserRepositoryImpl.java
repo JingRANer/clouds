@@ -34,6 +34,18 @@ public class UserRepositoryImpl implements UserRepository {
     final UserBuilder USER_BUILDER = UserBuilder.INSTANCE;
 
     @Override
+    public User selectByMobileAndName(String mobile, String userName) {
+        CloudAirUser cloudAirUser = userMapper.selectByMobileAndName(mobile, userName);
+        if (cloudAirUser == null) {
+            return null;
+        }
+        User user = USER_BUILDER.toUser(cloudAirUser);
+        List<CloudAirUserFrequentPassenger> cloudAirUserFrequentPassengers = frequentPassengerMapper.selectByUserId(cloudAirUser.getUserId());
+        List<FrequentPassenger> frequentPassengers = cloudAirUserFrequentPassengers.stream().map(USER_BUILDER::toFrequentPassenger).collect(Collectors.toList());
+        user.setFrequentPassengers(frequentPassengers);
+        return user;
+    }
+    @Override
     public User selectByMobile(String mobile) {
         CloudAirUser cloudAirUser = userMapper.selectByMobile(mobile);
         if (cloudAirUser == null) {
