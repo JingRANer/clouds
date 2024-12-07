@@ -3,9 +3,10 @@ spring:
     name: cloud-register-service
   profiles:
     active: public # 环境
-#  cloud:
+  cloud:
 #    nacos:
-#      server-addr: 127.0.0.1:8848 # nacos地址
+##      server-addr: 127.0.0.1:8848 # nacos地址
+#      server-addr: 82.157.203.124:8848 # nacos地址
 #      config:
 #        file-extension: yaml # 文件后缀名
 #      discovery:

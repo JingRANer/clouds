@@ -2,7 +2,6 @@ package com.cloud.register.service;
 
 import cn.dev33.satoken.session.SaSession;
 import cn.dev33.satoken.session.TokenSign;
-import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import com.cloud.common.CloudErrorEnum;
 import com.cloud.common.SingleResponse;
@@ -11,6 +10,7 @@ import com.cloud.register.UserService;
 import com.cloud.register.domain.User;
 import com.cloud.register.repository.UserRepository;
 import com.cloud.register.req.UserLogReq;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

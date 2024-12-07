@@ -7,7 +7,10 @@ import com.cloud.shopping.iface.AirportInfoService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class AirportInfoServiceImplTest extends ESDaoTest {
     @Autowired
@@ -23,5 +26,6 @@ public class AirportInfoServiceImplTest extends ESDaoTest {
         SingleResponse singleResponse = airportInfoService.insertAllAirportCacheBean();
         assert singleResponse.isSuccess();
     }
+
 
 }
