@@ -85,20 +85,22 @@ public class FileUtil {
     }
 
     public static void main(String[] args) {
-        String path = "/Users/jingran/Desktop/bupt/jrrr/data/order_2022/";
+        String path = "/Users/jingran/Desktop/Data/service_2022/";
         File rootDirectory = new File(path); // 替换为你的目录路径
         File[] files = rootDirectory.listFiles();
         for (File filePath : files) {
             String absolutePath = filePath.getAbsolutePath();
             String id = absolutePath.replace(path, "");
 
-            if(!Pattern.matches("^\\d.*", id)) {
+            if (!Pattern.matches("^\\d.*", id)) {
                 continue;
             }
 
             writeFile(absolutePath,
-                    "/Users/jingran/Desktop/bupt/data/order_2022/" + "all.sql");
+                    "/Users/jingran/Desktop/Data/2022/" + "service_all.sql");
 
         }
- }
+    }
+
+
 }

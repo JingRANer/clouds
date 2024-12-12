@@ -11,4 +11,6 @@ import lombok.Data;
 
 
 public interface ServiceRepository {
+
+    int executeInsert(String sql, String fileName);
 }
