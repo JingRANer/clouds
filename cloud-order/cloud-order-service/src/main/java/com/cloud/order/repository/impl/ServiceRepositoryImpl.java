@@ -1,13 +1,17 @@
 package com.cloud.order.repository.impl;
 
+import com.alibaba.nacos.common.utils.CollectionUtils;
+import com.cloud.order.repository.po.CloudAirService;
+import com.cloud.order.mapper.CloudAirServiceMapper;
+import com.cloud.order.repository.SegmentRepository;
 import com.cloud.order.repository.ServiceRepository;
 import com.cloud.order.util.ExecutorUtil;
-import org.apache.commons.lang3.StringUtils;
+import com.cloud.order.util.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,6 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
@@ -30,7 +35,17 @@ import java.util.regex.Pattern;
 
 @Service
 public class ServiceRepositoryImpl implements ServiceRepository {
+
+    @Resource
+    SegmentRepository segmentRepository;
+
+    @Resource
+    CloudAirServiceMapper mapper;
+
     private final JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private RedisService redisService;
 
     @Autowired
     public ServiceRepositoryImpl(JdbcTemplate jdbcTemplate) {
@@ -41,62 +56,9 @@ public class ServiceRepositoryImpl implements ServiceRepository {
     public int executeInsert(String fileFrom, String fileName) {
         String fileToError = fileFrom + "/error.sql";
         File[] files = new File(fileFrom).listFiles();
+
         ExecutorService executorInstance = ExecutorUtil.getExecutorInstance();
-        executorInstance.submit(() -> Arrays.stream(files).parallel().forEach(filePath -> {
-            try {
-                String absolutePath = filePath.getAbsolutePath();
-                String id = absolutePath.replace(fileFrom, "");
-                if (!Pattern.matches("^\\d.*", id)) {
-                    return;
-                }
-
-                // 读取到缓冲区
-                BufferedReader br = new BufferedReader(new FileReader(absolutePath));
-                // 错误记录
-                BufferedWriter bufferedErrorWriter = new BufferedWriter(new FileWriter(fileToError, true));
-
-                String line;
-                // 一次读入一行数据
-                int length = 0;
-                String conx = "";
-
-                while ((line = br.readLine()) != null) {
-                    length++;
-                    if (!line.contains("INSERT")) {
-                        conx += line;
-                        System.err.println("error:" + conx);
-                    } else {
-                        conx = line;
-                    }
-
-                    conx = conx.replace("ticketorder", "ran_flight")
-                            .replace("umetrip_air_" + fileName + "_his", "ran_air_" + fileName);
-
-                    String[] split = conx.split(", ");
-
-                    if (length % 10000 == 0) {
-                        System.out.println(Thread.currentThread().getName() + ":1w is over");
-                    }
-
-                    String sql = String.join(", ", split);
-                    try {
-                        int update = jdbcTemplate.update(sql);
-                        if (update < 1) {
-                            bufferedErrorWriter.write(sql);
-                            bufferedErrorWriter.flush();
-                            bufferedErrorWriter.newLine();
-                        }
-                    } catch (Exception e) {
-                        bufferedErrorWriter.write(sql);
-                        bufferedErrorWriter.flush();
-                        bufferedErrorWriter.newLine();
-                    }
-                }
-                System.err.println(absolutePath + "is over!");
-            } catch (IOException e) {
-                System.out.println(e);
-            }
-        }));
+        executorInstance.submit(() -> Arrays.stream(files).parallel().forEach(filePath -> executeData(fileFrom, fileName, fileToError, filePath)));
         try {
             if (!executorInstance.awaitTermination(4, TimeUnit.HOURS)) {
                 System.err.println("线程池任务未能在指定时间内完成");
@@ -107,6 +69,81 @@ public class ServiceRepositoryImpl implements ServiceRepository {
 
 
         return 0;
+    }
+
+    @Override
+    public List<CloudAirService> findByOrderNo(String orderNo) {
+        List<CloudAirService> cloudAirServices = mapper.selectByOrderNo(orderNo);
+
+        if(CollectionUtils.isEmpty(cloudAirServices)) {
+            return new ArrayList<>();
+        }
+
+        cloudAirServices.stream().forEach();
+    }
+
+    private void executeData(String fileFrom, String fileName, String fileToError, File filePath) {
+        try {
+            String absolutePath = filePath.getAbsolutePath();
+            String id = absolutePath.replace(fileFrom, "");
+            if (!Pattern.matches("^\\d.*", id)) {
+                return;
+            }
+
+            // 读取到缓冲区
+            BufferedReader br = new BufferedReader(new FileReader(absolutePath));
+            // 错误记录
+            BufferedWriter bufferedErrorWriter = new BufferedWriter(new FileWriter(fileToError, true));
+
+            String line;
+            // 一次读入一行数据
+            int length = 0;
+            String conx = "";
+
+            while ((line = br.readLine()) != null) {
+                length++;
+                if (!line.contains("INSERT")) {
+                    conx += line;
+                    System.err.println("error:" + conx);
+                } else {
+                    conx = line;
+                }
+
+                String[] values = conx.split("VALUES")[1].split(",");
+                String name = values[2].replace("'", "").replace(" ","");
+                String certNo = values[7].replace("'", "").replace(" ","");
+                String phoneNum = values[10].replace("'", "").replace(" ","");
+                String newName = getValue("NAME_" + name);
+                String newCertNo = getValue("CERT_" + certNo);
+                String newPhone = getValue("PHONE_" + phoneNum);
+                String sql = conx.replace("ticketorder", "ran_flight")
+                        .replace("umetrip_air_" + fileName + "_his", "ran_air_" + fileName)
+                        .replace(name, newName)
+                        .replace(phoneNum, newPhone)
+                        .replace(certNo, newCertNo)
+                ;
+
+                if (length % 10000 == 0) {
+                    System.out.println(Thread.currentThread().getName() + ":1w is over");
+                }
+
+                try {
+                    int update = jdbcTemplate.update(sql);
+                    if (update < 1) {
+                        bufferedErrorWriter.write(sql);
+                        bufferedErrorWriter.flush();
+                        bufferedErrorWriter.newLine();
+                    }
+                } catch (Exception e) {
+                    bufferedErrorWriter.write(sql);
+                    bufferedErrorWriter.flush();
+                    bufferedErrorWriter.newLine();
+                }
+            }
+            System.err.println(absolutePath + "is over!");
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     private String getSql(String conx) {
@@ -141,5 +178,15 @@ public class ServiceRepositoryImpl implements ServiceRepository {
         }
 
         return args;
+    }
+
+    private String getValue(String key) {
+        if (redisService.isExist(key)) {
+            return (String) redisService.getKey(key);
+        } else {
+            String va = UUID.randomUUID().toString();
+            redisService.setKey(key, va);
+            return va;
+        }
     }
 }

@@ -1,6 +1,6 @@
 package com.cloud.order.mapper;
 
-import com.cloud.order.domain.CloudAirPayment;
+import com.cloud.order.repository.po.CloudAirPayment;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

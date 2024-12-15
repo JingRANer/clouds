@@ -1,7 +1,7 @@
 package com.cloud.order.domain;
 
+import com.cloud.order.repository.po.CloudAirOrder;
 import lombok.Data;
-import org.springframework.core.annotation.Order;
 
 /**
  * @author: jingran

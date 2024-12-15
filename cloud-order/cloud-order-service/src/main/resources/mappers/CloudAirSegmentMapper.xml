@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cloud.order.mapper.CloudAirSegmentMapper">
-  <resultMap id="BaseResultMap" type="com.cloud.order.domain.CloudAirSegment">
+  <resultMap id="BaseResultMap" type="com.cloud.order.repository.po.CloudAirSegment">
     <!--@mbg.generated-->
     <!--@Table cloud_air_segment-->
     <id column="id" jdbcType="BIGINT" property="id" />
@@ -67,12 +67,19 @@
     from cloud_air_segment
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from cloud_air_segment
+    where segment_id = #{segmentId,jdbcType=BIGINT}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     <!--@mbg.generated-->
     delete from cloud_air_segment
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cloud.domain.CloudAirSegment" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cloud.order.repository.po.CloudAirSegment" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into cloud_air_segment (segment_id, market_airline, host_airline, 
       flight_no, host_flight_no, dept_code, 
@@ -105,7 +112,7 @@
       #{price,jdbcType=DECIMAL}, #{fuelTax,jdbcType=DECIMAL}, #{airportTax,jdbcType=DECIMAL}, 
       #{pnr,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cloud.domain.CloudAirSegment" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cloud.order.repository.po.CloudAirSegment" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into cloud_air_segment
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -377,7 +384,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.domain.CloudAirSegment">
+  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.order.repository.po.CloudAirSegment">
     <!--@mbg.generated-->
     update cloud_air_segment
     <set>
@@ -516,7 +523,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.cloud.domain.CloudAirSegment">
+  <update id="updateByPrimaryKey" parameterType="com.cloud.order.repository.po.CloudAirSegment">
     <!--@mbg.generated-->
     update cloud_air_segment
     set segment_id = #{segmentId,jdbcType=VARCHAR},
@@ -565,4 +572,12 @@
       user_id = #{userId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="selectSegmentByServiceId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from cloud_air_segment
+    where SERVICE_ID = #{serviceId,jdbcType=BIGINT}
+  </select>
 </mapper>

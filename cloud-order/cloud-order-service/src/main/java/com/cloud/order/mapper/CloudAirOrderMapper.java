@@ -1,6 +1,6 @@
 package com.cloud.order.mapper;
 
-import com.cloud.order.domain.CloudAirOrder;
+import com.cloud.order.repository.po.CloudAirOrder;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

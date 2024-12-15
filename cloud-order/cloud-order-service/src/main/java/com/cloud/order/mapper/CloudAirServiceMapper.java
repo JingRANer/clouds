@@ -1,7 +1,9 @@
 package com.cloud.order.mapper;
 
-import com.cloud.order.domain.CloudAirService;
+import com.cloud.order.repository.po.CloudAirService;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface CloudAirServiceMapper {
@@ -46,4 +48,6 @@ public interface CloudAirServiceMapper {
      * @return update count
      */
     int updateByPrimaryKey(CloudAirService record);
+
+    List<CloudAirService> selectByOrderNo(String orderNo);
 }

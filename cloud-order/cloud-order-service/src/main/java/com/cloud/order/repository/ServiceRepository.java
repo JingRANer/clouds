@@ -1,6 +1,8 @@
 package com.cloud.order.repository;
 
-import lombok.Data;
+import com.cloud.order.repository.po.CloudAirService;
+
+import java.util.List;
 
 /**
  * @author: jingran
@@ -12,5 +14,9 @@ import lombok.Data;
 
 public interface ServiceRepository {
 
+
     int executeInsert(String sql, String fileName);
+
+
+    List<CloudAirService> findByOrderNo(String orderNo);
 }

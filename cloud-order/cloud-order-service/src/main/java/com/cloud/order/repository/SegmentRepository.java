@@ -1,5 +1,10 @@
 package com.cloud.order.repository;
 
+import com.cloud.order.domain.Segment;
+import com.cloud.order.repository.po.CloudAirSegment;
+
+import java.util.List;
+
 /**
  * @author: jingran
  * @Desc:
@@ -8,4 +13,10 @@ package com.cloud.order.repository;
  **/
 
 public interface SegmentRepository {
+
+    CloudAirSegment findById(String segmentId);
+
+    int save(CloudAirSegment segment);
+
+    List<Segment> findByService(String serviceId);
 }

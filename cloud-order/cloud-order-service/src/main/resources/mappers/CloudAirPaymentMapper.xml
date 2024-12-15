@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cloud.order.mapper.CloudAirPaymentMapper">
-  <resultMap id="BaseResultMap" type="com.cloud.order.domain.CloudAirPayment">
+  <resultMap id="BaseResultMap" type="com.cloud.order.repository.po.CloudAirPayment">
     <!--@mbg.generated-->
     <!--@Table cloud_air_payment-->
     <id column="id" jdbcType="BIGINT" property="id" />

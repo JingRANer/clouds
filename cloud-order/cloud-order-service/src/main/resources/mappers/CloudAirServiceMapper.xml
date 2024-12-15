@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cloud.order.mapper.CloudAirServiceMapper">
-  <resultMap id="BaseResultMap" type="com.cloud.order.domain.CloudAirService">
+  <resultMap id="BaseResultMap" type="com.cloud.order.repository.po.CloudAirService">
     <!--@mbg.generated-->
     <!--@Table cloud_air_service-->
     <id column="id" jdbcType="BIGINT" property="id" />
@@ -47,7 +47,7 @@
     delete from cloud_air_service
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cloud.domain.CloudAirService" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.cloud.order.repository.po.CloudAirService" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into cloud_air_service (service_id, service_type, service_passenger_type, 
       price, commission, charge, 
@@ -66,7 +66,7 @@
       #{oriServiceStatus,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{originalPrice,jdbcType=DECIMAL}, 
       #{floatingProduct,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cloud.domain.CloudAirService" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.cloud.order.repository.po.CloudAirService" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into cloud_air_service
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -206,7 +206,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.domain.CloudAirService">
+  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.order.repository.po.CloudAirService">
     <!--@mbg.generated-->
     update cloud_air_service
     <set>
@@ -279,7 +279,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.cloud.domain.CloudAirService">
+  <update id="updateByPrimaryKey" parameterType="com.cloud.order.repository.po.CloudAirService">
     <!--@mbg.generated-->
     update cloud_air_service
     set service_id = #{serviceId,jdbcType=VARCHAR},
@@ -306,4 +306,12 @@
       floating_product = #{floatingProduct,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="selectByOrderNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from cloud_air_service
+    where id = #{id,jdbcType=BIGINT}
+  </select>
 </mapper>

@@ -1,7 +1,9 @@
 package com.cloud.order.mapper;
 
-import com.cloud.order.domain.CloudAirSegment;
+import com.cloud.order.repository.po.CloudAirSegment;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface CloudAirSegmentMapper {
@@ -46,4 +48,13 @@ public interface CloudAirSegmentMapper {
      * @return update count
      */
     int updateByPrimaryKey(CloudAirSegment record);
+
+
+    /**
+     * select by segmentId
+     * @param segmentId
+     * @return
+     */
+    CloudAirSegment selectById(String segmentId);
+    List<CloudAirSegment> selectSegmentByServiceId(String serviceId);
 }
