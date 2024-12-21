@@ -10,6 +10,6 @@ spring:
       config:
         file-extension: yaml # 文件后缀名
       discovery:
-        username: nacos
-        password: nacos
+#        username: nacos
+#        password: nacos
         namespace: public

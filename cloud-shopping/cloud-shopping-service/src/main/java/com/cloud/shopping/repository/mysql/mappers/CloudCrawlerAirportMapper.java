@@ -1,10 +1,12 @@
-package com.cloud.shopping.repository.mappers;
+package com.cloud.shopping.repository.mysql.mappers;
 
-import com.cloud.shopping.domain.CloudBasicdataAircity;
+import com.cloud.shopping.domain.CloudCrawlerAirport;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
-public interface CloudBasicdataAircityMapper {
+public interface CloudCrawlerAirportMapper {
     /**
      * delete by primary key
      * @param id primaryKey
@@ -17,33 +19,33 @@ public interface CloudBasicdataAircityMapper {
      * @param record the record
      * @return insert count
      */
-    int insert(CloudBasicdataAircity record);
+    int insert(CloudCrawlerAirport record);
 
     /**
      * insert record to table selective
      * @param record the record
      * @return insert count
      */
-    int insertSelective(CloudBasicdataAircity record);
+    int insertSelective(CloudCrawlerAirport record);
 
     /**
      * select by primary key
      * @param id primary key
      * @return object by primary key
      */
-    CloudBasicdataAircity selectByPrimaryKey(Long id);
+    List<CloudCrawlerAirport> selectByIsCivil(String iscivil);
 
     /**
      * update record selective
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKeySelective(CloudBasicdataAircity record);
+    int updateByPrimaryKeySelective(CloudCrawlerAirport record);
 
     /**
      * update record
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(CloudBasicdataAircity record);
+    int updateByPrimaryKey(CloudCrawlerAirport record);
 }

@@ -1,11 +1,11 @@
-package com.cloud.shopping.service;
+package com.cloud.shopping.repository.es;
 
 //import com.cloud.shopping.util.ElasticSearchConfig;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
 import com.cloud.common.SingleResponse;
-import com.cloud.shopping.iface.ElasticSearchService;
+import com.cloud.shopping.dto.SearchTicketCacheBean;
+import com.cloud.shopping.repository.es.ElasticSearchService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
@@ -36,8 +36,8 @@ import java.util.Map;
  **/
 
 @Slf4j
-@Service("elasticSearchService")
-public class ElasticSearchServiceImpl<T> implements ElasticSearchService {
+@Service("searchTicketEsSvc")
+public class SearchTicketElasticSearchImpl implements ElasticSearchService<SearchTicketCacheBean> {
     @Resource(name = "restHighLevelClient")
     private RestHighLevelClient client;
 
@@ -91,17 +91,16 @@ public class ElasticSearchServiceImpl<T> implements ElasticSearchService {
     /**
      * 查询数据集
      */
-    public List<T> query(String indexName, SearchSourceBuilder sourceBuilder) {
+    public List<SearchTicketCacheBean> query(String indexName, SearchSourceBuilder sourceBuilder) {
         SearchRequest searchRequest = new SearchRequest();
         searchRequest.source(sourceBuilder);
         try {
             SearchResponse searchResp = client.search(searchRequest, options);
-            List<T> data = new ArrayList<>();
+            List<SearchTicketCacheBean> data = new ArrayList<>();
             SearchHit[] searchHitArr = searchResp.getHits().getHits();
             for (SearchHit searchHit : searchHitArr) {
                 Map<String, Object> temp = searchHit.getSourceAsMap();
-                T obj = JSON.parseObject(JSON.toJSONString(temp), new TypeReference<T>() {
-                }.getType());
+                SearchTicketCacheBean obj = JSON.parseObject(JSON.toJSONString(temp), SearchTicketCacheBean.class);
                 temp.put("id", searchHit.getId());
                 data.add(obj);
             }
@@ -161,6 +160,11 @@ public class ElasticSearchServiceImpl<T> implements ElasticSearchService {
 
     @Override
     public SingleResponse insert(String indexName, Object object) {
+        return null;
+    }
+
+    @Override
+    public List<SearchTicketCacheBean> queryAll(String indexName, SearchSourceBuilder sourceBuilder) {
         return null;
     }
 }

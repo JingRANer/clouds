@@ -1,11 +1,10 @@
-package com.cloud.shopping.repository.impl;
+package com.cloud.shopping.repository.mysql;
 
 import com.cloud.shopping.builder.CloudAirportMapper;
-import com.cloud.shopping.dao.AirportCacheBean;
+import com.cloud.shopping.repository.domain.AirportPO;
 import com.cloud.shopping.domain.CloudCrawlerAirport;
-import com.cloud.shopping.repository.iface.AirportInfoRepository;
-import com.cloud.shopping.repository.mappers.CloudBasicdataAirportMapper;
-import com.cloud.shopping.repository.mappers.CloudCrawlerAirportMapper;
+import com.cloud.shopping.repository.mysql.mappers.CloudBasicdataAirportMapper;
+import com.cloud.shopping.repository.mysql.mappers.CloudCrawlerAirportMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -31,9 +30,9 @@ public class AirportInfoRepositoryImpl implements AirportInfoRepository {
 
 
     @Override
-    public List<AirportCacheBean> getAllAirportCacheBean() {
+    public List<AirportPO> getAllAirportCacheBean() {
 
         List<CloudCrawlerAirport> cloudCrawlerAirports = cloudCrawlerAirportMapper.selectByIsCivil("1");
-        return cloudCrawlerAirports.stream().map(c -> builder.toAirportCacheBean(c)).collect(Collectors.toList());
+        return cloudCrawlerAirports.stream().map(c -> builder.toAirportPO(c)).collect(Collectors.toList());
     }
 }

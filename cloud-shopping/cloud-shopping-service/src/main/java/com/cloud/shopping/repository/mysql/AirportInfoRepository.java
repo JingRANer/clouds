@@ -1,6 +1,7 @@
-package com.cloud.shopping.repository.iface;
+package com.cloud.shopping.repository.mysql;
 
 import com.cloud.shopping.dao.AirportCacheBean;
+import com.cloud.shopping.repository.domain.AirportPO;
 
 import java.util.List;
 
@@ -13,5 +14,5 @@ import java.util.List;
 
 public interface AirportInfoRepository {
 
-    List<AirportCacheBean> getAllAirportCacheBean();
+    List<AirportPO> getAllAirportCacheBean();
 }

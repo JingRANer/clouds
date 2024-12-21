@@ -1,18 +1,17 @@
-package com.cloud.shopping.repository.impl;
+package com.cloud.shopping.repository.es;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.alibaba.nacos.common.utils.CollectionUtils;
 import com.cloud.common.SingleResponse;
 import com.cloud.common.util.FileUtil;
 import com.cloud.shopping.dao.SearchTicketCacheBeanPO;
 import com.cloud.shopping.util.Constants;
-import com.cloud.shopping.iface.ElasticSearchService;
-import com.cloud.shopping.repository.iface.ShoppingRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.cloud.shopping.repository.es.ElasticSearchService;
+import com.cloud.shopping.repository.es.ShoppingRepository;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Map;
 
 
@@ -26,7 +25,7 @@ import java.util.Map;
 @Service
 public class ShoppingRepositoryImpl implements ShoppingRepository {
 
-    @Autowired
+    @Resource(name = "searchTicketEsSvc")
     private ElasticSearchService<SearchTicketCacheBeanPO> elasticSearchService;
 
     private static final String INDEX_FILE_NAME = "/Users/jingran/Desktop/shoppingData/";

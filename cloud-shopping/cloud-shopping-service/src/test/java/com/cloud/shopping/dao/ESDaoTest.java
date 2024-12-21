@@ -1,18 +1,13 @@
 package com.cloud.shopping.dao;
 
 import com.alibaba.fastjson.JSON;
-import com.cloud.shopping.iface.ElasticSearchService;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.List;
-import java.util.Map;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -43,9 +38,6 @@ public class ESDaoTest {
 //        }
 //    }
 
-    @Autowired
-    ElasticSearchService elasticSearchService;
-
     @Test
     public void testRestHighLevelClient() {
         // 查询条件
@@ -60,8 +52,8 @@ public class ESDaoTest {
         sourceBuilder.from(0);
         sourceBuilder.size(1);
 
-        List<Map<String, Object>> cloudCityAirportIndex = elasticSearchService.query("cloud_aircity_index", searchSourceBuilder);
-        System.out.println(JSON.toJSONString(cloudCityAirportIndex));
+//        List<Map<String, Object>> cloudCityAirportIndex = elasticSearchService.query("cloud_aircity_index", searchSourceBuilder);
+//        System.out.println(JSON.toJSONString(cloudCityAirportIndex));
     }
 
 
@@ -91,7 +83,7 @@ public class ESDaoTest {
                 "    }\n" +
                 "}";
         AirportCacheBean airportCacheBean = JSON.parseObject(test, AirportCacheBean.class);
-        elasticSearchService.update("cloud_aircity_index", airportCacheBean);
+//        elasticSearchService.update("cloud_aircity_index", airportCacheBean);
     }
 
 }

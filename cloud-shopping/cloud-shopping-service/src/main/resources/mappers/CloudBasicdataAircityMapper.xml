@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cloud.shopping.repository.mappers.CloudBasicdataAircityMapper">
+<mapper namespace="com.cloud.shopping.repository.mysql.mappers.CloudBasicdataAircityMapper">
   <resultMap id="BaseResultMap" type="com.cloud.shopping.domain.CloudBasicdataAircity">
     <!--@mbg.generated-->
     <!--@Table cloud_basicdata_aircity-->

@@ -1,10 +1,9 @@
-package com.cloud.shopping.iface;
+package com.cloud.shopping.repository.es;
 
 import com.cloud.common.SingleResponse;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author: jingran
@@ -22,4 +21,6 @@ public interface ElasticSearchService<T> {
     SingleResponse insertIndex(String indexName, String jsonTemplate);
 
     SingleResponse insert(String indexName, Object object);
+
+    List<T> queryAll(String indexName, SearchSourceBuilder sourceBuilder);
 }

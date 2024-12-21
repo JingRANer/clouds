@@ -79,7 +79,8 @@ public class ServiceRepositoryImpl implements ServiceRepository {
             return new ArrayList<>();
         }
 
-        cloudAirServices.stream().forEach();
+//        cloudAirServices.stream().forEach();
+        return null;
     }
 
     private void executeData(String fileFrom, String fileName, String fileToError, File filePath) {
@@ -123,8 +124,8 @@ public class ServiceRepositoryImpl implements ServiceRepository {
                         .replace(certNo, newCertNo)
                 ;
 
-                if (length % 10000 == 0) {
-                    System.out.println(Thread.currentThread().getName() + ":1w is over");
+                if (length % 30000 == 0) {
+                    System.out.println(Thread.currentThread().getName() + ":3w is over");
                 }
 
                 try {
@@ -140,7 +141,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
                     bufferedErrorWriter.newLine();
                 }
             }
-            System.err.println(absolutePath + "is over!");
+            System.err.println(absolutePath + " is over!");
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -181,12 +182,11 @@ public class ServiceRepositoryImpl implements ServiceRepository {
     }
 
     private String getValue(String key) {
-        if (redisService.isExist(key)) {
-            return (String) redisService.getKey(key);
-        } else {
+        if (!redisService.isExist(key)) {
             String va = UUID.randomUUID().toString();
             redisService.setKey(key, va);
-            return va;
+            System.out.println("redis is null:" + key );
         }
+        return (String) redisService.getKey(key);
     }
 }

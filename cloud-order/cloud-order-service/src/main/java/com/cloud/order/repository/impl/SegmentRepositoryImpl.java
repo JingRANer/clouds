@@ -1,5 +1,7 @@
 package com.cloud.order.repository.impl;
 
+import com.cloud.order.domain.Segment;
+import com.cloud.order.repository.builder.SegmentBuilder;
 import com.cloud.order.repository.po.CloudAirSegment;
 import com.cloud.order.mapper.CloudAirSegmentMapper;
 import com.cloud.order.repository.SegmentRepository;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author: jingran
@@ -37,8 +40,8 @@ public class SegmentRepositoryImpl implements SegmentRepository {
     }
 
     @Override
-    public List<CloudAirSegment> findByService(String serviceId) {
+    public List<Segment> findByService(String serviceId) {
         List<CloudAirSegment> cloudAirSegments = mapper.selectSegmentByServiceId(serviceId);
-        cloudAirSegments.stream().map(seg->)
+        return cloudAirSegments.stream().map(seg-> SegmentBuilder.INSTANCE.toSegment(seg)).collect(Collectors.toList());
     }
 }

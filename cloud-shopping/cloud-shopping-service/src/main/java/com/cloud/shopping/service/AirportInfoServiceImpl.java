@@ -1,24 +1,22 @@
 package com.cloud.shopping.service;
 
-import com.alibaba.fastjson.JSON;
 import com.cloud.common.SingleResponse;
-import com.cloud.shopping.dao.AirportCacheBean;
-import com.cloud.shopping.iface.ElasticSearchService;
-import com.cloud.shopping.repository.iface.AirportInfoRepository;
+import com.cloud.shopping.repository.domain.AirportEsPO;
+import com.cloud.shopping.repository.domain.AirportPO;
+import com.cloud.shopping.repository.es.ElasticSearchService;
+import com.cloud.shopping.repository.mysql.AirportInfoRepository;
 import com.cloud.shopping.iface.AirportInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.common.geo.GeoPoint;
 import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.MatchAllQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * @author: jingran
@@ -31,16 +29,16 @@ import java.util.stream.Collectors;
 @Service
 public class AirportInfoServiceImpl implements AirportInfoService {
 
-    @Autowired
-    ElasticSearchService<AirportCacheBean> elasticSearchService;
+    @Resource(name = "airportEsSvc")
+    ElasticSearchService<AirportEsPO> airportEsSvc;
 
     @Resource
     AirportInfoRepository airportInfoRepository;
 
-    String AIRPORT_INDEX_NAME = "cloud_airport_info_index";
+    String AIRPORT_INDEX_NAME = "cloud_aircity_index";
 
     @Override
-    public List<AirportCacheBean> getAirportCacheBeans(String reqStr) {
+    public List<AirportEsPO> getAirportByStr(String reqStr) {
         try {
             SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 
@@ -64,7 +62,7 @@ public class AirportInfoServiceImpl implements AirportInfoService {
             queryBuilder.should(QueryBuilders.termQuery("countrypinyin", reqStr));
             sourceBuilder.from(0);
             sourceBuilder.size(1);
-            List<AirportCacheBean> airportCacheBeans = elasticSearchService.query(AIRPORT_INDEX_NAME, searchSourceBuilder);
+            List<AirportEsPO> airportCacheBeans = airportEsSvc.query(AIRPORT_INDEX_NAME, searchSourceBuilder);
             return airportCacheBeans;
         } catch (Exception e) {
             log.error("getAirportCacheBeans", e);
@@ -74,17 +72,19 @@ public class AirportInfoServiceImpl implements AirportInfoService {
 
     @Override
     public SingleResponse insertAllAirportCacheBean() {
-        List<AirportCacheBean> allAirportCacheBean = airportInfoRepository.getAllAirportCacheBean();
-        allAirportCacheBean.forEach(a -> {
-            a.setCountrypinyin(a.getCountryname());
-            a.setProvincenamepinyin(a.getProvincename());
-            a.setIscivil(true);
-            if(!StringUtils.isAnyBlank(a.getLongitude(), a.getLatitude())) {
-                a.setLocation(new GeoPoint(Double.valueOf(a.getLatitude()), Double.valueOf(a.getLongitude())));
-            }
-
-            elasticSearchService.update(AIRPORT_INDEX_NAME, a);
-        });
+        List<AirportPO> AirportEsPOS = airportInfoRepository.getAllAirportCacheBean();
+        AirportEsPOS.forEach(a -> airportEsSvc.update(AIRPORT_INDEX_NAME, a));
         return SingleResponse.buildSuccess();
+    }
+
+    public List<AirportEsPO> queryAllAirportList() {
+
+        MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();
+
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.query(matchAllQueryBuilder);
+        searchSourceBuilder.size(2000);
+        List<AirportEsPO> AirportEsPOS = airportEsSvc.queryAll(AIRPORT_INDEX_NAME, searchSourceBuilder);
+        return AirportEsPOS;
     }
 }

@@ -1,7 +1,7 @@
 package com.cloud.shopping.iface;
 
 import com.cloud.common.SingleResponse;
-import com.cloud.shopping.dao.AirportCacheBean;
+import com.cloud.shopping.repository.domain.AirportEsPO;
 
 import java.util.List;
 
@@ -14,8 +14,9 @@ import java.util.List;
 
 public interface AirportInfoService {
 
-    List<AirportCacheBean> getAirportCacheBeans(String reqStr);
+    List<AirportEsPO> getAirportByStr(String reqStr);
 
     SingleResponse insertAllAirportCacheBean();
 
+    List<AirportEsPO> queryAllAirportList();
 }

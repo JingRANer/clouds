@@ -1,21 +1,20 @@
 package com.cloud.shopping.service;
 
 import com.cloud.common.SingleResponse;
-import com.cloud.shopping.ShoppingService;
+import com.cloud.shopping.iface.ShoppingService;
 import com.cloud.shopping.dao.SearchRoute;
 import com.cloud.shopping.dto.SearchTicketCacheBean;
 import com.cloud.shopping.dto.req.UpdateCacheReq;
 import com.cloud.shopping.dto.resp.SearchTicketsByProxyResp;
-import com.cloud.shopping.iface.ElasticSearchService;
+import com.cloud.shopping.repository.es.ElasticSearchService;
 import com.cloud.shopping.util.Constants;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @ClassName : ShoppingServiceImpl
@@ -26,8 +25,8 @@ import java.util.Map;
 @Service
 public class ShoppingServiceImpl implements ShoppingService {
 
-    @Autowired
-    ElasticSearchService<SearchTicketCacheBean> elasticSearchService;
+    @Resource(name = "searchTicketEsSvc")
+    ElasticSearchService<SearchTicketCacheBean> searchTicketEsSvc;
 
     @Override
     public SearchTicketsByProxyResp updateCache(UpdateCacheReq req) {
@@ -45,7 +44,7 @@ public class ShoppingServiceImpl implements ShoppingService {
 
         searchSourceBuilder.query(queryBuilder);
 
-        List<SearchTicketCacheBean> searchTicketCacheBeans = elasticSearchService.query(Constants.SHOP_DATA_INDEX + searchRoute.getDeptDate(), sourceBuilder);
+        List<SearchTicketCacheBean> searchTicketCacheBeans = searchTicketEsSvc.query(Constants.SHOP_DATA_INDEX + searchRoute.getDeptDate(), sourceBuilder);
         return SingleResponse.of(searchTicketCacheBeans);
 
     }
