@@ -22,7 +22,7 @@ public class ServiceRepositoryImplTest extends BaseTest {
     @Test
     public void executeInsert() {
 
-        String path = "/Users/jingran/Desktop/Data/passenger_2022/";
+        String path = "/Users/jingran/Desktop/Data/2022/passenger_2022/";
         serviceRepository.executeInsert(path, "passenger");
     }
 

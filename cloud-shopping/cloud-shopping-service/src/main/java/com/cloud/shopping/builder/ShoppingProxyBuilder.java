@@ -1,8 +1,6 @@
 package com.cloud.shopping.builder;
 
-import com.cloud.shopping.proxy.domain.request.ShoppingProxyReq;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 /**

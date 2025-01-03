@@ -195,7 +195,8 @@ public class AirportElasticsearchImpl implements ElasticSearchService<AirportEsP
             }
             return data;
         } catch (Exception e) {
-            System.err.println(e.getStackTrace());
+            e.printStackTrace();
+            System.err.println(e);
 
         }
         return null;

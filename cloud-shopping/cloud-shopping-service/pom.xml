@@ -7,9 +7,13 @@
         <groupId>com.cloud</groupId>
         <artifactId>cloud-shopping</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+
+
     </parent>
 
     <artifactId>cloud-shopping-service</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

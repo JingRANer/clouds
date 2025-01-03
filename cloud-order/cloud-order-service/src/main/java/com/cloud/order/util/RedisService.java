@@ -22,8 +22,7 @@ public class RedisService {
 
     public void setKey(String key, Object value) {
         try {
-            redisTemplate.opsForValue().set(key, value);
-            redisTemplate.expire(key, 4, TimeUnit.HOURS);
+            redisTemplate.opsForValue().setIfAbsent(key, value, 4, TimeUnit.HOURS);
         } catch (Exception e) {
             System.err.println(key + ":" + value);
         }

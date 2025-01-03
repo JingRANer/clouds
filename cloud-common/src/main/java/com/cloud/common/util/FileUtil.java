@@ -1,8 +1,5 @@
 package com.cloud.common.util;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
-import org.apache.commons.lang3.StringUtils;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;

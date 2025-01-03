@@ -1,12 +1,14 @@
 package com.cloud.order.repository.impl;
 
 import com.alibaba.nacos.common.utils.CollectionUtils;
+import com.alibaba.nacos.common.utils.StringUtils;
 import com.cloud.order.repository.po.CloudAirService;
 import com.cloud.order.mapper.CloudAirServiceMapper;
 import com.cloud.order.repository.SegmentRepository;
 import com.cloud.order.repository.ServiceRepository;
 import com.cloud.order.util.ExecutorUtil;
 import com.cloud.order.util.RedisService;
+import io.netty.util.internal.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -182,11 +184,14 @@ public class ServiceRepositoryImpl implements ServiceRepository {
     }
 
     private String getValue(String key) {
-        if (!redisService.isExist(key)) {
-            String va = UUID.randomUUID().toString();
-            redisService.setKey(key, va);
-            System.out.println("redis is null:" + key );
+        String va = UUID.randomUUID().toString();
+        redisService.setKey(key, va);
+
+        String newKey = (String) redisService.getKey(key);
+        if (StringUtils.isEmpty(newKey)) {
+            System.err.println(key + ":is not save over");
+            return va;
         }
-        return (String) redisService.getKey(key);
+        return newKey;
     }
 }
